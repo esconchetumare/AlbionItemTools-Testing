@@ -7,7 +7,7 @@
     <style>
 	/* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
-            body { flex-direction: column; height: auto; overflow: visible; }
+            body { flex-direction: column; height: auto; overflow: auto; }
             
             /* Detach sidebar header so it's not "stuck" */
             .sidebar { 
@@ -15,7 +15,7 @@
                 height: auto; 
                 border-right: none; 
                 border-bottom: 2px solid var(--accent); 
-                overflow: visible; 
+                overflow: auto; 
             }
             
             .ui-header { 
@@ -30,7 +30,7 @@
             #resetBtn { grid-column: span 2; margin-top: 10px; padding: 12px; }
 
             /* Make the item list scroll naturally with the page */
-            #itemList { height: auto; overflow: visible; }
+            #itemList { height: auto; overflow: auto; }
             
             .content { width: 100%; height: auto; padding: 15px; box-sizing: border-box; }
             
