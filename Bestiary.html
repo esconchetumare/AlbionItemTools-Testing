@@ -212,7 +212,7 @@
             <label>Premium Status</label>
             <div class="premium-group">
                 <input type="checkbox" id="premiumToggle">
-                <label for="premiumToggle">+50% Fame/Silver</label>
+                <label for="premiumToggle">+50% Fame/Profit</label>
             </div>
         </div>
     </div>
@@ -244,6 +244,10 @@
                 <label class="check-item" style="margin-left: auto; padding: 8px 15px;">
                     <input type="checkbox" id="prefSilverDebug" onchange="toggleSilverPref()">
                     <span>Show Silver Formula Debug</span>
+                </label>
+                <label class="check-item" style="padding: 8px 15px;">
+                    <input type="checkbox" id="prefLootDebug" onchange="toggleLootPref()">
+                    <span>Show Loot Formula Debug</span>
                 </label>
             </div>
             <div class="checkbox-grid" id="colChecks"></div>
@@ -304,7 +308,7 @@
 
     let prefs = JSON.parse(localStorage.getItem('mobPrefsV25')) || {
         cols: ['Tier', 'Identity', 'True_HP', 'eHP', 'Fame', 'Silver', 'Efficiency', 'Silver Eff.'],
-        orderedStats: [], enabledCats: [], showSilverDebug: false
+        orderedStats: [], enabledCats: [], showSilverDebug: false, showLootDebug: false
     };
 
     const COL_MAP = {
@@ -454,7 +458,6 @@
         if (u.includes("_SHOES_LEATHER")) return "Shoes";
         if (u.includes("_SHOES_CLOTH")) return "Shoes";
         
-        // Priority for 2H labeling
         if (u.includes("_2H_")) return "Weapons (2h)";
         if (u.includes("_MAIN_")) return "Weapons";
         
@@ -468,35 +471,45 @@
         return "ETC / Materials";
     }
 
-function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
-        if (!node || depth > 10) return '';
-        let html = '';
+    function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
+    if (!node || depth > 10) return '';
+    let html = '';
 
-        const children = Array.from(node.children).filter(c => ['Item', 'LootListReference', 'Lootlist', 'OR', 'AND'].includes(c.tagName));
-        const isOrTag = node.tagName === 'OR';
-        let totalWeight = 0;
-        
+    const zoneLootMult = ZONE_DATA[document.getElementById('zoneFilter').value].l;
+    // Added: Premium multiplier for loot (1.5x if active)
+    const premiumMult = document.getElementById('premiumToggle').checked ? 1.5 : 1.0;
+    const showDebug = prefs.showLootDebug;
+
+    const children = Array.from(node.children).filter(c => ['Item', 'LootListReference', 'Lootlist', 'OR', 'AND'].includes(c.tagName));
+    const isOrTag = node.tagName === 'OR';
+    let totalWeight = 0;
+    
+    if (isOrTag) {
+        totalWeight = children.reduce((sum, c) => sum + parseFloat(c.getAttribute('weight') || 0), 0);
+    }
+
+    const categorizedItems = {};
+    const logicNodes = [];
+
+    children.forEach(child => {
+        let localProb = 1.0;
+        let weightVal = null;
+        let debugStr = "";
+
         if (isOrTag) {
-            totalWeight = children.reduce((sum, c) => sum + parseFloat(c.getAttribute('weight') || 0), 0);
+            let weight = parseFloat(child.getAttribute('weight') || 0);
+            weightVal = weight;
+            localProb = totalWeight > 0 ? (weight / totalWeight) : 0;
+            debugStr = `(W:${weight}/TW:${totalWeight})`;
+        } else if (child.hasAttribute('chance')) {
+            let baseChance = parseFloat(child.getAttribute('chance'));
+            // Updated: Applied premiumMult to the local probability calculation
+            localProb = baseChance * zoneLootMult * premiumMult;
+            debugStr = `(${baseChance} * Zone:${zoneLootMult} * Prem:${premiumMult})`;
         }
 
-        const categorizedItems = {};
-        const logicNodes = [];
-
-        children.forEach(child => {
-            let localProb = 1.0;
-            let weightVal = null;
-
-            if (isOrTag) {
-                let weight = parseFloat(child.getAttribute('weight') || 0);
-                weightVal = weight;
-                localProb = totalWeight > 0 ? (weight / totalWeight) : 0;
-            } else if (child.hasAttribute('chance')) {
-                localProb = parseFloat(child.getAttribute('chance'));
-            }
-
-            let compoundProb = passedProb * localProb;
-            if (compoundProb <= 0) return;
+        let compoundProb = passedProb * localProb;
+        if (compoundProb <= 0) return;
 
             if (child.tagName === 'Item') {
                 const id = child.getAttribute('type');
@@ -507,15 +520,14 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                 if (!categorizedItems[cat].groups[uniqueID]) {
                     categorizedItems[cat].groups[uniqueID] = { items: [], groupProb: 0 };
                 }
-                categorizedItems[cat].groups[uniqueID].items.push({ node: child, prob: compoundProb, id: id, weight: weightVal });
+                categorizedItems[cat].groups[uniqueID].items.push({ node: child, prob: compoundProb, id: id, weight: weightVal, debug: debugStr });
                 categorizedItems[cat].groups[uniqueID].groupProb += compoundProb;
                 categorizedItems[cat].totalProb += compoundProb;
             } else {
-                logicNodes.push({ node: child, prob: compoundProb, weight: weightVal });
+                logicNodes.push({ node: child, prob: compoundProb, weight: weightVal, debug: debugStr });
             }
         });
 
-        // "Weapons (2h)" name check: Merge Weapons into Weapons (2h) if it exists in this specific list
         if (categorizedItems["Weapons (2h)"]) {
             const standardWeapons = categorizedItems["Weapons"];
             if (standardWeapons) {
@@ -525,7 +537,6 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
             }
         }
 
-        // SORT CATEGORIES BY TOTAL PROBABILITY
         const sortedCategories = Object.entries(categorizedItems).sort((a, b) => b[1].totalProb - a[1].totalProb);
 
         for (const [catName, catData] of sortedCategories) {
@@ -538,7 +549,6 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                     </button>
                     <div class="content">`;
             
-            // SORT GROUPS WITHIN CATEGORY BY GROUP PROBABILITY
             const sortedGroups = Object.entries(catData.groups).sort((a, b) => b[1].groupProb - a[1].groupProb);
 
             for (const [uID, groupData] of sortedGroups) {
@@ -557,7 +567,6 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                             </button>
                             <div class="content">`;
 
-                    // SORT ITEMS WITHIN GROUP BY INDIVIDUAL PROBABILITY
                     groupData.items.sort((a, b) => b.prob - a.prob).forEach(item => {
                         const percentVal = item.prob * 100;
                         let badgesHtml = '';
@@ -566,6 +575,7 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                         if (item.node.hasAttribute('amount')) badgesHtml += `<span class="badge">Qty: ${item.node.getAttribute('amount')}</span>`;
                         if (item.weight !== null) badgesHtml += `<span class="badge" style="border-color:#555;">W: ${item.weight}</span>`;
                         
+                        const debugHtml = showDebug ? `<div style="font-size:0.55rem; color:#666; font-family:monospace;">Logic: ${passedProb.toFixed(4)} * ${item.debug}</div>` : '';
                         const imgId = (ench && ench !== "0") ? `${item.id}@${ench}` : item.id;
                         
                         html += `
@@ -574,6 +584,7 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                                     <img class="item-img" data-src="https://render.albiononline.com/v1/item/${imgId}.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
                                     <div class="item-info">
                                         <div class="title-wrapper"><span class="item-name">${item.id}</span>${badgesHtml}</div>
+                                        ${debugHtml}
                                     </div>
                                 </div>
                                 <div class="prob-display" style="color:${getProbColor(percentVal)}; font-size:0.75rem;">${percentVal.toFixed(6)}%</div>
@@ -590,6 +601,7 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                     if (item.node.hasAttribute('amount')) badgesHtml += `<span class="badge">Qty: ${item.node.getAttribute('amount')}</span>`;
                     if (item.weight !== null) badgesHtml += `<span class="badge" style="border-color:#555;">W: ${item.weight}</span>`;
 
+                    const debugHtml = showDebug ? `<div style="font-size:0.55rem; color:#666; font-family:monospace;">Logic: ${passedProb.toFixed(4)} * ${item.debug}</div>` : '';
                     const imgId = (ench && ench !== "0") ? `${item.id}@${ench}` : item.id;
 
                     html += `
@@ -599,6 +611,7 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                                 <div class="item-info">
                                     <div class="title-wrapper"><span class="item-name">${friendlyBaseName}</span>${badgesHtml}</div>
                                     <div style="font-size: 0.6rem; color: #666;">${item.id}</div>
+                                    ${debugHtml}
                                 </div>
                             </div>
                             <div class="prob-display" style="color:${getProbColor(percentVal)};">${percentVal.toFixed(5)}%</div>
@@ -608,11 +621,11 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
             html += `</div></div>`;
         }
 
-        // SORT LOGIC NODES (LootListReferences) BY PROBABILITY
         logicNodes.sort((a, b) => b.prob - a.prob).forEach(item => {
             const child = item.node;
             const percentVal = item.prob * 100;
             const weightLabel = item.weight !== null ? `<span class="badge" style="border-color:#444; margin-right:8px;">W: ${item.weight}</span>` : '';
+            const debugHtml = showDebug ? `<div style="font-size:0.55rem; color:#666; font-family:monospace; margin-top:4px;">Logic: ${passedProb.toFixed(4)} * ${item.debug}</div>` : '';
             
             if (child.tagName === 'LootListReference') {
                 const refName = child.getAttribute('name');
@@ -620,7 +633,10 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                 html += `
                     <div class="node node-ref">
                         <button class="toggle-btn" style="display: flex; justify-content: space-between;" onclick="toggleAccordion(this, event)">
-                            <span>🗂️ ${refName}</span>
+                            <div style="display:flex; flex-direction:column; gap:2px;">
+                                <span>🗂️ ${refName}</span>
+                                ${debugHtml}
+                            </div>
                             <div style="display:flex; align-items:center;">
                                 ${weightLabel}
                                 <span class="prob-display" style="color:${getProbColor(percentVal)};">${percentVal.toFixed(5)}%</span>
@@ -705,7 +721,6 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
                 img.removeAttribute('data-src');
             });
         } else {
-            // Recursive Collapse: Make child accordions collapse when parent is collapsed
             parent.querySelectorAll('.node.expanded').forEach(childNode => {
                 childNode.classList.remove('expanded');
             });
@@ -769,12 +784,14 @@ function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
 
     function initPrefs() {
         document.getElementById('prefSilverDebug').checked = prefs.showSilverDebug;
+        document.getElementById('prefLootDebug').checked = prefs.showLootDebug;
         document.getElementById('colChecks').innerHTML = Object.keys(COL_MAP).map(c => `<label class="check-item"><input type="checkbox" ${prefs.cols.includes(c)?'checked':''} onchange="toggleCol('${c}')"><span>${c}</span></label>`).join('');
         document.getElementById('catChecks').innerHTML = [...allPossibleCats].sort().map(cat => `<label class="check-item"><input type="checkbox" ${prefs.enabledCats.includes(cat)?'checked':''} onchange="toggleCat('${cat}')"><span>${cat}</span></label>`).join('');
         document.getElementById('statChecks').innerHTML = [...allPossibleStats].sort().map(s => `<label class="check-item"><input type="checkbox" ${prefs.orderedStats.includes(s)?'checked':''} onchange="toggleStat('${s}')"><span>${s}</span></label>`).join('');
     }
 
     function toggleSilverPref() { prefs.showSilverDebug = document.getElementById('prefSilverDebug').checked; save(); }
+    function toggleLootPref() { prefs.showLootDebug = document.getElementById('prefLootDebug').checked; save(); }
     function toggleCol(c) { prefs.cols = prefs.cols.includes(c) ? prefs.cols.filter(x => x!==c) : [...prefs.cols, c]; save(); }
     function toggleCat(cat) { prefs.enabledCats = prefs.enabledCats.includes(cat) ? prefs.enabledCats.filter(x => x!==cat) : [...prefs.enabledCats, cat]; save(); }
     function toggleStat(s) { prefs.orderedStats = prefs.orderedStats.includes(s) ? prefs.orderedStats.filter(x => x !== s) : [...prefs.orderedStats, s]; save(); }
