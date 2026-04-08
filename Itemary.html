@@ -667,7 +667,8 @@
         runFilter();
     });
 
-    window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', async () => {
+        // 1. Fetch and process XML first
         try {
             const xmlResponse = await fetch('items.xml');
             if (xmlResponse.ok) {
@@ -678,6 +679,7 @@
             document.getElementById('count').innerText = "Fetch failed. Is npx serve running?";
         }
 
+        // 2. Fetch and process names
         try {
             const txtResponse = await fetch('items.txt');
             if (txtResponse.ok) {
@@ -686,15 +688,22 @@
             }
         } catch (e) {}
 
-        // NEW: Check for incoming item IDs from Bestiary.html
+        // 3. ONLY NOW, check the URL parameter (guaranteed to happen after data is ready)
         const urlParams = new URLSearchParams(window.location.search);
-        const targetId = urlParams.get('id');
-        if (targetId) {
-            // Populate the search box and trigger the filter
-            document.getElementById('search').value = targetId;
+        const rawId = urlParams.get('id');
+        
+        if (rawId && items.length > 0) {
+            // Split the ID just in case it contains an enchantment (e.g., T4_BAG@1)
+            const parts = rawId.split('@');
+            const baseId = parts[0].trim();
+            const enchantLvl = parts.length > 1 ? parseInt(parts[1]) : 0;
+
+            // Set the search box and filter
+            document.getElementById('search').value = baseId;
             runFilter();
-            // Open the specific item view
-            view(targetId);
+            
+            // Open the item, passing the enchantment level to select the right tab
+            view(baseId, null, enchantLvl);
         }
     });
 </script>
