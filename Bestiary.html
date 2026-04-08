@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albion Mob Analyst</title>
+    <title>Albion Mob Analyst - Elite Edition</title>
     <style>
         :root {
             --primary: #1a1a1a; --accent: #e67e22; --bg: #0f0f0f;
@@ -24,7 +24,7 @@
         }
 
         .status-bar { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-        .status-online { color: #27ae60; }
+        .status-online { color: #27ae60; font-weight: bold;}
 
         .btn-pref {
             position: absolute; top: 20px; right: 20px;
@@ -69,7 +69,7 @@
         table { width: 100%; border-collapse: collapse; min-width: 1100px; }
         th { background: #000; color: var(--accent); padding: 15px; text-align: left; font-size: 0.75rem; cursor: pointer; user-select: none; position: sticky; top: 0; z-index: 10; }
         th.sort-active { color: var(--highlight); border-bottom: 2px solid var(--highlight); }
-        td { padding: 12px 15px; border-bottom: 1px solid #2a2a2a; font-size: 0.9rem; }
+        td { padding: 12px 15px; border-bottom: 1px solid #2a2a2a; font-size: 0.9rem; vertical-align: middle; }
         
         tr.main-row:hover { background: #252525; cursor: pointer; }
         tr.f-morgana { border-left: 4px solid var(--clr-morgana); }
@@ -82,15 +82,31 @@
         .detail-row { display: none; background: #0a0a0a; }
         .detail-row.active { display: table-row; }
         
-        .details-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; }
+        .details-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 20px; padding: 20px; }
         .stats-section h4, .loot-section h4 { color: var(--accent); margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 8px; text-transform: uppercase; font-size: 0.8rem; }
         
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
         .stat-box { display: flex; justify-content: space-between; background: #161616; padding: 8px; border-radius: 4px; border-left: 2px solid var(--accent); font-size: 0.75rem; }
 
-        .loot-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; background: #111; border-radius: 5px; overflow: hidden; }
-        .loot-table th { background: #222; color: #888; padding: 8px; text-align: left; position: relative; }
-        .loot-table td { padding: 6px 8px; border-bottom: 1px solid #222; }
+        .node { background: #151515; border: 1px solid #2a2a2a; border-radius: 6px; overflow: hidden; margin-bottom: 4px; }
+        .toggle-btn { 
+            width: 100%; padding: 8px 12px; background: #1c1c1c; border: none; text-align: left; 
+            color: #88aaff; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-family: inherit;
+        }
+        .toggle-btn:hover { background: #252525; }
+        
+        .content { display: none; padding: 5px 0 5px 15px; border-top: 1px solid #2a2a2a; background: rgba(0,0,0,0.2); border-left: 2px solid #444; }
+        .expanded > .content { display: block; }
+
+        .item-row { display: flex; align-items: center; padding: 6px 12px; gap: 12px; border-bottom: 1px solid #1a1a1a; background: #0a0a0a;}
+        .item-row:last-child { border-bottom: none; }
+        .item-img { width: 36px; height: 36px; background: #000; border: 1px solid #333; border-radius: 4px; flex-shrink: 0; }
+        .item-info { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+        
+        .title-wrapper { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .item-name { color: #e0e0e0; font-size: 0.8rem; font-weight: 500; font-family: monospace; }
+        .badge { background: #111; padding: 2px 5px; border-radius: 3px; border: 1px solid #333; color: #999; font-size:0.65rem;}
+        .prob-display { font-family: 'Courier New', monospace; font-weight: bold; font-size: 0.85rem; margin-left: auto; padding-left: 15px; white-space: nowrap; }
 
         #sentinel { height: 40px; width: 100%; }
 
@@ -118,7 +134,7 @@
 
 <div class="container">
     <div class="header-section">
-        <h1>MOB ANALYST</h1>
+        <h1>MOB ANALYST PRO</h1>
         <div class="status-bar" id="loadStatus">Initializing environment...</div>
         <button class="btn-pref" id="openPrefs">⚙ Preferences</button>
     </div>
@@ -277,7 +293,9 @@
 
     let globalMobData = [];
     let currentFilteredData = [];
+    let itemLookup = {}; 
     let harvestLookup = {};
+    let masterLootMap = new Map();
     let allPossibleStats = new Set();
     let allPossibleCats = new Set();
     let currentSort = { col: 'Efficiency', dir: -1 }; 
@@ -286,7 +304,7 @@
 
     let prefs = JSON.parse(localStorage.getItem('mobPrefsV25')) || {
         cols: ['Tier', 'Identity', 'True_HP', 'eHP', 'Fame', 'Silver', 'Efficiency', 'Silver Eff.'],
-        orderedStats: [], enabledCats: [], showSilverDebug: true
+        orderedStats: [], enabledCats: [], showSilverDebug: false
     };
 
     const COL_MAP = {
@@ -310,31 +328,46 @@
         return `rgb(${r},${g},${b})`;
     }
 
-    function getChanceData(chance) {
-        if (!chance || isNaN(chance)) return { ratio: chance, percent: chance };
-        const num = parseFloat(chance);
-        if (num <= 0) return { ratio: '0', percent: '0%' };
-        const xVal = 1 / num;
-        let ratioStr = (num >= 1) ? `x${num.toFixed(4).replace(/\.?0+$/, '')}` : `1/${xVal.toFixed(4).replace(/\.?0+$/, '')}`;
-        const percentStr = (num * 100).toFixed(4).replace(/\.?0+$/, '') + '%';
-        return { ratio: ratioStr, percent: percentStr };
+    function getProbColor(percent) {
+        if (percent >= 100) return '#4caf50'; 
+        if (percent >= 25) return '#f3a950';  
+        if (percent >= 5) return '#d4af37';   
+        if (percent >= 1) return '#a0a0a0';   
+        if (percent >= 0.1) return '#8c6b5d'; 
+        return '#666666';                     
     }
 
     async function initData() {
         const status = document.getElementById('loadStatus');
         try {
-            status.innerHTML = "Fetching mobs.xml...";
-            const mobsRes = await fetch('mobs.xml');
-            const mobsText = await mobsRes.text();
+            status.innerHTML = "Fetching items.txt...";
+            const itemRes = await fetch('items.txt');
+            if(itemRes.ok) {
+                const text = await itemRes.text();
+                text.split('\n').forEach(line => {
+                    if(line.includes(':')) {
+                        const [id, name] = line.split(':');
+                        itemLookup[id.trim()] = name.trim();
+                    }
+                });
+            }
+
             status.innerHTML = "Fetching harvestables.xml...";
             const harvRes = await fetch('harvestables.xml');
-            const harvText = await harvRes.text();
-            processHarvestables(harvText);
-            processMobs(mobsText);
+            if(harvRes.ok) processHarvestables(await harvRes.text());
+
+            status.innerHTML = "Fetching loot.xml...";
+            const lootRes = await fetch('loot.xml');
+            if(lootRes.ok) processLoot(await lootRes.text());
+
+            status.innerHTML = "Fetching mobs.xml...";
+            const mobsRes = await fetch('mobs.xml');
+            if(mobsRes.ok) processMobs(await mobsRes.text());
+
             status.innerHTML = "Data Status: <span class='status-online'>Online</span>";
             status.classList.add('status-online');
         } catch (err) {
-            status.innerHTML = "Error loading files. Ensure mobs.xml and harvestables.xml are local.";
+            status.innerHTML = "Error loading files. Ensure mobs.xml, loot.xml, and harvestables.xml are local.";
             console.error(err);
         }
     }
@@ -351,6 +384,15 @@
                     if (c.getAttribute('level') === "1") harvestLookup[hName][tVal] = parseFloat(c.getAttribute('yield')) || 0;
                 }
             }
+        }
+    }
+
+    function processLoot(text) {
+        const xmlDoc = new DOMParser().parseFromString(text, "text/xml");
+        const lists = xmlDoc.getElementsByTagName("Lootlist");
+        masterLootMap.clear();
+        for (let list of lists) { 
+            masterLootMap.set(list.getAttribute('name'), list); 
         }
     }
 
@@ -380,15 +422,18 @@
 
             const f = (m.faction || "").toUpperCase();
             m._fClass = f.includes("MORGANA") ? "f-morgana" : f.includes("KEEPER") ? "f-keeper" : f.includes("UNDEAD") ? "f-undead" : f.includes("ROYAL") ? "f-royal" : f.includes("KING") ? "f-king" : "";
-            m._loot = []; m._hType = null; m._hTier = m.tier;
+            
             const lootNode = mob.getElementsByTagName("Loot")[0];
+            m._lootNode = lootNode; 
+            m._hType = null; 
+            m._hTier = m.tier;
+
             if (lootNode) {
                 const harvestTag = lootNode.getElementsByTagName("Harvestable")[0];
-                if (harvestTag) { m._hType = harvestTag.getAttribute('type'); m._hTier = harvestTag.getAttribute('tier') || m.tier; }
-                const references = lootNode.getElementsByTagName("LootListReference");
-                for (let ref of references) { m._loot.push({ name: ref.getAttribute('name'), ...getChanceData(ref.getAttribute('chance')) }); }
-                const items = lootNode.querySelectorAll('LootList, LootItem');
-                items.forEach(item => { m._loot.push({ name: item.getAttribute('name') || item.getAttribute('uniquename') || "Unknown", ...getChanceData(item.getAttribute('chance')) }); });
+                if (harvestTag) { 
+                    m._hType = harvestTag.getAttribute('type'); 
+                    m._hTier = harvestTag.getAttribute('tier') || m.tier; 
+                }
             }
             globalMobData.push(m);
         }
@@ -397,22 +442,275 @@
         setupTierFilter(); initPrefs(); render();
     }
 
+    function getItemCategory(id) {
+        const u = id.toUpperCase();
+        if (u.includes("_HEAD_PLATE")) return "Head";
+        if (u.includes("_HEAD_LEATHER")) return "Head";
+        if (u.includes("_HEAD_CLOTH")) return "Head";
+        if (u.includes("_ARMOR_PLATE")) return "Armors";
+        if (u.includes("_ARMOR_LEATHER")) return "Armors";
+        if (u.includes("_ARMOR_CLOTH")) return "Armors";
+        if (u.includes("_SHOES_PLATE")) return "Shoes";
+        if (u.includes("_SHOES_LEATHER")) return "Shoes";
+        if (u.includes("_SHOES_CLOTH")) return "Shoes";
+        
+        // Priority for 2H labeling
+        if (u.includes("_2H_")) return "Weapons (2h)";
+        if (u.includes("_MAIN_")) return "Weapons";
+        
+        if (u.includes("_OFF_")) return "Offhands";
+        if (u.includes("_CAPE")) return "Capes";
+        if (u.includes("_BAG")) return "Bags";
+        if (u.includes("_POTION")) return "Potions";
+        if (u.includes("_MEAL")) return "Food";
+        if (u.includes("_MOUNT")) return "Mounts";
+        if (u.includes("_ESSENCE") || u.includes("_RUNE") || u.includes("_SOUL") || u.includes("_RELIC")) return "Artifacts / Runes";
+        return "ETC / Materials";
+    }
+
+function parseNodeChildren(node, passedProb = 1.0, depth = 0) {
+        if (!node || depth > 10) return '';
+        let html = '';
+
+        const children = Array.from(node.children).filter(c => ['Item', 'LootListReference', 'Lootlist', 'OR', 'AND'].includes(c.tagName));
+        const isOrTag = node.tagName === 'OR';
+        let totalWeight = 0;
+        
+        if (isOrTag) {
+            totalWeight = children.reduce((sum, c) => sum + parseFloat(c.getAttribute('weight') || 0), 0);
+        }
+
+        const categorizedItems = {};
+        const logicNodes = [];
+
+        children.forEach(child => {
+            let localProb = 1.0;
+            let weightVal = null;
+
+            if (isOrTag) {
+                let weight = parseFloat(child.getAttribute('weight') || 0);
+                weightVal = weight;
+                localProb = totalWeight > 0 ? (weight / totalWeight) : 0;
+            } else if (child.hasAttribute('chance')) {
+                localProb = parseFloat(child.getAttribute('chance'));
+            }
+
+            let compoundProb = passedProb * localProb;
+            if (compoundProb <= 0) return;
+
+            if (child.tagName === 'Item') {
+                const id = child.getAttribute('type');
+                const cat = getItemCategory(id);
+                const uniqueID = id.split('@')[0]; 
+
+                if (!categorizedItems[cat]) categorizedItems[cat] = { groups: {}, totalProb: 0 };
+                if (!categorizedItems[cat].groups[uniqueID]) {
+                    categorizedItems[cat].groups[uniqueID] = { items: [], groupProb: 0 };
+                }
+                categorizedItems[cat].groups[uniqueID].items.push({ node: child, prob: compoundProb, id: id, weight: weightVal });
+                categorizedItems[cat].groups[uniqueID].groupProb += compoundProb;
+                categorizedItems[cat].totalProb += compoundProb;
+            } else {
+                logicNodes.push({ node: child, prob: compoundProb, weight: weightVal });
+            }
+        });
+
+        // "Weapons (2h)" name check: Merge Weapons into Weapons (2h) if it exists in this specific list
+        if (categorizedItems["Weapons (2h)"]) {
+            const standardWeapons = categorizedItems["Weapons"];
+            if (standardWeapons) {
+                Object.assign(categorizedItems["Weapons (2h)"].groups, standardWeapons.groups);
+                categorizedItems["Weapons (2h)"].totalProb += standardWeapons.totalProb;
+                delete categorizedItems["Weapons"];
+            }
+        }
+
+        // SORT CATEGORIES BY TOTAL PROBABILITY
+        const sortedCategories = Object.entries(categorizedItems).sort((a, b) => b[1].totalProb - a[1].totalProb);
+
+        for (const [catName, catData] of sortedCategories) {
+            const catPercent = catData.totalProb * 100;
+            html += `
+                <div class="node node-group">
+                    <button class="toggle-btn category-btn" style="background:#1a1a1a; font-weight:bold; color:var(--accent); display: flex; justify-content: space-between;" onclick="toggleAccordion(this, event)">
+                        <span>📂 ${catName}</span>
+                        <span class="prob-display">${catPercent.toFixed(4)}%</span>
+                    </button>
+                    <div class="content">`;
+            
+            // SORT GROUPS WITHIN CATEGORY BY GROUP PROBABILITY
+            const sortedGroups = Object.entries(catData.groups).sort((a, b) => b[1].groupProb - a[1].groupProb);
+
+            for (const [uID, groupData] of sortedGroups) {
+                const groupPercent = groupData.groupProb * 100;
+                const friendlyBaseName = itemLookup[uID] || uID;
+
+                if (groupData.items.length > 1) {
+                    html += `
+                        <div class="node node-subgroup" style="margin: 5px 0;">
+                            <button class="toggle-btn group-btn" style="background:#111; border-left: 3px solid #555; display: flex; justify-content: space-between;" onclick="toggleAccordion(this, event)">
+                                <div style="display:flex; align-items:center; gap:10px;">
+                                    <img src="https://render.albiononline.com/v1/item/${uID}.png" style="width:24px; height:24px; border-radius:3px; background:#000;">
+                                    <span style="font-size:0.8rem;">${friendlyBaseName}</span>
+                                </div>
+                                <span class="prob-display" style="color:${getProbColor(groupPercent)};">${groupPercent.toFixed(5)}%</span>
+                            </button>
+                            <div class="content">`;
+
+                    // SORT ITEMS WITHIN GROUP BY INDIVIDUAL PROBABILITY
+                    groupData.items.sort((a, b) => b.prob - a.prob).forEach(item => {
+                        const percentVal = item.prob * 100;
+                        let badgesHtml = '';
+                        const ench = item.node.getAttribute('enchantmentlevel');
+                        if (ench) badgesHtml += `<span class="badge" style="color:#88aaff;">. ${ench}</span>`;
+                        if (item.node.hasAttribute('amount')) badgesHtml += `<span class="badge">Qty: ${item.node.getAttribute('amount')}</span>`;
+                        if (item.weight !== null) badgesHtml += `<span class="badge" style="border-color:#555;">W: ${item.weight}</span>`;
+                        
+                        const imgId = (ench && ench !== "0") ? `${item.id}@${ench}` : item.id;
+                        
+                        html += `
+                            <div class="item-row" style="background:rgba(255,255,255,0.02); display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <img class="item-img" data-src="https://render.albiononline.com/v1/item/${imgId}.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
+                                    <div class="item-info">
+                                        <div class="title-wrapper"><span class="item-name">${item.id}</span>${badgesHtml}</div>
+                                    </div>
+                                </div>
+                                <div class="prob-display" style="color:${getProbColor(percentVal)}; font-size:0.75rem;">${percentVal.toFixed(6)}%</div>
+                            </div>`;
+                    });
+
+                    html += `</div></div>`;
+                } else {
+                    const item = groupData.items[0];
+                    const percentVal = item.prob * 100;
+                    let badgesHtml = '';
+                    const ench = item.node.getAttribute('enchantmentlevel');
+                    if (ench) badgesHtml += `<span class="badge" style="color:#88aaff;">. ${ench}</span>`;
+                    if (item.node.hasAttribute('amount')) badgesHtml += `<span class="badge">Qty: ${item.node.getAttribute('amount')}</span>`;
+                    if (item.weight !== null) badgesHtml += `<span class="badge" style="border-color:#555;">W: ${item.weight}</span>`;
+
+                    const imgId = (ench && ench !== "0") ? `${item.id}@${ench}` : item.id;
+
+                    html += `
+                        <div class="item-row" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <img class="item-img" data-src="https://render.albiononline.com/v1/item/${imgId}.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
+                                <div class="item-info">
+                                    <div class="title-wrapper"><span class="item-name">${friendlyBaseName}</span>${badgesHtml}</div>
+                                    <div style="font-size: 0.6rem; color: #666;">${item.id}</div>
+                                </div>
+                            </div>
+                            <div class="prob-display" style="color:${getProbColor(percentVal)};">${percentVal.toFixed(5)}%</div>
+                        </div>`;
+                }
+            }
+            html += `</div></div>`;
+        }
+
+        // SORT LOGIC NODES (LootListReferences) BY PROBABILITY
+        logicNodes.sort((a, b) => b.prob - a.prob).forEach(item => {
+            const child = item.node;
+            const percentVal = item.prob * 100;
+            const weightLabel = item.weight !== null ? `<span class="badge" style="border-color:#444; margin-right:8px;">W: ${item.weight}</span>` : '';
+            
+            if (child.tagName === 'LootListReference') {
+                const refName = child.getAttribute('name');
+                const targetNode = masterLootMap.get(refName);
+                html += `
+                    <div class="node node-ref">
+                        <button class="toggle-btn" style="display: flex; justify-content: space-between;" onclick="toggleAccordion(this, event)">
+                            <span>🗂️ ${refName}</span>
+                            <div style="display:flex; align-items:center;">
+                                ${weightLabel}
+                                <span class="prob-display" style="color:${getProbColor(percentVal)};">${percentVal.toFixed(5)}%</span>
+                            </div>
+                        </button>
+                        <div class="content">${parseNodeChildren(targetNode, item.prob, depth + 1)}</div>
+                    </div>`;
+            } else if (child.tagName === 'OR' || child.tagName === 'AND') {
+                html += parseNodeChildren(child, item.prob, depth);
+            }
+        });
+
+        return html;
+    }
+
     function renderTableRows(isAppend = false) {
         const container = document.getElementById('tableBody');
         const slice = currentFilteredData.slice(isAppend ? displayLimit - 50 : 0, displayLimit);
+        
         const rowsHtml = slice.map((m, i) => {
             const index = (isAppend ? displayLimit - 50 : 0) + i;
-            const lootRows = m._loot.length > 0 ? m._loot.map(l => `<tr><td>${l.name}</td><td>${l.ratio}</td><td>${l.percent}</td></tr>`).join('') : `<tr><td colspan="3" style="color:#666; font-style:italic; text-align:center;">No direct loot found</td></tr>`;
-            return `<tr class="main-row ${m._fClass}" onclick="toggleDetail(${index})">${prefs.cols.map(c => COL_MAP[c].render(m, c.includes('Silver') ? maxSilEffGlobal : maxEffGlobal)).join('')}</tr>
-            <tr class="detail-row" id="detail-${index}"><td colspan="${prefs.cols.length}">
-                <div class="details-wrapper">
-                    <div class="stats-section"><h4>Technical Stats</h4><div class="stats-grid">${prefs.orderedStats.filter(sk => m[sk] !== undefined).map(sk => `<div class="stat-box"><span>${sk}</span><b>${m[sk]}</b></div>`).join('')}</div></div>
-                    <div class="loot-section"><h4>Loot Tables</h4><table class="loot-table"><thead><tr><th>Item/List Name</th><th>Ratio (1/x)</th><th>Prob (%)</th></tr></thead><tbody>${lootRows}</tbody></table></div>
-                </div>
-            </td></tr>`;
+            return `
+            <tr class="main-row ${m._fClass}" onclick="toggleDetail(${index})">
+                ${prefs.cols.map(c => COL_MAP[c].render(m, c.includes('Silver') ? maxSilEffGlobal : maxEffGlobal)).join('')}
+            </tr>
+            <tr class="detail-row" id="detail-${index}">
+                <td colspan="${prefs.cols.length}">
+                    <div class="details-wrapper">
+                        <div class="stats-section">
+                            <h4>Technical Stats</h4>
+                            <div class="stats-grid">
+                                ${prefs.orderedStats.filter(sk => m[sk] !== undefined).map(sk => `<div class="stat-box"><span>${sk}</span><b>${m[sk]}</b></div>`).join('')}
+                            </div>
+                        </div>
+                        <div class="loot-section">
+                            <h4>Compound Loot Tables (1 = 100%)</h4>
+                            <div id="loot-container-${index}" data-loaded="false" style="margin-top:10px;">
+                                <span style="color:#666; font-style:italic;">Click to load...</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>`;
         }).join('');
-        if (isAppend) container.insertAdjacentHTML('beforeend', rowsHtml); else container.innerHTML = rowsHtml;
+        
+        if (isAppend) container.insertAdjacentHTML('beforeend', rowsHtml); 
+        else container.innerHTML = rowsHtml;
     }
+
+    window.toggleDetail = function(index) {
+        const detailRow = document.getElementById('detail-' + index);
+        detailRow.classList.toggle('active');
+        
+        const lootContainer = document.getElementById('loot-container-' + index);
+        if (detailRow.classList.contains('active') && lootContainer.dataset.loaded === "false") {
+            const mob = currentFilteredData[index];
+            if (mob._lootNode) {
+                const html = parseNodeChildren(mob._lootNode, 1.0, 0);
+                lootContainer.innerHTML = html || '<i style="color:#666">No drops configured</i>';
+            } else {
+                lootContainer.innerHTML = '<i style="color:#666">No loot node found</i>';
+            }
+            lootContainer.dataset.loaded = "true";
+            
+            lootContainer.querySelectorAll(':scope .item-row img[data-src]').forEach(img => {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            });
+        }
+    };
+
+    window.toggleAccordion = function(btn, event) {
+        event.stopPropagation(); 
+        const parent = btn.parentElement;
+        const isExpanding = !parent.classList.contains('expanded');
+        
+        parent.classList.toggle('expanded');
+        
+        if (isExpanding) {
+            parent.querySelectorAll(':scope > .content .item-row img[data-src]').forEach(img => {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            });
+        } else {
+            // Recursive Collapse: Make child accordions collapse when parent is collapsed
+            parent.querySelectorAll('.node.expanded').forEach(childNode => {
+                childNode.classList.remove('expanded');
+            });
+        }
+    };
 
     function render() {
         const z = ZONE_DATA[document.getElementById('zoneFilter').value];
@@ -423,6 +721,7 @@
         document.getElementById('z-silver').innerText = `x${z.s}`; document.getElementById('z-gather').innerText = `x${z.g}`;
         document.getElementById('z-fish').innerText = `x${z.fi}`; document.getElementById('z-stats').innerText = `x${z.b}`;
         maxEffGlobal = 0; maxSilEffGlobal = 0;
+        
         globalMobData.forEach(m => {
             let yieldStat = (m._hType && harvestLookup[m._hType]) ? (harvestLookup[m._hType][m._hTier] || 1.0) : 1.0;
             const step1 = Math.trunc(m._baseSilver * yieldStat);
@@ -435,6 +734,7 @@
             m._eff = m._adjFame / (m._trueEHP || 1); m._silEff = m._adjSilver / (m._trueEHP || 1);
             if(m._eff > maxEffGlobal) maxEffGlobal = m._eff; if(m._silEff > maxSilEffGlobal) maxSilEffGlobal = m._silEff;
         });
+        
         const ranks = { 
             boss: document.getElementById('rankBoss').checked, 
             mini: document.getElementById('rankMini').checked, 
@@ -445,6 +745,7 @@
         };
         const tier = document.getElementById('tierFilter').value;
         const faction = document.getElementById('factionFilter').value;
+        
         currentFilteredData = globalMobData.filter(m => {
             if (tier !== 'all' && m.tier !== tier) return false;
             if (faction !== 'all' && !(m.faction || "").includes(faction)) return false;
@@ -453,9 +754,11 @@
             if (!prefs.enabledCats.includes(m.category)) return false;
             return true;
         });
+        
         const sortObj = COL_MAP[currentSort.col];
         currentFilteredData.sort((a, b) => (sortObj.sort(a) < sortObj.sort(b) ? -currentSort.dir : currentSort.dir));
         document.getElementById('tableHead').innerHTML = prefs.cols.map(c => `<th onclick="setSort('${c}')" class="${currentSort.col === c ? 'sort-active' : ''}">${COL_MAP[c].label}</th>`).join('');
+        
         renderTableRows(false);
     }
 
@@ -479,7 +782,6 @@
     function setSort(c) { if(currentSort.col === c) currentSort.dir *= -1; else { currentSort.col = c; currentSort.dir = -1; } render(); }
     function setupTierFilter() { const tiers = [...new Set(globalMobData.map(m => m.tier))].sort(); document.getElementById('tierFilter').innerHTML = '<option value="all">All Tiers</option>' + tiers.map(t => `<option value="${t}">T${t}</option>`).join(''); }
     function showTab(t) { document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = 'none'); document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active')); document.getElementById(t + 'Tab').style.display = 'block'; event.currentTarget.classList.add('active'); }
-    function toggleDetail(i) { document.getElementById('detail-'+i).classList.toggle('active'); }
     function closeModal() { document.getElementById('prefModal').style.display = 'none'; render(); }
     function bulkAction(type, select) {
         if(type==='cols') prefs.cols = select ? Object.keys(COL_MAP) : [];
