@@ -579,7 +579,7 @@
                         const imgId = (ench && ench !== "0") ? `${item.id}@${ench}` : item.id;
                         
                         html += `
-                            <div class="item-row" style="background:rgba(255,255,255,0.02); display: flex; justify-content: space-between; align-items: center;">
+                            <div class="item-row" style="background:rgba(255,255,255,0.02); display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="window.open('Itemary.html?id=${item.id}', '_blank')" title="Inspect in Itemary">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <img class="item-img" data-src="https://render.albiononline.com/v1/item/${imgId}.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
                                     <div class="item-info">
@@ -605,7 +605,7 @@
                     const imgId = (ench && ench !== "0") ? `${item.id}@${ench}` : item.id;
 
                     html += `
-                        <div class="item-row" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="item-row" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="window.open('Itemary.html?id=${item.id}', '_blank')" title="Inspect in Itemary">
                             <div style="display: flex; align-items: center; gap: 12px;">
                                 <img class="item-img" data-src="https://render.albiononline.com/v1/item/${imgId}.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
                                 <div class="item-info">

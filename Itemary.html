@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itemary - Albion Items Inspector</title>
+    <title>Itemary - Albion Assets Inspector</title>
     <style>
         :root { 
             --bg: #0d1117; --card: #161b22; --accent: #58a6ff; 
@@ -106,7 +106,7 @@
 <div class="sidebar">
     <div class="ui-header">
         <h1>ITEMARY</h1>
-        <p>ITEMS STATS</p>
+        <p>Combat Inspector</p>
     </div>
     <div class="upload-zone">
         <div id="count" style="font-size: 0.7rem; color: #8b949e; text-align: center;">Fetching local project files...</div>
@@ -685,6 +685,17 @@
                 processNames(txtText);
             }
         } catch (e) {}
+
+        // NEW: Check for incoming item IDs from Bestiary.html
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetId = urlParams.get('id');
+        if (targetId) {
+            // Populate the search box and trigger the filter
+            document.getElementById('search').value = targetId;
+            runFilter();
+            // Open the specific item view
+            view(targetId);
+        }
     });
 </script>
 </body>
