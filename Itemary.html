@@ -7,36 +7,52 @@
     <style>
 	/* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
-            /* Split screen vertically 50/50 to give more room to the list */
-            body { flex-direction: column; height: 100dvh; }
+            body { flex-direction: column; height: auto; overflow: visible; }
             
-            .sidebar { width: 100%; height: 50%; border-right: none; border-bottom: 2px solid var(--accent); flex: none; }
-            .content { width: 100%; height: 50%; flex: none; padding: 15px; box-sizing: border-box; overflow-y: auto;}
+            /* Detach sidebar header so it's not "stuck" */
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                border-right: none; 
+                border-bottom: 2px solid var(--accent); 
+                overflow: visible; 
+            }
             
-            /* Fix: Compress the filters into a 2-column grid so they don't push the list too low */
-            .ui-header { padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-            .ui-header input[type="text"] { grid-column: span 2; } /* Search bar full width */
-            #resetBtn { grid-column: span 2; padding: 8px; margin-top: 4px; } /* Reset button full width */
-            .ui-header select, .ui-header input { margin: 0; width: 100%; box-sizing: border-box; padding: 8px; height: 38px;}
+            .ui-header { 
+                padding: 15px; 
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 8px; 
+                margin-bottom: 15px; /* Added space before the list starts */
+            }
             
-            /* Center the header info */
-            .content-header > div { flex-direction: column; align-items: center; text-align: center; }
-            .title-row { justify-content: center; flex-wrap: wrap; }
-            .ip-controls { justify-content: center; flex-wrap: wrap; gap: 8px; }
+            .ui-header input[type="text"] { grid-column: span 2; }
+            #resetBtn { grid-column: span 2; margin-top: 10px; padding: 12px; }
+
+            /* Make the item list scroll naturally with the page */
+            #itemList { height: auto; overflow: visible; }
             
-            /* Make tabs scrollable if there are many enchantments */
-            .tab-container { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; white-space: nowrap; }
+            .content { width: 100%; height: auto; padding: 15px; box-sizing: border-box; }
             
-            /* Stack calculator inputs */
-            .calc-controls { flex-direction: column; gap: 12px; }
-            .calc-input-group { width: 100%; }
-            .calc-input, .calc-select { width: 100%; box-sizing: border-box; }
-            
-            /* Fix tables and grids */
-            .calc-table { display: block; overflow-x: auto; white-space: nowrap; }
-            .attr-grid { grid-template-columns: 1fr; }
-            .enchant-methods-wrapper { flex-direction: column; }
-            .cosy-block { min-width: 100%; box-sizing: border-box; }
+            /* Floating Go To Top Button */
+            #backToTop {
+                display: none; /* Hidden by default */
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 999;
+                background: var(--accent);
+                color: white;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 45px;
+                cursor: pointer;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+                font-size: 20px;
+                text-decoration: none;
+            }
         }
         :root { 
             --bg: #0d1117; --card: #161b22; --accent: #58a6ff; 
@@ -739,6 +755,18 @@ window.addEventListener('DOMContentLoaded', async () => {
             view(baseId, null, enchantLvl);
         }
     });
+// Show/Hide the "Go to Top" button based on scroll position
+    window.onscroll = function() {
+        const btn = document.getElementById("backToTop");
+        if (window.innerWidth <= 768) { // Only run logic on mobile
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
+    };
 </script>
+	<a href="#" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">↑</a>
 </body>
 </html>
