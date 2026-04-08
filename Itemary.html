@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itemary - Albion Assets Inspector</title>
     <style>
+	/* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            /* Split screen vertically instead of horizontally */
+            body { flex-direction: column; height: 100dvh; }
+            
+            .sidebar { width: 100%; height: 40%; border-right: none; border-bottom: 2px solid var(--accent); flex: none; }
+            .content { width: 100%; height: 60%; flex: none; padding: 20px 15px; box-sizing: border-box;}
+            
+            /* Center the header info */
+            .content-header > div { flex-direction: column; align-items: center; text-align: center; }
+            .title-row { justify-content: center; flex-wrap: wrap; }
+            .ip-controls { justify-content: center; flex-wrap: wrap; gap: 8px; }
+            
+            /* Make tabs scrollable if there are many enchantments */
+            .tab-container { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; white-space: nowrap; }
+            
+            /* Stack calculator inputs */
+            .calc-controls { flex-direction: column; gap: 12px; }
+            .calc-input-group { width: 100%; }
+            .calc-input, .calc-select { width: 100%; box-sizing: border-box; }
+            
+            /* Fix tables and grids */
+            .calc-table { display: block; overflow-x: auto; white-space: nowrap; }
+            .attr-grid { grid-template-columns: 1fr; }
+            .enchant-methods-wrapper { flex-direction: column; }
+            .cosy-block { min-width: 100%; box-sizing: border-box; }
+        }
         :root { 
             --bg: #0d1117; --card: #161b22; --accent: #58a6ff; 
             --text: #c9d1d9; --border: #30363d; --tier: #f1c40f; 

@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albion Mob Analyst - Elite Edition</title>
     <style>
+	/* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header-section { padding: 15px 10px; text-align: center; }
+            .btn-pref { position: static; width: 100%; margin-top: 10px; padding: 12px; }
+            
+            .zone-bonus-display { grid-template-columns: repeat(2, 1fr); }
+            .controls { grid-template-columns: 1fr; padding: 15px; }
+            
+            .details-wrapper { grid-template-columns: 1fr; gap: 15px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            
+            .modal-content { width: 95%; padding: 15px; margin: 5% auto; }
+            .modal-header { flex-direction: column; gap: 15px; align-items: stretch; }
+            .tabs { flex-wrap: wrap; justify-content: center; }
+            .tab-btn { flex: 1; text-align: center; padding: 10px; }
+            
+            .action-bar { flex-direction: column; align-items: stretch; gap: 10px; }
+            .action-bar .check-item, .action-bar .input-base { margin-left: 0 !important; width: 100%; box-sizing: border-box; }
+            
+            .prob-display { margin-left: 0; }
+            .item-row { flex-direction: column; align-items: flex-start !important; gap: 8px; }
+            .item-row > div:first-child { width: 100%; }
+        }
         :root {
             --primary: #1a1a1a; --accent: #e67e22; --bg: #0f0f0f;
             --card: #1e1e1e; --text: #d1d1d1; --highlight: #f1c40f;
