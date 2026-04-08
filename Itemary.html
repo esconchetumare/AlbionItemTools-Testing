@@ -7,11 +7,17 @@
     <style>
 	/* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
-            /* Split screen vertically instead of horizontally */
+            /* Split screen vertically 50/50 to give more room to the list */
             body { flex-direction: column; height: 100dvh; }
             
             .sidebar { width: 100%; height: 40%; border-right: none; border-bottom: 2px solid var(--accent); flex: none; }
-            .content { width: 100%; height: 60%; flex: none; padding: 20px 15px; box-sizing: border-box;}
+            .content { width: 100%; height: 60%; flex: none; padding: 15px; box-sizing: border-box; overflow-y: auto;}
+            
+            /* Fix: Compress the filters into a 2-column grid so they don't push the list too low */
+            .ui-header { padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+            .ui-header input[type="text"] { grid-column: span 2; } /* Search bar full width */
+            #resetBtn { grid-column: span 2; padding: 8px; margin-top: 4px; } /* Reset button full width */
+            .ui-header select, .ui-header input { margin: 0; width: 100%; box-sizing: border-box; padding: 8px; height: 38px;}
             
             /* Center the header info */
             .content-header > div { flex-direction: column; align-items: center; text-align: center; }
