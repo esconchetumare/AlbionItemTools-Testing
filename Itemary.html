@@ -293,18 +293,33 @@
         runFilter();
     }
     
-    // NEW SPELL PROCESSING FUNCTION
+    // UPDATED SPELL PROCESSING FUNCTION
     function processSpells(xmlString) {
         const xml = new DOMParserFromString(xmlString, "text/xml");
         const root = xml.documentElement;
         for (let node of root.children) {
             const name = node.getAttribute('uniquename');
             if (name) {
+                // Capture new requested attributes
+                const changes = Array.from(node.querySelectorAll('directattributechange')).map(dac => ({
+                    target: dac.getAttribute('target'),
+                    attr: dac.getAttribute('attribute'),
+                    change: dac.getAttribute('change'),
+                    type: dac.getAttribute('effecttype')
+                }));
+
                 spellsMap[name] = {
                     name: name,
                     sprite: node.getAttribute('uisprite'),
                     desc: node.getAttribute('descriptionlocatag') || "",
-                    type: node.nodeName === 'activespell' ? 'Active' : 'Passive'
+                    type: node.nodeName === 'activespell' ? 'Active' : 'Passive',
+                    // New fields
+                    recast: node.getAttribute('recastdelay'),
+                    energy: node.getAttribute('energyusage'),
+                    cast: node.getAttribute('castingtime'),
+                    hit: node.getAttribute('hitdelay'),
+                    stand: node.getAttribute('standtime'),
+                    changes: changes
                 };
             }
         }
@@ -559,6 +574,23 @@
                                 </div>
                                 <span class="attr-label">Slot: ${s.slot} | Tag: ${s.tag || 'N/A'}</span>
                                 <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
+                                
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
+                                    ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
+                                    ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
+                                    ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
+                                    ${data.hit ? `<div>Hit Delay: <b style="color:#fff">${data.hit}s</b></div>` : ''}
+                                    ${data.stand ? `<div>Stand: <b style="color:#fff">${data.stand}s</b></div>` : ''}
+                                </div>
+                                ${data.changes && data.changes.length > 0 ? `
+                                    <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
+                                        ${data.changes.map(c => `
+                                            <div style="font-size: 0.7rem; color: var(--combat);">
+                                                ${c.target || ''} ${c.attr || ''}: <b style="color:#fff">${c.change || ''}</b> ${c.type ? `(${c.type})` : ''}
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
                             </div>
                         `;
                     }).join('')}
