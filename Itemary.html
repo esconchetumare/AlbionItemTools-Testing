@@ -132,9 +132,6 @@
         
         .grand-total { border-top: 2px solid var(--border); padding-top: 15px; margin-top: 15px; text-align: right; font-size: 1.1rem; color: #fff; font-weight: bold; }
         .grand-val { color: var(--tier); font-family: monospace; }
-        
-        .spell-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 10px; }
-        .spell-tag { font-size: 0.6rem; background: var(--accent); color: white; padding: 2px 4px; border-radius: 3px; vertical-align: middle; margin-left: 5px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -177,9 +174,6 @@
     
     // Persistent Price Cache
     let priceCache = JSON.parse(localStorage.getItem('itemary_prices')) || {};
-    
-    // Spell Logic Storage
-    let spellsMap = {};
 
     const statToProgressionMap = {
         'abilitypower': 'abilitypowerprogression',
@@ -264,71 +258,18 @@
                         upgrading: deduplicateResources(Array.from(e.querySelectorAll('upgraderequirements > upgraderesource')))
                     };
                 });
-                
-                // EXTRACT SPELLS
-                const spellListEl = node.querySelector('craftingspelllist');
-                let spells = [];
-                let spellRef = null;
-                if (spellListEl) {
-                    spellRef = spellListEl.getAttribute('reference');
-                    spells = Array.from(spellListEl.querySelectorAll('craftspell')).map(s => ({
-                        id: s.getAttribute('uniquename'),
-                        slot: s.getAttribute('slots'),
-                        tag: s.getAttribute('tag')
-                    }));
-                }
 
                 items.push({
                     id: attr.uniquename, tag: node.nodeName, tier: attr.tier || "0",
                     cat: attr.shopcategory || "none", sub: attr.shopsubcategory1 || "none",
                     all: attr, slotType: (attr.slottype || "").toLowerCase(),
                     baseMethods: baseMethods,
-                    enchantments: enchantments.length ? enchantments : null,
-                    spellList: spells,
-                    spellRef: spellRef
+                    enchantments: enchantments.length ? enchantments : null
                 });
             }
         }
         initFilters();
         runFilter();
-    }
-    
-    // UPDATED SPELL PROCESSING FUNCTION
-    function processSpells(xmlString) {
-        const xml = new DOMParserFromString(xmlString, "text/xml");
-        const root = xml.documentElement;
-        for (let node of root.children) {
-            const name = node.getAttribute('uniquename');
-            if (name) {
-                // Capture new requested attributes
-                const changes = Array.from(node.querySelectorAll('directattributechange')).map(dac => ({
-                    target: dac.getAttribute('target'),
-                    attr: dac.getAttribute('attribute'),
-                    change: dac.getAttribute('change'),
-                    type: dac.getAttribute('effecttype')
-                }));
-
-                spellsMap[name] = {
-                    name: name,
-                    sprite: node.getAttribute('uisprite'),
-                    desc: node.getAttribute('descriptionlocatag') || "",
-                    type: node.nodeName === 'activespell' ? 'Active' : 'Passive',
-                    // New fields
-                    recast: node.getAttribute('recastdelay'),
-                    energy: node.getAttribute('energyusage'),
-                    cast: node.getAttribute('castingtime'),
-                    hit: node.getAttribute('hitdelay'),
-                    stand: node.getAttribute('standtime'),
-                    changes: changes
-                };
-            }
-        }
-    }
-    
-    // HELPER TO CLEAN SPELL TEXT
-    function formatSpellDesc(text) {
-        if (!text) return "No description available.";
-        return text.replace(/\[\/?\w+\]/g, '').replace(/@SPELLS_/, '').replace(/_/g, ' ');
     }
 
     function DOMParserFromString(str, type) {
@@ -509,13 +450,6 @@
         const logicalId = enchantLevel > 0 ? `${item.id}@${enchantLevel}` : item.id;
         const mainCopyFormatted = formatCopyName(logicalId).replace(/'/g, "\\'");
         const displayMainName = nameMap[item.id] ? nameMap[item.id].replace(/^T\d\s*/i, '') : formatCopyName(item.id).replace(/^\d\s*/, '');
-        
-        // RESOLVE SPELLS FOR OPENED ITEM
-        let itemSpells = item.spellList || [];
-        if (item.spellRef) {
-            const refItem = items.find(i => i.id === item.spellRef);
-            if (refItem) itemSpells = refItem.spellList || [];
-        }
 
         document.getElementById('details').innerHTML = `
             <button class="copy-btn tiny-copy" data-id="${item.id}" onclick="copyToClipboard('${item.id}', this)">UID</button>
@@ -559,43 +493,6 @@
                 </div>` : ''}
 
             <div id="combatStatContainer"></div>
-            
-            ${itemSpells.length > 0 ? `
-                <h3 class="section-title" style="color: var(--accent);">Item Spells</h3>
-                <div class="spell-grid">
-                    ${itemSpells.map(s => {
-                        const data = spellsMap[s.id];
-                        if (!data) return `<div class="attr-box"><span class="attr-label">Slot ${s.slot}</span><span class="attr-val">${s.id}</span></div>`;
-                        return `
-                            <div class="attr-box">
-                                <div style="display:flex; gap:10px; align-items:center; margin-bottom:5px;">
-                                    <img src="https://render.albiononline.com/v1/spell/${data.sprite}.png" class="res-icon" onerror="this.style.display='none'">
-                                    <span class="attr-val" style="color:#fff">${s.id} <span class="spell-tag">${data.type}</span></span>
-                                </div>
-                                <span class="attr-label">Slot: ${s.slot} | Tag: ${s.tag || 'N/A'}</span>
-                                <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
-                                
-                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
-                                    ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
-                                    ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
-                                    ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
-                                    ${data.hit ? `<div>Hit Delay: <b style="color:#fff">${data.hit}s</b></div>` : ''}
-                                    ${data.stand ? `<div>Stand: <b style="color:#fff">${data.stand}s</b></div>` : ''}
-                                </div>
-                                ${data.changes && data.changes.length > 0 ? `
-                                    <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
-                                        ${data.changes.map(c => `
-                                            <div style="font-size: 0.7rem; color: var(--combat);">
-                                                ${c.target || ''} ${c.attr || ''}: <b style="color:#fff">${c.change || ''}</b> ${c.type ? `(${c.type})` : ''}
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                ` : ''}
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
-            ` : ''}
 
             <h3 class="section-title" style="color: var(--accent);">Crafting Calculator (${enchantLevel > 0 ? '.' + enchantLevel : 'Flat'})</h3>
             <div class="calc-controls">
@@ -823,17 +720,8 @@ window.addEventListener('DOMContentLoaded', async () => {
                 processNames(txtText);
             }
         } catch (e) {}
-        
-        // 3. FETCH AND PROCESS SPELLS
-        try {
-            const spellResponse = await fetch('spells.xml');
-            if (spellResponse.ok) {
-                const spellText = await spellResponse.text();
-                processSpells(spellText);
-            }
-        } catch (e) {}
 
-        // 4. ONLY NOW, check the URL parameter (guaranteed to happen after data is ready)
+        // 3. ONLY NOW, check the URL parameter (guaranteed to happen after data is ready)
         const urlParams = new URLSearchParams(window.location.search);
         const rawId = urlParams.get('id');
         
