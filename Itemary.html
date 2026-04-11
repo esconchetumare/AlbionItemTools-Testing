@@ -7,20 +7,32 @@
     <style>
 	/* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
+            /* Split screen vertically 50/50 to give more room to the list */
             body { flex-direction: column; height: 100dvh; }
+            
             .sidebar { width: 100%; height: 40%; border-right: none; border-bottom: 2px solid var(--accent); flex: none; }
             .content { width: 100%; height: 60%; flex: none; padding: 15px; box-sizing: border-box; overflow-y: auto;}
+            
+            /* Fix: Compress the filters into a 2-column grid so they don't push the list too low */
             .ui-header { padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-            .ui-header input[type="text"] { grid-column: span 2; } 
-            #resetBtn { grid-column: span 2; padding: 8px; margin-top: 4px; } 
+            .ui-header input[type="text"] { grid-column: span 2; } /* Search bar full width */
+            #resetBtn { grid-column: span 2; padding: 8px; margin-top: 4px; } /* Reset button full width */
             .ui-header select, .ui-header input { margin: 0; width: 100%; box-sizing: border-box; padding: 8px; height: 38px;}
+            
+            /* Center the header info */
             .content-header > div { flex-direction: column; align-items: center; text-align: center; }
             .title-row { justify-content: center; flex-wrap: wrap; }
             .ip-controls { justify-content: center; flex-wrap: wrap; gap: 8px; }
+            
+            /* Make tabs scrollable if there are many enchantments */
             .tab-container { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; white-space: nowrap; }
+            
+            /* Stack calculator inputs */
             .calc-controls { flex-direction: column; gap: 12px; }
             .calc-input-group { width: 100%; }
             .calc-input, .calc-select { width: 100%; box-sizing: border-box; }
+            
+            /* Fix tables and grids */
             .calc-table { display: block; overflow-x: auto; white-space: nowrap; }
             .attr-grid { grid-template-columns: 1fr; }
             .enchant-methods-wrapper { flex-direction: column; }
@@ -31,7 +43,9 @@
             --text: #c9d1d9; --border: #30363d; --tier: #f1c40f; 
             --header-bg: #1c2128; --resource: #ffa657; --upgrade: #f85149;
             --collapse-bg: #21262d; --combat: #ff7b72;
-            --cosy-block: #141920; --blue-grey: #8b949e; --silver: #bdc3c7;
+            --cosy-block: #141920;
+            --blue-grey: #8b949e;
+            --silver: #bdc3c7;
         }
         body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; height: 100vh; overflow: hidden; }
         
@@ -118,31 +132,9 @@
         
         .grand-total { border-top: 2px solid var(--border); padding-top: 15px; margin-top: 15px; text-align: right; font-size: 1.1rem; color: #fff; font-weight: bold; }
         .grand-val { color: var(--tier); font-family: monospace; }
-
-        /* SPELLS CSS */
-        .spell-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-        .spell-btn {
-            background: #21262d; border: 1px solid var(--border); color: #fff;
-            padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: bold;
-            transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center;
-        }
-        .spell-btn:hover { background: var(--accent); border-color: var(--accent); }
         
-        .modal {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(3px);
-        }
-        .modal-content {
-            background-color: var(--bg); color: var(--text); margin: 5% auto; padding: 20px 30px;
-            border: 1px solid var(--border); width: 90%; max-width: 650px; border-radius: 8px;
-            max-height: 85vh; overflow-y: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        .modal-header {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 20px;
-        }
-        .close-btn { color: #8b949e; font-size: 28px; font-weight: bold; cursor: pointer; }
-        .close-btn:hover { color: white; }
+        .spell-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 10px; }
+        .spell-tag { font-size: 0.6rem; background: var(--accent); color: white; padding: 2px 4px; border-radius: 3px; vertical-align: middle; margin-left: 5px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -172,26 +164,9 @@
     <div class="empty">Waiting for items.xml...</div>
 </div>
 
-<div id="spellModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="spellModalTitle" style="margin: 0; color: #fff;">Spell Name</h2>
-            <span class="close-btn" onclick="closeSpellModal()">&times;</span>
-        </div>
-        <div id="spellModalCoreStats" class="attr-grid" style="margin-bottom: 20px;">
-            </div>
-        <button class="collapsible" onclick="toggleCollapse(this)">All Spell Attributes / Modifiers</button>
-        <div class="collapsible-content">
-            <div id="spellModalAllStats" class="attr-grid">
-                </div>
-        </div>
-    </div>
-</div>
-
 <script>
     let items = [];
     let nameMap = {};
-    let globalSpells = {};
     let progressionLookup = {}; 
     let filteredItems = [];
     let displayedCount = 80;
@@ -202,6 +177,9 @@
     
     // Persistent Price Cache
     let priceCache = JSON.parse(localStorage.getItem('itemary_prices')) || {};
+    
+    // Spell Logic Storage
+    let spellsMap = {};
 
     const statToProgressionMap = {
         'abilitypower': 'abilitypowerprogression',
@@ -246,29 +224,6 @@
         return unique;
     }
 
-    function processSpells(xmlString) {
-        const xml = new DOMParserFromString(xmlString, "text/xml");
-        const spellNodes = xml.querySelectorAll("activespell, passivespell, spell");
-        spellNodes.forEach(node => {
-            const uniqueName = node.getAttribute("uniquename") || node.getAttribute("name");
-            if (uniqueName) {
-                globalSpells[uniqueName] = {
-                    name: uniqueName,
-                    type: node.tagName.toLowerCase(),
-                    energyUsage: node.getAttribute("energyusage") || "0",
-                    castTime: node.getAttribute("castingtime") || "0",
-                    range: node.getAttribute("castrange") || "Self",
-                    cooldown: node.getAttribute("recastdelay") || "0",
-                    allAttributes: Array.from(node.attributes).reduce((acc, attr) => {
-                        acc[attr.name] = attr.value;
-                        return acc;
-                    }, {})
-                };
-            }
-        });
-        console.log(`Loaded ${Object.keys(globalSpells).length} spells.`);
-    }
-
     function processXML(xmlString) {
         const xml = new DOMParserFromString(xmlString, "text/xml");
         const root = xml.documentElement;
@@ -309,10 +264,19 @@
                         upgrading: deduplicateResources(Array.from(e.querySelectorAll('upgraderequirements > upgraderesource')))
                     };
                 });
-
-                // Grab spell references from the item node hierarchy
-                const spellNodes = Array.from(node.querySelectorAll("activespell, passivespell, spell"));
-                const itemSpells = spellNodes.map(s => s.getAttribute("uniquename") || s.getAttribute("name")).filter(Boolean);
+                
+                // EXTRACT SPELLS
+                const spellListEl = node.querySelector('craftingspelllist');
+                let spells = [];
+                let spellRef = null;
+                if (spellListEl) {
+                    spellRef = spellListEl.getAttribute('reference');
+                    spells = Array.from(spellListEl.querySelectorAll('craftspell')).map(s => ({
+                        id: s.getAttribute('uniquename'),
+                        slot: s.getAttribute('slots'),
+                        tag: s.getAttribute('tag')
+                    }));
+                }
 
                 items.push({
                     id: attr.uniquename, tag: node.nodeName, tier: attr.tier || "0",
@@ -320,12 +284,36 @@
                     all: attr, slotType: (attr.slottype || "").toLowerCase(),
                     baseMethods: baseMethods,
                     enchantments: enchantments.length ? enchantments : null,
-                    spells: itemSpells
+                    spellList: spells,
+                    spellRef: spellRef
                 });
             }
         }
         initFilters();
         runFilter();
+    }
+    
+    // NEW SPELL PROCESSING FUNCTION
+    function processSpells(xmlString) {
+        const xml = new DOMParserFromString(xmlString, "text/xml");
+        const root = xml.documentElement;
+        for (let node of root.children) {
+            const name = node.getAttribute('uniquename');
+            if (name) {
+                spellsMap[name] = {
+                    name: name,
+                    sprite: node.getAttribute('uisprite'),
+                    desc: node.getAttribute('descriptionlocatag') || "",
+                    type: node.nodeName === 'activespell' ? 'Active' : 'Passive'
+                };
+            }
+        }
+    }
+    
+    // HELPER TO CLEAN SPELL TEXT
+    function formatSpellDesc(text) {
+        if (!text) return "No description available.";
+        return text.replace(/\[\/?\w+\]/g, '').replace(/@SPELLS_/, '').replace(/_/g, ' ');
     }
 
     function DOMParserFromString(str, type) {
@@ -454,19 +442,25 @@
 
         if(grandTotalDisplay) grandTotalDisplay.innerText = runningGrandTotal.toLocaleString();
 
+        // Standard number input behavior with live refresh
         tableBody.querySelectorAll('.price-input').forEach(input => {
             input.addEventListener('input', (e) => {
                 const resName = e.target.getAttribute('data-res');
                 const newPrice = parseFloat(e.target.value) || 0;
                 priceCache[resName] = newPrice;
+                
+                // Persistence
                 localStorage.setItem('itemary_prices', JSON.stringify(priceCache));
                 
+                // Recalculate row cost and grand total without rebuilding the whole DOM
                 const row = e.target.closest('tr');
                 const netVal = parseInt(row.querySelector('.res-net').innerText);
                 const costCell = row.querySelector('.res-cost');
+                
                 const newRowCost = netVal * newPrice;
                 costCell.innerText = newRowCost.toLocaleString();
                 
+                // Refresh grand total
                 let newGrand = 0;
                 tableBody.querySelectorAll('tr').forEach(tr => {
                     const c = tr.querySelector('.res-cost');
@@ -500,6 +494,13 @@
         const logicalId = enchantLevel > 0 ? `${item.id}@${enchantLevel}` : item.id;
         const mainCopyFormatted = formatCopyName(logicalId).replace(/'/g, "\\'");
         const displayMainName = nameMap[item.id] ? nameMap[item.id].replace(/^T\d\s*/i, '') : formatCopyName(item.id).replace(/^\d\s*/, '');
+        
+        // RESOLVE SPELLS FOR OPENED ITEM
+        let itemSpells = item.spellList || [];
+        if (item.spellRef) {
+            const refItem = items.find(i => i.id === item.spellRef);
+            if (refItem) itemSpells = refItem.spellList || [];
+        }
 
         document.getElementById('details').innerHTML = `
             <button class="copy-btn tiny-copy" data-id="${item.id}" onclick="copyToClipboard('${item.id}', this)">UID</button>
@@ -542,8 +543,27 @@
                     </div>
                 </div>` : ''}
 
-            <div id="itemSpellsContainer"></div>
             <div id="combatStatContainer"></div>
+            
+            ${itemSpells.length > 0 ? `
+                <h3 class="section-title" style="color: var(--accent);">Item Spells</h3>
+                <div class="spell-grid">
+                    ${itemSpells.map(s => {
+                        const data = spellsMap[s.id];
+                        if (!data) return `<div class="attr-box"><span class="attr-label">Slot ${s.slot}</span><span class="attr-val">${s.id}</span></div>`;
+                        return `
+                            <div class="attr-box">
+                                <div style="display:flex; gap:10px; align-items:center; margin-bottom:5px;">
+                                    <img src="https://render.albiononline.com/v1/spell/${data.sprite}.png" class="res-icon" onerror="this.style.display='none'">
+                                    <span class="attr-val" style="color:#fff">${s.id} <span class="spell-tag">${data.type}</span></span>
+                                </div>
+                                <span class="attr-label">Slot: ${s.slot} | Tag: ${s.tag || 'N/A'}</span>
+                                <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            ` : ''}
 
             <h3 class="section-title" style="color: var(--accent);">Crafting Calculator (${enchantLevel > 0 ? '.' + enchantLevel : 'Flat'})</h3>
             <div class="calc-controls">
@@ -609,26 +629,6 @@
             </div>
         `;
 
-        // Render Spells
-        const spellsContainer = document.getElementById('itemSpellsContainer');
-        if (item.spells && item.spells.length > 0) {
-            let spellsHtml = `<h3 class="section-title" style="color: #ffeb3b; margin-top:0;">Item Spells</h3><div class="spell-container">`;
-            
-            // Deduplicate spell names just in case items.xml repeats them
-            const uniqueSpells = [...new Set(item.spells)];
-            
-            uniqueSpells.forEach(spellName => {
-                const isLoaded = !!globalSpells[spellName];
-                const displaySpellName = spellName.replace(/_/g, ' ').replace(/\w\S*/g, w => w.charAt(0).toUpperCase() + w.substr(1).toLowerCase());
-                
-                spellsHtml += `<button class="spell-btn" onclick="openSpellModal('${spellName}')" ${!isLoaded ? 'style="opacity: 0.5;" title="Spell stats not found in spells.xml"' : ''}>
-                    ${displaySpellName}
-                </button>`;
-            });
-            spellsHtml += `</div>`;
-            spellsContainer.innerHTML = spellsHtml;
-        }
-
         const updateStats = (val) => {
             const currentIP = (val !== null && val !== "") ? parseFloat(val) : escalatingIP;
             const combatKeys = Object.keys(statToProgressionMap);
@@ -673,13 +673,13 @@
 
         const getFocusedRate = (base) => {
 			const val = parseFloat(base);
-			if (val === 0) return 39.3; 
-			if (val === 15.2) return 43.5;
-			if (val === 21.8) return 46.5; 
-			if (val === 24.8) return 47.9; 
-			if (val === 27.5) return 49.2; 
-			if (val === 30) return 50.4; 
-			if (val === 34.6) return 52.8; 
+			if (val === 0) return 39.3;    // Islands
+			if (val === 15.2) return 43.5; // Base
+			if (val === 21.8) return 46.5; // Bonus
+			if (val === 24.8) return 47.9; // City
+			if (val === 27.5) return 49.2; // 2Bonus
+			if (val === 30) return 50.4; // City +Bonus
+			if (val === 34.6) return 52.8; // City +2Bonus
 			return val;
 		};
 
@@ -710,70 +710,6 @@
             returnRate = parseFloat(e.target.value) || 0;
             actualizeCalculator(item, activeEnchant);
         });
-    }
-
-    // Modal logic
-    function openSpellModal(spellName) {
-        let spell = globalSpells[spellName];
-        
-        // Fallback if spell is not found in spells.xml
-        if (!spell) {
-            spell = {
-                name: spellName,
-                type: "Unknown",
-                energyUsage: "Unknown",
-                castTime: "Unknown",
-                range: "Unknown",
-                cooldown: "Unknown",
-                allAttributes: { "Error": "Details missing from spells.xml" }
-            };
-        }
-
-        const formattedTitle = spell.name.replace(/_/g, ' ').replace(/\w\S*/g, w => w.charAt(0).toUpperCase() + w.substr(1).toLowerCase());
-        document.getElementById("spellModalTitle").innerText = formattedTitle;
-
-        // Core stats logic
-        const coreKeys = [
-            { label: 'Type', val: spell.type.toUpperCase() },
-            { label: 'Energy Cost', val: spell.energyUsage },
-            { label: 'Cast Time', val: spell.castTime === "0" ? "Instant" : spell.castTime + "s" },
-            { label: 'Range', val: spell.range !== "Unknown" ? spell.range + "m" : "Unknown" },
-            { label: 'Cooldown', val: spell.cooldown !== "0" && spell.cooldown !== "Unknown" ? spell.cooldown + "s" : spell.cooldown }
-        ];
-
-        document.getElementById("spellModalCoreStats").innerHTML = coreKeys.map(k => `
-            <div class="attr-box">
-                <span class="attr-label">${k.label}</span>
-                <span class="attr-val">${k.val}</span>
-            </div>
-        `).join('');
-
-        // Extended raw stats/modifiers logic
-        const allStatsHtml = Object.keys(spell.allAttributes).sort().map(k => {
-            if(['uniquename', 'name'].includes(k)) return ''; // Skip duplicates
-            return `
-            <div class="attr-box" style="background: rgba(255,255,255,0.03);">
-                <span class="attr-label">${k}</span>
-                <span class="attr-val" style="font-size: 0.8rem; font-weight: normal;">${spell.allAttributes[k]}</span>
-            </div>`;
-        }).join('');
-
-        document.getElementById("spellModalAllStats").innerHTML = allStatsHtml || '<div class="empty">No additional modifiers found.</div>';
-
-        // Show Modal
-        document.getElementById("spellModal").style.display = "block";
-    }
-
-    function closeSpellModal() {
-        document.getElementById("spellModal").style.display = "none";
-    }
-
-    // Close modal on outside click
-    window.onclick = function(event) {
-        const modal = document.getElementById("spellModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
     }
 
     function initFilters() {
@@ -836,18 +772,7 @@
     });
 
 window.addEventListener('DOMContentLoaded', async () => {
-        // Fetch Spells first
-        try {
-            const spellResponse = await fetch('spells.xml');
-            if (spellResponse.ok) {
-                const spellText = await spellResponse.text();
-                processSpells(spellText);
-            }
-        } catch (e) {
-            console.error("Failed to fetch spells.xml", e);
-        }
-
-        // Fetch Items
+        // 1. Fetch and process XML first
         try {
             const xmlResponse = await fetch('items.xml');
             if (xmlResponse.ok) {
@@ -858,7 +783,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('count').innerText = "Fetch failed. Is npx serve running?";
         }
 
-        // Fetch Names
+        // 2. Fetch and process names
         try {
             const txtResponse = await fetch('items.txt');
             if (txtResponse.ok) {
@@ -866,19 +791,31 @@ window.addEventListener('DOMContentLoaded', async () => {
                 processNames(txtText);
             }
         } catch (e) {}
+        
+        // 3. FETCH AND PROCESS SPELLS
+        try {
+            const spellResponse = await fetch('spells.xml');
+            if (spellResponse.ok) {
+                const spellText = await spellResponse.text();
+                processSpells(spellText);
+            }
+        } catch (e) {}
 
-        // Check the URL parameter
+        // 4. ONLY NOW, check the URL parameter (guaranteed to happen after data is ready)
         const urlParams = new URLSearchParams(window.location.search);
         const rawId = urlParams.get('id');
         
         if (rawId && items.length > 0) {
+            // Split the ID just in case it contains an enchantment (e.g., T4_BAG@1)
             const parts = rawId.split('@');
             const baseId = parts[0].trim();
             const enchantLvl = parts.length > 1 ? parseInt(parts[1]) : 0;
 
+            // Set the search box and filter
             document.getElementById('search').value = baseId;
             runFilter();
             
+            // Open the item, passing the enchantment level to select the right tab
             view(baseId, null, enchantLvl);
         }
     });
