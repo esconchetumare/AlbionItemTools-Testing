@@ -662,48 +662,50 @@
         `;
 
         const updateStats = (val) => {
-        const currentIP = (val !== null && val !== "") ? parseFloat(val) : escalatingIP;
-        const combatKeys = Object.keys(statToProgressionMap);
-        const keysToProcess = [...new Set([...Object.keys(item.all), 'hitpointsmax'])].filter(k => combatKeys.includes(k.toLowerCase()));
+            const currentIP = (val !== null && val !== "") ? parseFloat(val) : escalatingIP;
+            const combatKeys = Object.keys(statToProgressionMap);
+            const keysToProcess = [...new Set([...Object.keys(item.all), 'hitpointsmax'])].filter(k => combatKeys.includes(k.toLowerCase()));
 
-        const combatHtml = keysToProcess.map(k => {
-            const baseVal = parseFloat(item.all[k]) || 0;
-            const progKey = statToProgressionMap[k.toLowerCase()];
-            const template = progressionLookup[progType] || {};
-            const factor = parseFloat(template[progKey]) || 1.0825; 
-            let finalVal;
-            const isHPStat = k.toLowerCase() === 'hitpointsmax';
-            
-            // UPDATED: Check for armor, head (helmets), or shoes
-            const isHealthSlot = ['armor', 'head', 'shoes'].includes(item.slotType);
-            
-            if (isHPStat && isHealthSlot) {
-                // Apply the (Base + 600) * factor^n - 600 formula to all three slots
-                finalVal = (baseVal + 600) * Math.pow(factor, currentIP / 100) - 600;
-            } else {
-                finalVal = baseVal * Math.pow(factor, currentIP / 100);
-            }
+            const combatHtml = keysToProcess.map(k => {
+                let baseVal = parseFloat(item.all[k]) || 0;
+                const progKey = statToProgressionMap[k.toLowerCase()];
+                const template = progressionLookup[progType] || {};
+                const factor = parseFloat(template[progKey]) || 1.0825; 
+                let finalVal;
+                
+                const isHPStat = k.toLowerCase() === 'hitpointsmax';
+                const isArmor = item.slotType === 'armor';
+                const isSmallSlot = item.slotType === 'head' || item.slotType === 'shoes';
 
-            if (finalVal <= 0) return '';
+                if (isHPStat && (isArmor || isSmallSlot)) {
+                    // Apply 0.5 multiplier to base health for shoes and head equipment
+                    const effectiveBase = isSmallSlot ? (baseVal * 0.5) : baseVal;
+                    
+                    // Progression formula using the 600 offset constant
+                    finalVal = (effectiveBase + 600) * Math.pow(factor, currentIP / 100) - 600;
+                    
+                    const displayBase = isSmallSlot ? `(${baseVal} * 0.5)` : `<b>${baseVal}</b>`;
+                    var formulaText = `(${displayBase}+600) * <b class="formula-var">${factor}</b>^(<b>${currentIP}</b>/100) - 600`;
+                } else {
+                    finalVal = baseVal * Math.pow(factor, currentIP / 100);
+                    var formulaText = `<b>${baseVal}</b> * <b class="formula-var">${factor}</b>^(<b>${currentIP}</b>/100)`;
+                }
 
-            // UPDATED: Dynamic formula text for the UI
-            const formulaText = isHPStat && isHealthSlot 
-                ? `(<b>${baseVal}</b>+600) * <b class="formula-var">${factor}</b>^(<b>${currentIP}</b>/100) - 600`
-                : `<b>${baseVal}</b> * <b class="formula-var">${factor}</b>^(<b>${currentIP}</b>/100)`;
-            
-            return `
-            <div class="attr-box combat-box">
-                <span class="attr-label combat-label">${isHPStat ? "Calculated HP" : k}</span>
-                <span class="attr-val">${finalVal.toFixed(2)}</span>
-                <div class="formula-info">${formulaText}</div>
-            </div>`;
-        }).join('');
+                if (finalVal <= 0) return '';
+                
+                return `
+                <div class="attr-box combat-box">
+                    <span class="attr-label combat-label">${isHPStat ? "Calculated HP" : k}</span>
+                    <span class="attr-val">${finalVal.toFixed(2)}</span>
+                    <div class="formula-info">${formulaText}</div>
+                </div>`;
+            }).join('');
 
-        document.getElementById('combatStatContainer').innerHTML = `
-            <h3 class="section-title" style="color:var(--combat);">Combat Stats</h3>
-            <div class="attr-grid">${combatHtml || 'No combat stats'}</div>
-        `;
-    };
+            document.getElementById('combatStatContainer').innerHTML = `
+                <h3 class="section-title" style="color:var(--combat);">Combat Stats</h3>
+                <div class="attr-grid">${combatHtml || 'No combat stats'}</div>
+            `;
+        };
 
         updateStats(overrideIP);
         
