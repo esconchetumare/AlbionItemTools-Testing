@@ -678,15 +678,15 @@
                 const isSmallSlot = item.slotType === 'head' || item.slotType === 'shoes';
 
                 if (isHPStat && (isArmor || isSmallSlot)) {
-                    // Apply 0.5 multiplier to base health for shoes and head equipment
-                    const effectiveBase = isSmallSlot ? (baseVal * 0.5) : baseVal;
+                    // Determine the health offset constant based on slot type
+                    const offset = isSmallSlot ? 300 : 600;
                     
-                    // Progression formula using the 600 offset constant
-                    finalVal = (effectiveBase + 600) * Math.pow(factor, currentIP / 100) - 600;
+                    // Health scaling formula: (Base + Offset) * Factor^(IP/100) - Offset
+                    finalVal = (baseVal + offset) * Math.pow(factor, currentIP / 100) - offset;
                     
-                    const displayBase = isSmallSlot ? `(${baseVal} * 0.5)` : `<b>${baseVal}</b>`;
-                    var formulaText = `(${displayBase}+600) * <b class="formula-var">${factor}</b>^(<b>${currentIP}</b>/100) - 600`;
+                    var formulaText = `(<b>${baseVal}</b> + ${offset}) * <b class="formula-var">${factor}</b>^(<b>${currentIP}</b>/100) - ${offset}`;
                 } else {
+                    // Standard scaling for non-health stats
                     finalVal = baseVal * Math.pow(factor, currentIP / 100);
                     var formulaText = `<b>${baseVal}</b> * <b class="formula-var">${factor}</b>^(<b>${currentIP}</b>/100)`;
                 }
