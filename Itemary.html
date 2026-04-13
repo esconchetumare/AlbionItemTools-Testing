@@ -517,6 +517,14 @@
             if (refItem) itemSpells = refItem.spellList || [];
         }
 
+        // --- NEW CODE: Group spells by slot ---
+        const groupedSpells = {};
+        itemSpells.forEach(s => {
+            const slot = s.slot || 'Unknown';
+            if (!groupedSpells[slot]) groupedSpells[slot] = [];
+            groupedSpells[slot].push(s);
+        });
+
         document.getElementById('details').innerHTML = `
             <button class="copy-btn tiny-copy" data-id="${item.id}" onclick="copyToClipboard('${item.id}', this)">UID</button>
             
@@ -560,41 +568,44 @@
 
             <div id="combatStatContainer"></div>
             
-            ${itemSpells.length > 0 ? `
+            ${Object.keys(groupedSpells).length > 0 ? `
                 <h3 class="section-title" style="color: var(--accent);">Item Spells</h3>
-                <div class="spell-grid">
-                    ${itemSpells.map(s => {
-                        const data = spellsMap[s.id];
-                        if (!data) return `<div class="attr-box"><span class="attr-label">Slot ${s.slot}</span><span class="attr-val">${s.id}</span></div>`;
-                        return `
-                            <div class="attr-box">
-                                <div style="display:flex; gap:10px; align-items:center; margin-bottom:5px;">
-                                    <img src="https://render.albiononline.com/v1/spell/${data.sprite}.png" class="res-icon" onerror="this.style.display='none'">
-                                    <span class="attr-val" style="color:#fff">${s.id} <span class="spell-tag">${data.type}</span></span>
-                                </div>
-                                <span class="attr-label">Slot: ${s.slot} | Tag: ${s.tag || 'N/A'}</span>
-                                <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
-                                
-                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
-                                    ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
-                                    ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
-                                    ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
-                                    ${data.hit ? `<div>Hit Delay: <b style="color:#fff">${data.hit}s</b></div>` : ''}
-                                    ${data.stand ? `<div>Stand: <b style="color:#fff">${data.stand}s</b></div>` : ''}
-                                </div>
-                                ${data.changes && data.changes.length > 0 ? `
-                                    <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
-                                        ${data.changes.map(c => `
-                                            <div style="font-size: 0.7rem; color: var(--combat);">
-                                                ${c.target || ''} ${c.attr || ''}: <b style="color:#fff">${c.change || ''}</b> ${c.type ? `(${c.type})` : ''}
-                                            </div>
-                                        `).join('')}
+                ${Object.keys(groupedSpells).map(slotName => `
+                    <h4 style="color: #fff; margin: 20px 0 10px 0; border-bottom: 1px dashed var(--border); padding-bottom: 5px; text-transform: uppercase; font-size: 0.9rem;">Slot: ${slotName}</h4>
+                    <div class="spell-grid">
+                        ${groupedSpells[slotName].map(s => {
+                            const data = spellsMap[s.id];
+                            if (!data) return \`<div class="attr-box"><span class="attr-label">Slot ${s.slot}</span><span class="attr-val">${s.id}</span></div>\`;
+                            return \`
+                                <div class="attr-box">
+                                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:5px;">
+                                        <img src="https://render.albiononline.com/v1/spell/${data.sprite}.png" class="res-icon" onerror="this.style.display='none'">
+                                        <span class="attr-val" style="color:#fff">${s.id} <span class="spell-tag">${data.type}</span></span>
                                     </div>
-                                ` : ''}
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
+                                    <span class="attr-label">Tag: ${s.tag || 'N/A'}</span>
+                                    <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
+                                    
+                                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
+                                        ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
+                                        ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
+                                        ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
+                                        ${data.hit ? `<div>Hit Delay: <b style="color:#fff">${data.hit}s</b></div>` : ''}
+                                        ${data.stand ? `<div>Stand: <b style="color:#fff">${data.stand}s</b></div>` : ''}
+                                    </div>
+                                    ${data.changes && data.changes.length > 0 ? `
+                                        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
+                                            ${data.changes.map(c => `
+                                                <div style="font-size: 0.7rem; color: var(--combat);">
+                                                    ${c.target || ''} ${c.attr || ''}: <b style="color:#fff">${c.change || ''}</b> ${c.type ? `(${c.type})` : ''}
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            \`;
+                        }).join('')}
+                    </div>
+                `).join('')}
             ` : ''}
 
             <h3 class="section-title" style="color: var(--accent);">Crafting Calculator (${enchantLevel > 0 ? '.' + enchantLevel : 'Flat'})</h3>
