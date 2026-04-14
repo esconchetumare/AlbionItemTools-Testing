@@ -10,7 +10,7 @@
             --panel-bg: #2c2e33;
             --text-main: #c1c2c5;
             --text-bright: #ffffff;
-            --accent: #f08c00; /* Cozy Amber */
+            --accent: #f08c00; 
             --border: #373a40;
             --tag-bg: #d9480f;
             --enemy: #c92a2a;
@@ -33,7 +33,6 @@
             min-height: 100vh;
         }
 
-        /* Search Bar */
         .search-container {
             position: sticky;
             top: 0;
@@ -76,8 +75,21 @@
             border-bottom: 2px solid var(--accent); 
         }
 
-        .component-box { margin: 15px; border: 1px solid var(--border); border-radius: 8px; background: rgba(0,0,0,0.2); }
-        .component-header { background: rgba(255,255,255,0.03); padding: 10px 15px; font-weight: bold; border-bottom: 1px solid var(--border); }
+        .component-box { 
+            margin: 15px; 
+            border: 1px solid var(--border); 
+            border-radius: 8px; 
+            background: rgba(0,0,0,0.2); 
+        }
+
+        .component-header { 
+            background: rgba(255,255,255,0.03); 
+            padding: 10px 15px; 
+            font-weight: bold; 
+            border-bottom: 1px solid var(--border);
+            color: var(--text-bright);
+            font-size: 0.9em;
+        }
 
         .target-badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 0.75em; font-weight: bold; text-transform: uppercase; margin: 10px 0; }
         .target-enemy { background: #5c0e0e; color: #ff8787; }
@@ -101,12 +113,13 @@
 
 <div class="container">
     <div class="search-container">
-        <h1 style="color: var(--text-bright); margin: 0 0 15px 0; font-size: 1.5rem;">Spell Inspector</h1>
-        <input type="text" id="spellSearch" placeholder="Search spells by name (e.g. AXE, HOLY)...">
+        <h1 style="color: var(--text-bright); margin: 0 0 15px 0; font-size: 1.5rem;">Spell Inspector (Nested)</h1>
+        <input type="text" id="spellSearch" placeholder="Search parent spells (e.g. RENDINGSPIN, HOLY)...">
     </div>
     
     <div id="results"></div>
-    <div id="sentinel"></div> </div>
+    <div id="sentinel"></div>
+</div>
 
 <script>
     const FILE_NAME = 'spells.xml';
@@ -126,14 +139,12 @@
             const xmlDoc = new DOMParser().parseFromString(text, "text/xml");
             parseHierarchy(xmlDoc);
             
-            // Setup Search
             document.getElementById('spellSearch').addEventListener('input', (e) => {
                 const term = e.target.value.toUpperCase();
                 filteredList = fullHierarchy.filter(item => item.name.includes(term));
                 resetAndRender();
             });
 
-            // Initial Render
             filteredList = [...fullHierarchy];
             setupInfiniteScroll();
             resetAndRender();
@@ -149,7 +160,9 @@
 
         spells.forEach(spell => {
             const fullName = spell.getAttribute('uniquename') || "UNKNOWN";
+            // Logic to determine the "Parent" root for nesting
             const parent = fullName.replace(componentSuffixes, '').replace(variationWords, '');
+            // Logic to determine the "Component" label within that parent
             const component = fullName.replace(parent, '').replace(/^_/, '') || "MAIN ACTION";
             
             if (!dataMap[parent]) dataMap[parent] = {};
@@ -195,6 +208,7 @@
         block.className = 'parent-block';
         let html = `<div class="parent-title">${item.name}</div>`;
 
+        // Components like DAMAGE or EFFECT are now rendered inside this parent block
         Object.keys(item.data).forEach(compName => {
             html += `<div class="component-box"><div class="component-header">${compName.replace(/_/g, ' ')}</div>`;
             Object.keys(item.data[compName]).forEach(target => {
@@ -244,6 +258,5 @@
         observer.observe(document.getElementById('sentinel'));
     }
 </script>
-
 </body>
 </html>
