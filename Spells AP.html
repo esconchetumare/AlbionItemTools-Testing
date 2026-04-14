@@ -113,8 +113,8 @@
 
 <div class="container">
     <div class="search-container">
-        <h1 style="color: var(--text-bright); margin: 0 0 15px 0; font-size: 1.5rem;">Spell Inspector (Deep Nesting)</h1>
-        <input type="text" id="spellSearch" placeholder="Search parent spells (e.g. BLADE_AURA)...">
+        <h1 style="color: var(--text-bright); margin: 0 0 15px 0; font-size: 1.5rem;">Spell Inspector (Advanced Nesting)</h1>
+        <input type="text" id="spellSearch" placeholder="Search spells (e.g. CRYSTAL_SCYTHE_DASH)...">
     </div>
     
     <div id="results"></div>
@@ -124,8 +124,12 @@
 <script>
     const FILE_NAME = 'spells.xml';
     
-    // Keywords that should ALWAYS be treated as components rather than new parents
-    const componentKeywords = ['DAMAGE', 'EFFECT', 'HIT', 'CONDITION', 'STACK', 'BUFF', 'REMOVAL', 'TRIGGER', 'BASE', 'RAW', 'MULTI', 'ROOT', 'BLEED', 'COMBO', 'OVERTIME', 'PULSE', 'CLEANUP', 'MOVESPEEDBUFF'];
+    // Explicit keywords that indicate a sub-component regardless of parent existence
+    const componentKeywords = [
+        'DAMAGE', 'EFFECT', 'HIT', 'CONDITION', 'STACK', 'BUFF', 'REMOVAL', 
+        'TRIGGER', 'BASE', 'RAW', 'MULTI', 'ROOT', 'BLEED', 'COMBO', 
+        'OVERTIME', 'PULSE', 'CLEANUP', 'ZONE', 'CDR', 'APPLY', 'AREA', 'TRACKER'
+    ];
 
     let fullHierarchy = [];
     let filteredList = [];
@@ -163,30 +167,37 @@
         spells.forEach(spell => {
             const fullName = spell.getAttribute('uniquename') || "UNKNOWN";
             
-            // Logic to find the true parent
             let parts = fullName.split('_');
             let parent = fullName;
             
-            // Try to find the longest prefix that exists as a standalone spell
-            // Or if the last part is a known component keyword
+            // Search backwards for the longest valid parent
             for (let i = parts.length - 1; i > 0; i--) {
                 let potentialParent = parts.slice(0, i).join('_');
                 let lastPart = parts[i];
 
-                if (allSpellNames.has(potentialParent) || componentKeywords.some(k => lastPart.includes(k))) {
+                // If the prefix is a known spell OR the suffix is a known component keyword
+                if (allSpellNames.has(potentialParent) || componentKeywords.includes(lastPart)) {
                     parent = potentialParent;
+                    // Special case: if parent also has a parent (e.g. DASH_ZONE -> DASH), keep going
+                    let deeperParts = parent.split('_');
+                    for (let j = deeperParts.length - 1; j > 0; j--) {
+                        let evenDeeper = deeperParts.slice(0, j).join('_');
+                        if (allSpellNames.has(evenDeeper)) {
+                            parent = evenDeeper;
+                        }
+                    }
                     break;
                 }
             }
 
-            const component = fullName.replace(parent, '').replace(/^_/, '') || "MAIN ACTION";
+            const componentLabel = fullName.replace(parent, '').replace(/^_/, '') || "MAIN ACTION";
             
             if (!dataMap[parent]) dataMap[parent] = {};
-            if (!dataMap[parent][component]) dataMap[parent][component] = {};
+            if (!dataMap[parent][componentLabel]) dataMap[parent][componentLabel] = {};
 
             const extract = (el, type) => {
                 const target = el.getAttribute('target') || 'default';
-                if (!dataMap[parent][component][target]) dataMap[parent][component][target] = [];
+                if (!dataMap[parent][componentLabel][target]) dataMap[parent][componentLabel][target] = [];
                 
                 let effect = {
                     type, source: fullName, 
@@ -206,7 +217,7 @@
                         }))
                     });
                 }
-                dataMap[parent][component][target].push(effect);
+                dataMap[parent][componentLabel][target].push(effect);
             };
 
             Array.from(spell.getElementsByTagName('directattributechange')).forEach(el => extract(el, 'Attribute Change'));
