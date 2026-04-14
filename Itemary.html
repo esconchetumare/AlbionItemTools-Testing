@@ -102,6 +102,9 @@
         .grand-val { color: var(--tier); font-family: monospace; }
         .spell-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 10px; }
         .spell-tag { font-size: 0.6rem; background: var(--accent); color: white; padding: 2px 4px; border-radius: 3px; vertical-align: middle; margin-left: 5px; text-transform: uppercase; }
+        .spell-stat-line { display: flex; justify-content: space-between; font-size: 0.75rem; padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .spell-stat-label { color: var(--blue-grey); }
+        .spell-stat-val { color: var(--combat); font-weight: bold; font-family: monospace; }
     </style>
 </head>
 <body>
@@ -112,7 +115,7 @@
         <p>Combat Inspector</p>
     </div>
     <div class="upload-zone">
-        <div id="count" style="font-size: 0.7rem; color: #8b949e; text-align: center;">Fetching local project files...</div>
+        <div id="count" style="font-size: 0.7rem; color: #8b949e; text-align: center;">Fetching assets...</div>
     </div>
     <div class="filter-pane">
         <input type="text" id="search" placeholder="Search items...">
@@ -179,7 +182,7 @@
                 unique.push({ 
                     name: effectiveName, 
                     count: parseInt(node.getAttribute('count')),
-                    maxReturn: maxReturn !== null ? parseInt(maxReturn) : null 
+                    maxReturn: maxReturn !== null ? parseInt(maxReturn) : null
                 });
             }
         });
@@ -193,7 +196,6 @@
         progressionLookup = {};
         const progTypes = ['mainhand_1h', 'mainhand_2h', 'offhand', 'head', 'armor', 'shoes', 'bag', 'cape', 'mount', 'potion', 'food', 'transformation', 'legendaryitemtraits'];
 
-        // PASS 1: Collection
         for (let node of root.children) {
             const nodeName = node.nodeName.toLowerCase();
             if (progTypes.includes(nodeName)) {
@@ -252,17 +254,14 @@
             }
         }
 
-        // PASS 2: Recursive Spell Resolution
         const resolveSpells = (item, visited = new Set()) => {
             if (visited.has(item.id)) return []; 
             visited.add(item.id);
-
             let baseList = [];
             if (item.spellRef) {
                 const refItem = items.find(i => i.id === item.spellRef);
                 if (refItem) baseList = resolveSpells(refItem, visited);
             }
-
             let resolved = baseList.filter(s => !item.removedSpells.includes(s.id));
             item.localSpells.forEach(ls => {
                 const idx = resolved.findIndex(r => r.id === ls.id);
@@ -286,7 +285,7 @@
                 const changes = Array.from(node.querySelectorAll('directattributechange')).map(dac => ({
                     target: dac.getAttribute('target'),
                     attr: dac.getAttribute('attribute'),
-                    change: dac.getAttribute('change'),
+                    change: parseFloat(dac.getAttribute('change') || "0"),
                     type: dac.getAttribute('effecttype')
                 }));
                 spellsMap[name] = {
@@ -403,6 +402,7 @@
             if (!groupedSpells[slot]) groupedSpells[slot] = [];
             groupedSpells[slot].push(s);
         });
+
         document.getElementById('details').innerHTML = `
             <button class="copy-btn tiny-copy" onclick="copyToClipboard('${item.id}', this)">UID</button>
             <div class="tab-container">
@@ -429,69 +429,59 @@
             <div id="combatStatContainer"></div>
             ${Object.keys(groupedSpells).length > 0 ? `
                 <h3 class="section-title" style="color: var(--accent);">Item Spells</h3>
-                ${Object.keys(groupedSpells).map(slotName => `
-                    <h4 style="color: #fff; margin: 20px 0 10px 0; border-bottom: 1px dashed var(--border); padding-bottom: 5px; text-transform: uppercase; font-size: 0.9rem;">Slot: ${slotName}</h4>
+                ${Object.keys(groupedSpells).sort().map(slotName => `
+                    <h4 style="color: #fff; margin: 20px 0 10px 0; border-bottom: 1px dashed var(--border); padding-bottom: 5px; text-transform: uppercase; font-size: 0.9rem;">Slot Choice: ${slotName}</h4>
                     <div class="spell-grid">
                         ${groupedSpells[slotName].map(s => {
                             const data = spellsMap[s.id];
                             if (!data) return `<div class="attr-box"><span class="attr-label">Slot ${s.slot}</span><span class="attr-val">${s.id}</span></div>`;
                             return `
-                                <div class="attr-box">
+                                <div class="attr-box" id="spell-${s.id}">
                                     <div style="display:flex; gap:10px; align-items:center; margin-bottom:5px;">
                                         <img src="https://render.albiononline.com/v1/spell/${data.sprite}.png" class="res-icon" onerror="this.style.display='none'">
                                         <span class="attr-val" style="color:#fff">${s.id} <span class="spell-tag">${data.type}</span></span>
                                     </div>
-                                    <span class="attr-label">Tag: ${s.tag || 'N/A'}</span>
+                                    <div id="spell-vals-${s.id}" style="margin-bottom:8px;"></div>
                                     <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
-                                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
-                                        ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
-                                        ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
-                                        ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
-                                        ${data.hit ? `<div>Hit Delay: <b style="color:#fff">${data.hit}s</b></div>` : ''}
-                                        ${data.stand ? `<div>Stand: <b style="color:#fff">${data.stand}s</b></div>` : ''}
-                                    </div>
-                                    ${data.changes && data.changes.length > 0 ? `
-                                        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
-                                            ${data.changes.map(c => `
-                                                <div style="font-size: 0.7rem; color: var(--combat);">
-                                                    ${c.target || ''} ${c.attr || ''}: <b style="color:#fff">${c.change || ''}</b> ${c.type ? `(${c.type})` : ''}
-                                                </div>
-                                            `).join('')}
-                                        </div>
-                                    ` : ''}
                                 </div>`;
                         }).join('')}
                     </div>`).join('')}` : ''}
-            <h3 class="section-title" style="color: var(--accent);">Crafting Calculator (${enchantLevel > 0 ? '.' + enchantLevel : 'Flat'})</h3>
-            <div class="calc-controls">
+            <div class="calc-controls" style="margin-top: 40px;">
                 <div class="calc-input-group"><label>Cycles</label><input type="number" id="batchInput" class="calc-input" value="${batchSize}" min="1"></div>
-                <div class="calc-input-group"><label>Location</label><select id="rrrPreset" class="calc-select"><option value="0">Islands (0%)</option><option value="15.2" selected>Base (15.2%)</option><option value="21.8">Bonus (21.8%)</option><option value="24.8">City (24.8%)</option><option value="27.5">Bonus (27.5%)</option><option value="30">City +Bonus (30%)</option><option value="34.6">City +2Bonus (34.6%)</option></select></div>
+                <div class="calc-input-group"><label>Location</label><select id="rrrPreset" class="calc-select"><option value="0">Islands (0%)</option><option value="15.2" selected>Base (15.2%)</option><option value="24.8">City (24.8%)</option></select></div>
                 <div class="calc-input-group" style="padding-top:15px;"><label style="cursor:pointer; display:flex; align-items:center; gap:8px;"><input type="checkbox" id="focusToggle" style="width:18px;height:18px;"><span style="color:#3fb950;font-weight:bold;font-size:0.85rem;">Focus</span></label></div>
-                <div class="calc-input-group"><label>Return %</label><input type="number" id="rrrInput" class="calc-input" value="${returnRate}" step="0.1"></div>
             </div>
             <div id="yieldDisplay" style="font-size:0.75rem;color:var(--blue-grey);margin-bottom:10px;font-weight:bold;"></div>
             <div class="cosy-block"><table class="calc-table"><thead><tr><th>Resource</th><th>Price/ea</th><th>Raw</th><th>Net</th><th>Total Cost</th></tr></thead><tbody id="calcTableBody"></tbody></table><div class="grand-total">Total Silver: <span id="grandTotalValue" class="grand-val">0</span></div></div>
-            <h3 class="section-title">${enchantLevel > 0 ? 'Enchanted' : 'Base'} Requirements</h3>
-            <div class="enchant-methods-wrapper">
-                ${(activeEnchant ? activeEnchant.craftingMethods : item.baseMethods).map((method, idx) => `<div class="cosy-block"><div class="method-label">CRAFT ${method.amountCrafted > 1 ? `(Yields ${method.amountCrafted})` : ''}</div>${method.resources.map(r => renderRecipeRow(r)).join('')}</div>`).join('')}
-            </div>
             <button class="collapsible" onclick="toggleCollapse(this)">All XML Attributes</button>
             <div class="collapsible-content"><div class="attr-grid">${Object.keys(item.all).sort().map(k => `<div class="attr-box"><span class="attr-label">${k}</span><span class="attr-val">${item.all[k]}</span></div>`).join('')}</div></div>
         `;
+
         const updateStats = (val) => {
             const currentIP = (val !== null && val !== "") ? parseFloat(val) : escalatingIP;
             const combatKeys = Object.keys(statToProgressionMap);
             const keysToProcess = [...new Set([...Object.keys(item.all), 'hitpointsmax'])].filter(k => combatKeys.includes(k.toLowerCase()));
+            const template = progressionLookup[progType] || {};
+            const standardFactor = 1.0825;
+
+            // PRE-CALCULATE CURRENT ABILITY POWER FOR SPELL SCALING
+            const baseAPStat = parseFloat(item.all['abilitypower']) || 100;
+            const apProgFactor = parseFloat(template['abilitypowerprogression']) || standardFactor;
+            const currentAP = baseAPStat * Math.pow(apProgFactor, currentIP / 100);
+
             const combatHtml = keysToProcess.map(k => {
                 let baseVal = parseFloat(item.all[k]) || 0;
-                const template = progressionLookup[progType] || {};
-                const factor = parseFloat(template[statToProgressionMap[k.toLowerCase()]]) || 1.0825; 
+                const factor = parseFloat(template[statToProgressionMap[k.toLowerCase()]]) || standardFactor; 
                 let finalVal, formulaText;
-                const isHP = k.toLowerCase() === 'hitpointsmax';
-                if (isHP && (item.slotType === 'armor' || item.slotType === 'head' || item.slotType === 'shoes')) {
-                    const offset = (item.slotType === 'head' || item.slotType === 'shoes') ? 300 : 600;
-                    finalVal = (baseVal + offset) * Math.pow(factor, currentIP / 100) - offset;
-                    formulaText = `(${baseVal} + ${offset}) * ${factor}^(${currentIP}/100) - ${offset}`;
+                if (['hitpointsmax', 'physicalarmor', 'magicresistance'].includes(k.toLowerCase())) {
+                    if (k.toLowerCase() === 'hitpointsmax' && (item.slotType === 'armor' || item.slotType === 'head' || item.slotType === 'shoes')) {
+                        const offset = (item.slotType === 'head' || item.slotType === 'shoes') ? 150 : 300;
+                        finalVal = baseVal + offset;
+                        formulaText = `${baseVal} + ${offset} (Static Equipment Health)`;
+                    } else {
+                        finalVal = baseVal;
+                        formulaText = `${baseVal} (Static Stat)`;
+                    }
                 } else {
                     finalVal = baseVal * Math.pow(factor, currentIP / 100);
                     formulaText = `${baseVal} * ${factor}^(${currentIP}/100)`;
@@ -499,12 +489,38 @@
                 return finalVal > 0 ? `<div class="attr-box combat-box"><span class="attr-label combat-label">${k}</span><span class="attr-val">${finalVal.toFixed(2)}</span><div class="formula-info">${formulaText}</div></div>` : '';
             }).join('');
             document.getElementById('combatStatContainer').innerHTML = `<h3 class="section-title" style="color:var(--combat);">Calculated Combat Stats</h3><div class="attr-grid">${combatHtml || 'No combat stats'}</div>`;
+
+            // UPDATE SPELL VALUES USING (Base * currentAP / 100)
+            itemSpells.forEach(s => {
+                const data = spellsMap[s.id];
+                const container = document.getElementById(`spell-vals-${s.id}`);
+                if (!data || !container) return;
+                
+                container.innerHTML = data.changes.map(ch => {
+                    const scaled = ch.change * (currentAP / 100);
+                    let label = ch.attr;
+                    let color = 'var(--accent)';
+                    if (ch.attr === 'health') {
+                        if (ch.change < 0) { label = `Damage (${ch.type || 'True'})`; color = 'var(--combat)'; }
+                        else { label = 'Healing'; color = '#3fb950'; }
+                    } else if (ch.attr === 'shield') { label = 'Shielding'; color = 'var(--tier)'; }
+                    
+                    return `
+                        <div class="spell-stat-line">
+                            <span class="spell-stat-label">${label}</span>
+                            <span class="spell-stat-val" style="color:${color}">${scaled.toFixed(2)}</span>
+                        </div>
+                        <div class="formula-info" style="margin-bottom: 5px; text-align: right;">${ch.change} * (${currentAP.toFixed(2)} / 100)</div>
+                    `;
+                }).join('');
+            });
         };
+
         updateStats(overrideIP);
         const rrrPreset = document.getElementById('rrrPreset'), focusToggle = document.getElementById('focusToggle'), batchInput = document.getElementById('batchInput');
         const updateFinalRR = () => {
             const base = parseFloat(rrrPreset.value);
-            returnRate = focusToggle.checked ? {0:39.3, 15.2:43.5, 21.8:46.5, 24.8:47.9, 27.5:49.2, 30:50.4, 34.6:52.8}[base] || base : base;
+            returnRate = focusToggle.checked ? {0:39.3, 15.2:43.5, 24.8:47.9}[base] || base : base;
             rrrInput.value = returnRate;
             actualizeCalculator(item, activeEnchant);
         };
@@ -514,6 +530,7 @@
         rrrPreset.addEventListener('change', updateFinalRR);
         focusToggle.addEventListener('change', updateFinalRR);
     }
+
     function initFilters() {
         const getSet = (k) => [...new Set(items.map(i => i[k]))].sort((a,b) => a.localeCompare(b, undefined, {numeric: true}));
         document.getElementById('tierFilter').innerHTML = '<option value="all">Tier</option>' + getSet('tier').map(v => `<option value="${v}">T${v}</option>`).join('');
