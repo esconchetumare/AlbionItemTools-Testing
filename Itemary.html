@@ -146,10 +146,6 @@
     let priceCache = JSON.parse(localStorage.getItem('itemary_prices')) || {};
     let spellsMap = {};
 
-    // Grouping Patterns
-    const componentSuffixes = /_(MOVESPEEDBUFF|CLEANUP|EFFECT|DAMAGE|HIT|CONDITION|STACK|BUFF|REMOVAL|TRIGGER|PREMULTI_REMOVE|BASE|RAW)\d*$/g;
-    const variationWords = /_(SECOND|THIRD|FOURTH|FIFTH|MAX|LOW|MAXDAMAGE|LOWDAMAGE)/g;
-
     const statToProgressionMap = {
         'abilitypower': 'abilitypowerprogression',
         'attackdamage': 'attackdamageprogression',
@@ -161,15 +157,6 @@
         'crowdcontrolresistance': 'crowdcontrolresistanceprogression',
         'fishingspeed': 'fishingspeedprogression'
     };
-
-    function getParentRoot(name) {
-        return name.replace(componentSuffixes, '').replace(variationWords, '');
-    }
-
-    function getComponentLabel(fullName, parentRoot) {
-        let label = fullName.replace(parentRoot, '').replace(/^_/, '');
-        return label || "MAIN ACTION";
-    }
 
     function processNames(text) {
         const lines = text.split(/\r?\n/);
@@ -209,6 +196,7 @@
         progressionLookup = {};
         const progTypes = ['mainhand_1h', 'mainhand_2h', 'offhand', 'head', 'armor', 'shoes', 'bag', 'cape', 'mount', 'potion', 'food', 'transformation', 'legendaryitemtraits'];
 
+        // PASS 1: Collection
         for (let node of root.children) {
             const nodeName = node.nodeName.toLowerCase();
             if (progTypes.includes(nodeName)) {
@@ -267,14 +255,17 @@
             }
         }
 
+        // PASS 2: Recursive Spell Resolution
         const resolveSpells = (item, visited = new Set()) => {
             if (visited.has(item.id)) return []; 
             visited.add(item.id);
+
             let baseList = [];
             if (item.spellRef) {
                 const refItem = items.find(i => i.id === item.spellRef);
                 if (refItem) baseList = resolveSpells(refItem, visited);
             }
+
             let resolved = baseList.filter(s => !item.removedSpells.includes(s.id));
             item.localSpells.forEach(ls => {
                 const idx = resolved.findIndex(r => r.id === ls.id);
@@ -292,61 +283,27 @@
     function processSpells(xmlString) {
         const xml = new DOMParser().parseFromString(xmlString, "text/xml");
         const root = xml.documentElement;
-        spellsMap = {};
-
         for (let node of root.children) {
             const name = node.getAttribute('uniquename');
-            if (!name) continue;
-
-            const extractChanges = (parentEl) => {
-                return Array.from(parentEl.querySelectorAll(':scope > directattributechange')).map(dac => {
-                    let chargeLogic = null;
-                    const chargeEl = dac.querySelector('IfCharge, IfConsumeCharges');
-                    if (chargeEl) {
-                        chargeLogic = {
-                            spell: chargeEl.getAttribute('chargespell') || chargeEl.getAttribute('spell'),
-                            rows: Array.from(chargeEl.querySelectorAll('change')).map(o => ({
-                                min: o.getAttribute('mincharges') || 'Consumed',
-                                val: o.getAttribute('value')
-                            }))
-                        };
-                    }
-
-                    return {
-                        target: dac.getAttribute('target'),
-                        attr: dac.getAttribute('attribute'),
-                        change: dac.getAttribute('change'),
-                        type: dac.getAttribute('effecttype'),
-                        charges: chargeLogic
-                    };
-                });
-            };
-
-            const buffs = Array.from(node.querySelectorAll('buffovertime')).map(b => ({
-                target: b.getAttribute('target'),
-                attr: b.getAttribute('type'),
-                change: b.getAttribute('value'),
-                time: b.getAttribute('time')
-            }));
-
-            let changes = extractChanges(node);
-            
-            Array.from(node.querySelectorAll('channelingspell')).forEach(chan => {
-                changes = changes.concat(extractChanges(chan));
-            });
-
-            spellsMap[name] = {
-                name: name, sprite: node.getAttribute('uisprite'),
-                desc: node.getAttribute('descriptionlocatag') || "",
-                type: node.nodeName === 'activespell' ? 'Active' : 'Passive',
-                recast: node.getAttribute('recastdelay'),
-                energy: node.getAttribute('energyusage'),
-                cast: node.getAttribute('castingtime'),
-                hit: node.getAttribute('hitdelay'),
-                stand: node.getAttribute('standtime'),
-                changes: changes,
-                buffs: buffs
-            };
+            if (name) {
+                const changes = Array.from(node.querySelectorAll('directattributechange')).map(dac => ({
+                    target: dac.getAttribute('target'),
+                    attr: dac.getAttribute('attribute'),
+                    change: dac.getAttribute('change'),
+                    type: dac.getAttribute('effecttype')
+                }));
+                spellsMap[name] = {
+                    name: name, sprite: node.getAttribute('uisprite'),
+                    desc: node.getAttribute('descriptionlocatag') || "",
+                    type: node.nodeName === 'activespell' ? 'Active' : 'Passive',
+                    recast: node.getAttribute('recastdelay'),
+                    energy: node.getAttribute('energyusage'),
+                    cast: node.getAttribute('castingtime'),
+                    hit: node.getAttribute('hitdelay'),
+                    stand: node.getAttribute('standtime'),
+                    changes: changes
+                };
+            }
         }
     }
     
@@ -498,6 +455,7 @@
             const keysToProcess = [...new Set([...Object.keys(item.all), 'hitpointsmax'])].filter(k => combatKeys.includes(k.toLowerCase()));
             const template = progressionLookup[progType] || {};
             
+            // PRE-CALCULATE CURRENT ABILITY POWER FOR SPELL SCALING
             const baseAPStat = parseFloat(item.all['abilitypower']) || 100;
             const apProgFactor = parseFloat(template['abilitypowerprogression']) || 1.0825;
             const currentAP = baseAPStat * Math.pow(apProgFactor, currentIP / 100);
@@ -519,75 +477,50 @@
             }).join('');
             document.getElementById('combatStatContainer').innerHTML = `<h3 class="section-title" style="color:var(--combat);">Calculated Combat Stats</h3><div class="attr-grid">${combatHtml || 'No combat stats'}</div>`;
 
+            // UPDATE SPELL VALUES USING (Base * currentAP / 100)
             const spellContainer = document.getElementById('spellContainer');
             if (spellContainer) {
-                spellContainer.innerHTML = Object.keys(groupedSpells).map(slotName => {
-                    const spellHierarchy = {};
-                    groupedSpells[slotName].forEach(s => {
-                        const root = getParentRoot(s.id);
-                        const component = getComponentLabel(s.id, root);
-                        if (!spellHierarchy[root]) spellHierarchy[root] = {};
-                        spellHierarchy[root][component] = s.id;
-                    });
-
-                    return `
+                spellContainer.innerHTML = Object.keys(groupedSpells).map(slotName => `
                     <h4 style="color: #fff; margin: 20px 0 10px 0; border-bottom: 1px dashed var(--border); padding-bottom: 5px; text-transform: uppercase; font-size: 0.9rem;">Slot: ${slotName}</h4>
-                    <div style="display:flex; flex-direction:column; gap:20px;">
-                        ${Object.keys(spellHierarchy).map(parent => `
-                            <div style="border: 1px solid var(--border); border-radius: 8px; background: rgba(0,0,0,0.15); padding: 15px;">
-                                <div style="font-size: 1.1rem; color: var(--accent); font-weight: bold; margin-bottom: 10px; text-transform: uppercase;">${parent}</div>
-                                <div class="spell-grid">
-                                    ${Object.keys(spellHierarchy[parent]).map(comp => {
-                                        const sid = spellHierarchy[parent][comp];
-                                        const data = spellsMap[sid];
-                                        if (!data) return `<div class="attr-box"><span class="attr-label">${comp}</span><span class="attr-val">${sid}</span></div>`;
-                                        
-                                        return `
-                                            <div class="attr-box" style="background: var(--card)">
-                                                <div style="display:flex; gap:10px; align-items:center; margin-bottom:5px;">
-                                                    <img src="https://render.albiononline.com/v1/spell/${data.sprite}.png" class="res-icon" onerror="this.style.display='none'">
-                                                    <span class="attr-val" style="color:#fff; font-size: 0.8rem;">${comp.replace(/_/g, ' ')} <span class="spell-tag">${data.type}</span></span>
-                                                </div>
-                                                <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
-                                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.65rem; color: var(--blue-grey);">
-                                                    ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
-                                                    ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
-                                                    ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
-                                                </div>
-                                                ${(data.changes || []).map(c => {
-                                                    const baseVal = parseFloat(c.change) || 0;
-                                                    const scaledVal = baseVal * (currentAP / 100);
-                                                    let chargeBox = '';
-                                                    if (c.charges) {
-                                                        chargeBox = `<div style="margin-top:5px; padding:5px; background: rgba(255,166,87,0.1); border-radius:4px; font-size:0.6rem;">
-                                                            <div style="color:var(--resource); font-weight:bold; margin-bottom:2px;">SCALING: ${c.charges.spell}</div>
-                                                            ${c.charges.rows.map(r => `
-                                                                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.05)">
-                                                                    <span>Charges: ${r.min}</span>
-                                                                    <b style="color:var(--tier)">${(parseFloat(r.val) * (currentAP / 100)).toFixed(2)}</b>
-                                                                </div>`).join('')}
-                                                        </div>`;
-                                                    }
-                                                    return `
-                                                        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
-                                                            <div class="spell-stat-line">
-                                                                <span class="spell-stat-label">${c.target || ''} ${c.attr || ''}</span>
-                                                                <span class="spell-stat-val">${scaledVal.toFixed(2)}</span>
-                                                            </div>
-                                                            ${chargeBox}
-                                                        </div>`;
-                                                }).join('')}
-                                                ${(data.buffs || []).map(b => `
-                                                    <div class="spell-stat-line" style="margin-top:5px;">
-                                                        <span class="spell-stat-label">${b.target} ${b.attr}</span>
-                                                        <span class="spell-stat-val" style="color:var(--accent)">${b.change} (${b.time}s)</span>
-                                                    </div>`).join('')}
-                                            </div>`;
-                                    }).join('')}
-                                </div>
-                            </div>`).join('')}
-                    </div>`;
-                }).join('');
+                    <div class="spell-grid">
+                        ${groupedSpells[slotName].map(s => {
+                            const data = spellsMap[s.id];
+                            if (!data) return `<div class="attr-box"><span class="attr-label">Slot ${s.slot}</span><span class="attr-val">${s.id}</span></div>`;
+                            return `
+                                <div class="attr-box">
+                                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:5px;">
+                                        <img src="https://render.albiononline.com/v1/spell/${data.sprite}.png" class="res-icon" onerror="this.style.display='none'">
+                                        <span class="attr-val" style="color:#fff">${s.id} <span class="spell-tag">${data.type}</span></span>
+                                    </div>
+                                    <span class="attr-label">Tag: ${s.tag || 'N/A'}</span>
+                                    <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
+                                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
+                                        ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
+                                        ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
+                                        ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
+                                        ${data.hit ? `<div>Hit Delay: <b style="color:#fff">${data.hit}s</b></div>` : ''}
+                                        ${data.stand ? `<div>Stand: <b style="color:#fff">${data.stand}s</b></div>` : ''}
+                                    </div>
+                                    ${data.changes && data.changes.length > 0 ? `
+                                        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
+                                            ${data.changes.map(c => {
+                                                const baseVal = parseFloat(c.change) || 0;
+                                                const scaledVal = baseVal * (currentAP / 100);
+                                                let color = 'var(--combat)';
+                                                if (c.attr === 'health' && baseVal > 0) color = '#3fb950';
+                                                if (c.attr === 'shield') color = 'var(--tier)';
+                                                return `
+                                                    <div class="spell-stat-line">
+                                                        <span class="spell-stat-label">${c.target || ''} ${c.attr || ''} ${c.type ? `(${c.type})` : ''}</span>
+                                                        <span class="spell-stat-val" style="color:${color}">${scaledVal.toFixed(2)}</span>
+                                                    </div>
+                                                    <div class="formula-info" style="text-align:right; font-size:0.6rem;">${baseVal} * (${currentAP.toFixed(2)} / 100)</div>
+                                                `;
+                                            }).join('')}
+                                        </div>` : ''}
+                                </div>`;
+                        }).join('')}
+                    </div>`).join('');
             }
         };
         updateStats(overrideIP);
