@@ -81,7 +81,7 @@
         .formula-info { font-size: 0.65rem; color: #8b949e; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4px; line-height: 1.4; }
         .section-title { color: #3fb950; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin: 40px 0 15px 0; font-size: 1.1rem; }
         .enchant-methods-wrapper { display: flex; gap: 12px; align-items: stretch; margin-bottom: 15px; flex-wrap: wrap; }
-        .cosy-block { background: var(--cosy-block); padding: 16px; border-radius: 8px; border: 1px solid #21262d; flex: 1; min-width: 280px; position: relative; }
+        .cosy-block { background: var(--cosy-block); padding: 166px; border-radius: 8px; border: 1px solid #21262d; flex: 1; min-width: 280px; position: relative; }
         .method-label { font-size: 0.65rem; color: #8b949e; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; font-weight: bold; }
         .recipe-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
         .res-name-wrapper { display: flex; align-items: center; gap: 8px; overflow: hidden; }
@@ -145,6 +145,7 @@
     let returnRate = 0;
     let priceCache = JSON.parse(localStorage.getItem('itemary_prices')) || {};
     let spellsMap = {};
+    let spellsRawNodes = {}; // Added to store raw XML nodes for loca resolution
 
     const statToProgressionMap = {
         'abilitypower': 'abilitypowerprogression',
@@ -158,12 +159,44 @@
         'fishingspeed': 'fishingspeedprogression'
     };
 
+    // --- NEW: RESOLVER FOR LOCAREFERENCES ---
+    function resolveLocaTag(spellNode, tag) {
+        if (!tag) return null;
+        let cleanTag = tag.replace(/\$/g, '');
+        let targetNode = spellNode;
+        let path = cleanTag;
+
+        if (cleanTag.includes('.')) {
+            const parts = cleanTag.split('.');
+            if (spellsRawNodes[parts[0]]) {
+                targetNode = spellsRawNodes[parts[0]];
+                path = parts.slice(1).join('.');
+            }
+        }
+
+        const segments = path.split('.');
+        let current = targetNode;
+        for (let i = 0; i < segments.length; i++) {
+            let segment = segments[i];
+            let index = 0;
+            const match = segment.match(/(.+)\[(\d+)\]/);
+            if (match) { segment = match[1]; index = parseInt(match[2]); }
+            if (i === segments.length - 1) {
+                return current.querySelectorAll(segment)[index]?.getAttribute(segment) || current.getAttribute(segment);
+            } else {
+                current = current.querySelectorAll(segment)[index];
+                if (!current) return null;
+            }
+        }
+        return null;
+    }
+
     function processNames(text) {
         const lines = text.split(/\r?\n/);
         nameMap = {};
         lines.forEach(line => {
             const parts = line.split(':');
-            if (parts.length >= 2) nameMap[parts[0].trim()] = parts.slice(1).join(':').trim();
+            if (parts.length >= 2) nameMap[parts[0].trim()] = parts[1].trim();
         });
         runFilter();
     }
@@ -196,7 +229,6 @@
         progressionLookup = {};
         const progTypes = ['mainhand_1h', 'mainhand_2h', 'offhand', 'head', 'armor', 'shoes', 'bag', 'cape', 'mount', 'potion', 'food', 'transformation', 'legendaryitemtraits'];
 
-        // PASS 1: Collection
         for (let node of root.children) {
             const nodeName = node.nodeName.toLowerCase();
             if (progTypes.includes(nodeName)) {
@@ -255,17 +287,14 @@
             }
         }
 
-        // PASS 2: Recursive Spell Resolution
         const resolveSpells = (item, visited = new Set()) => {
             if (visited.has(item.id)) return []; 
             visited.add(item.id);
-
             let baseList = [];
             if (item.spellRef) {
                 const refItem = items.find(i => i.id === item.spellRef);
                 if (refItem) baseList = resolveSpells(refItem, visited);
             }
-
             let resolved = baseList.filter(s => !item.removedSpells.includes(s.id));
             item.localSpells.forEach(ls => {
                 const idx = resolved.findIndex(r => r.id === ls.id);
@@ -286,12 +315,15 @@
         for (let node of root.children) {
             const name = node.getAttribute('uniquename');
             if (name) {
+                spellsRawNodes[name] = node; // Store raw node
                 const changes = Array.from(node.querySelectorAll('directattributechange')).map(dac => ({
                     target: dac.getAttribute('target'),
                     attr: dac.getAttribute('attribute'),
                     change: dac.getAttribute('change'),
                     type: dac.getAttribute('effecttype')
                 }));
+                const locaRefs = Array.from(node.querySelectorAll('locareference')).map(lr => lr.getAttribute('tag'));
+                
                 spellsMap[name] = {
                     name: name, sprite: node.getAttribute('uisprite'),
                     desc: node.getAttribute('descriptionlocatag') || "",
@@ -301,7 +333,8 @@
                     cast: node.getAttribute('castingtime'),
                     hit: node.getAttribute('hitdelay'),
                     stand: node.getAttribute('standtime'),
-                    changes: changes
+                    changes: changes,
+                    locaRefs: locaRefs
                 };
             }
         }
@@ -449,16 +482,15 @@
             <button class="collapsible" onclick="toggleCollapse(this)">All XML Attributes</button>
             <div class="collapsible-content"><div class="attr-grid">${Object.keys(item.all).sort().map(k => `<div class="attr-box"><span class="attr-label">${k}</span><span class="attr-val">${item.all[k]}</span></div>`).join('')}</div></div>
         `;
+        
         const updateStats = (val) => {
             const currentIP = (val !== null && val !== "") ? parseFloat(val) : escalatingIP;
             const combatKeys = Object.keys(statToProgressionMap);
             const keysToProcess = [...new Set([...Object.keys(item.all), 'hitpointsmax'])].filter(k => combatKeys.includes(k.toLowerCase()));
             const template = progressionLookup[progType] || {};
             
-            // PRE-CALCULATE CURRENT ABILITY POWER FOR SPELL SCALING
-            const baseAPStat = parseFloat(item.all['abilitypower']) || 100;
-            const apProgFactor = parseFloat(template['abilitypowerprogression']) || 1.0825;
-            const currentAP = baseAPStat * Math.pow(apProgFactor, currentIP / 100);
+            // PRE-CALCULATE CURRENT ABILITY POWER PROGRESSION FACTOR
+            const apProgFactor = parseFloat(template['abilitypowerprogression']) || 1.11803; // Using standard multiplier
 
             const combatHtml = keysToProcess.map(k => {
                 let baseVal = parseFloat(item.all[k]) || 0;
@@ -477,7 +509,7 @@
             }).join('');
             document.getElementById('combatStatContainer').innerHTML = `<h3 class="section-title" style="color:var(--combat);">Calculated Combat Stats</h3><div class="attr-grid">${combatHtml || 'No combat stats'}</div>`;
 
-            // UPDATE SPELL VALUES USING (Base * currentAP / 100)
+            // --- UPDATED: SPELL RENDERING LOGIC WITH LOCAREF & FORMATTED ATTRIBUTE CHANGES ---
             const spellContainer = document.getElementById('spellContainer');
             if (spellContainer) {
                 spellContainer.innerHTML = Object.keys(groupedSpells).map(slotName => `
@@ -494,30 +526,53 @@
                                     </div>
                                     <span class="attr-label">Tag: ${s.tag || 'N/A'}</span>
                                     <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
-                                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
-                                        ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
-                                        ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
-                                        ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
-                                        ${data.hit ? `<div>Hit Delay: <b style="color:#fff">${data.hit}s</b></div>` : ''}
-                                        ${data.stand ? `<div>Stand: <b style="color:#fff">${data.stand}s</b></div>` : ''}
-                                    </div>
+                                    
+                                    ${data.locaRefs && data.locaRefs.length > 0 ? `
+                                        <div style="margin-top: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;">
+                                            ${data.locaRefs.map(tag => {
+                                                const baseVal = parseFloat(resolveLocaTag(spellsRawNodes[s.id], tag));
+                                                if(isNaN(baseVal)) return '';
+                                                const scaled = baseVal * Math.pow(apProgFactor, currentIP / 100);
+                                                return `
+                                                    <div class="spell-stat-line">
+                                                        <span class="spell-stat-label">${tag}</span>
+                                                        <span class="spell-stat-val" style="color:var(--tier)">${scaled.toFixed(2)}</span>
+                                                    </div>
+                                                `;
+                                            }).join('')}
+                                        </div>` : ''}
+
                                     ${data.changes && data.changes.length > 0 ? `
                                         <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
                                             ${data.changes.map(c => {
                                                 const baseVal = parseFloat(c.change) || 0;
-                                                const scaledVal = baseVal * (currentAP / 100);
-                                                let color = 'var(--combat)';
-                                                if (c.attr === 'health' && baseVal > 0) color = '#3fb950';
-                                                if (c.attr === 'shield') color = 'var(--tier)';
+                                                const scaledVal = baseVal * Math.pow(apProgFactor, currentIP / 100);
+                                                let label = c.attr, color = 'var(--combat)';
+
+                                                if (c.attr === 'health') {
+                                                    if (baseVal < 0) { label = 'Damage'; color = 'var(--combat)'; }
+                                                    else { label = 'Health'; color = '#3fb950'; }
+                                                } else if (c.attr === 'shield') {
+                                                    label = 'Shield'; color = 'var(--tier)';
+                                                }
+
                                                 return `
                                                     <div class="spell-stat-line">
-                                                        <span class="spell-stat-label">${c.target || ''} ${c.attr || ''} ${c.type ? `(${c.type})` : ''}</span>
-                                                        <span class="spell-stat-val" style="color:${color}">${scaledVal.toFixed(2)}</span>
+                                                        <span class="spell-stat-label">${label} (${c.target || 'target'})</span>
+                                                        <span class="spell-stat-val" style="color:${color}">${Math.abs(scaledVal).toFixed(2)}</span>
                                                     </div>
-                                                    <div class="formula-info" style="text-align:right; font-size:0.6rem;">${baseVal} * (${currentAP.toFixed(2)} / 100)</div>
+                                                    <div class="formula-info" style="text-align:right; font-size:0.6rem;">
+                                                        ${baseVal} * (${apProgFactor.toFixed(4)}^(${currentIP}/100))
+                                                    </div>
                                                 `;
                                             }).join('')}
                                         </div>` : ''}
+
+                                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
+                                        ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
+                                        ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
+                                        ${data.cast ? `<div>Cast: <b style="color:#fff">${data.cast}s</b></div>` : ''}
+                                    </div>
                                 </div>`;
                         }).join('')}
                     </div>`).join('');
@@ -537,6 +592,7 @@
         rrrPreset.addEventListener('change', updateFinalRR);
         focusToggle.addEventListener('change', updateFinalRR);
     }
+    
     function initFilters() {
         const getSet = (k) => [...new Set(items.map(i => i[k]))].sort((a,b) => a.localeCompare(b, undefined, {numeric: true}));
         document.getElementById('tierFilter').innerHTML = '<option value="all">Tier</option>' + getSet('tier').map(v => `<option value="${v}">T${v}</option>`).join('');
