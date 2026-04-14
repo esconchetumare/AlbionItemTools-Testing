@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itemary - Albion Assets Inspector</title>
     <style>
-	/* MOBILE RESPONSIVENESS */
+        /* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
             body { flex-direction: column; height: 100dvh; }
             .sidebar { width: 100%; height: 40%; border-right: none; border-bottom: 2px solid var(--accent); flex: none; }
@@ -80,7 +80,6 @@
         .combat-label { color: var(--combat); font-weight: bold; }
         .attr-val { font-family: 'SFMono-Regular', monospace; color: var(--accent); font-size: 0.9rem; word-break: break-all; font-weight: 600; }
         .formula-info { font-size: 0.65rem; color: #8b949e; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4px; line-height: 1.4; }
-        .formula-var { color: var(--tier); }
         .section-title { color: #3fb950; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin: 40px 0 15px 0; font-size: 1.1rem; }
         .enchant-methods-wrapper { display: flex; gap: 12px; align-items: stretch; margin-bottom: 15px; flex-wrap: wrap; }
         .cosy-block { background: var(--cosy-block); padding: 16px; border-radius: 8px; border: 1px solid #21262d; flex: 1; min-width: 280px; position: relative; }
@@ -137,6 +136,7 @@
     let items = [];
     let nameMap = {};
     let progressionLookup = {}; 
+    let spellListsByUID = {}; // Lookup for resolving spell references
     let filteredItems = [];
     let displayedCount = 80;
     const listEl = document.getElementById('itemList');
@@ -193,20 +193,25 @@
         const root = xml.documentElement;
         items = [];
         progressionLookup = {};
+        spellListsByUID = {};
+        
         const progTypes = ['mainhand_1h', 'mainhand_2h', 'offhand', 'head', 'armor', 'shoes', 'bag', 'cape', 'mount', 'potion', 'food', 'transformation', 'legendaryitemtraits'];
 
+        // PASS 1: Collection
         for (let node of root.children) {
             const nodeName = node.nodeName.toLowerCase();
             if (progTypes.includes(nodeName)) {
                 const traits = {};
                 for (let a of node.attributes) traits[a.name.toLowerCase()] = a.value;
                 progressionLookup[nodeName] = traits;
+                continue;
             }
             if (nodeName === "shopcategories" || nodeName === "itempowerprogression") continue;
             
             const attr = {};
             for (let a of node.attributes) attr[a.name.toLowerCase()] = a.value;
             if (attr.uniquename) {
+                const uid = attr.uniquename;
                 const baseMethods = Array.from(node.querySelectorAll(':scope > craftingrequirements')).map(cr => ({
                     amountCrafted: parseInt(cr.getAttribute('amountcrafted') || "1"),
                     resources: deduplicateResources(Array.from(cr.querySelectorAll('craftresource')))
@@ -214,7 +219,7 @@
 
                 const enchantments = Array.from(node.querySelectorAll('enchantment')).map(e => ({
                     level: e.getAttribute('enchantmentlevel'),
-                    id: attr.uniquename + "@" + e.getAttribute('enchantmentlevel'),
+                    id: uid + "@" + e.getAttribute('enchantmentlevel'),
                     craftingMethods: Array.from(e.querySelectorAll('craftingrequirements')).map(cr => ({
                         amountCrafted: parseInt(cr.getAttribute('amountcrafted') || "1"),
                         resources: deduplicateResources(Array.from(cr.querySelectorAll('craftresource')))
@@ -234,17 +239,30 @@
                     }));
                 }
 
+                // Map local spells for later reference
+                if (spells.length > 0) spellListsByUID[uid] = spells;
+
                 items.push({
-                    id: attr.uniquename, tag: node.nodeName, tier: attr.tier || "0",
+                    id: uid, tag: node.nodeName, tier: attr.tier || "0",
                     cat: attr.shopcategory || "none", sub: attr.shopsubcategory1 || "none",
                     all: attr, slotType: (attr.slottype || "").toLowerCase(),
                     baseMethods: baseMethods,
                     enchantments: enchantments.length ? enchantments : null,
-                    spellList: spells,
+                    localSpells: spells,
                     spellRef: spellRef
                 });
             }
         }
+
+        // PASS 2: Resolve Spell References
+        items.forEach(item => {
+            if (item.spellRef && spellListsByUID[item.spellRef]) {
+                item.resolvedSpells = spellListsByUID[item.spellRef];
+            } else {
+                item.resolvedSpells = item.localSpells;
+            }
+        });
+
         initFilters();
         runFilter();
     }
@@ -380,11 +398,8 @@
         const logicalId = enchantLevel > 0 ? `${item.id}@${enchantLevel}` : item.id;
         const displayMainName = nameMap[item.id] ? nameMap[item.id].replace(/^T\d\s*/i, '') : formatCopyName(item.id).replace(/^\d\s*/, '');
         
-        let itemSpells = item.spellList || [];
-        if (item.spellRef) {
-            const refItem = items.find(i => i.id === item.spellRef);
-            if (refItem) itemSpells = refItem.spellList || [];
-        }
+        // Use resolvedSpells (either local or from reference)
+        const itemSpells = item.resolvedSpells || [];
 
         const groupedSpells = {};
         itemSpells.forEach(s => {
@@ -442,7 +457,11 @@
                                     </div>
                                     ${data.changes && data.changes.length > 0 ? `
                                         <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
-                                            ${data.changes.map(c => `<div style="font-size: 0.7rem; color: var(--combat);">${c.target || ''} ${c.attr || ''}: <b style="color:#fff">${c.change || ''}</b> ${c.type ? `(${c.type})` : ''}</div>`).join('')}
+                                            ${data.changes.map(c => `
+                                                <div style="font-size: 0.7rem; color: var(--combat);">
+                                                    ${c.target || ''} ${c.attr || ''}: <b style="color:#fff">${c.change || ''}</b> ${c.type ? `(${c.type})` : ''}
+                                                </div>
+                                            `).join('')}
                                         </div>
                                     ` : ''}
                                 </div>`;
