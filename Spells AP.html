@@ -113,8 +113,8 @@
 
 <div class="container">
     <div class="search-container">
-        <h1 style="color: var(--text-bright); margin: 0 0 15px 0; font-size: 1.5rem;">Spell Inspector (Cozy Dark)</h1>
-        <input type="text" id="spellSearch" placeholder="Search parent spells (e.g. RENDINGCOMBO)...">
+        <h1 style="color: var(--text-bright); margin: 0 0 15px 0; font-size: 1.5rem;">Spell Inspector (Deep Nesting)</h1>
+        <input type="text" id="spellSearch" placeholder="Search parent spells (e.g. BLADE_AURA)...">
     </div>
     
     <div id="results"></div>
@@ -124,9 +124,8 @@
 <script>
     const FILE_NAME = 'spells.xml';
     
-    // Updated Regex to catch more component types like BLEED, ROOT, MULTI, etc.
-    const componentSuffixes = /_(MOVESPEEDBUFF|CLEANUP|EFFECT|DAMAGE|HIT|CONDITION|STACK|BUFF|REMOVAL|TRIGGER|PREMULTI_REMOVE|BASE|RAW|MULTI|ROOT|BLEED|COMBO|OVERTIME)\d*$/g;
-    const variationWords = /_(SECOND|THIRD|FOURTH|FIFTH|MAX|LOW|MAXDAMAGE|LOWDAMAGE)/g;
+    // Keywords that should ALWAYS be treated as components rather than new parents
+    const componentKeywords = ['DAMAGE', 'EFFECT', 'HIT', 'CONDITION', 'STACK', 'BUFF', 'REMOVAL', 'TRIGGER', 'BASE', 'RAW', 'MULTI', 'ROOT', 'BLEED', 'COMBO', 'OVERTIME', 'PULSE', 'CLEANUP', 'MOVESPEEDBUFF'];
 
     let fullHierarchy = [];
     let filteredList = [];
@@ -159,16 +158,25 @@
     function parseHierarchy(xml) {
         const spells = xml.querySelectorAll('activespell, passivespell');
         const dataMap = {};
+        const allSpellNames = new Set(Array.from(spells).map(s => s.getAttribute('uniquename')));
 
         spells.forEach(spell => {
             const fullName = spell.getAttribute('uniquename') || "UNKNOWN";
             
-            // Aggressively strip suffixes to find the root parent
+            // Logic to find the true parent
+            let parts = fullName.split('_');
             let parent = fullName;
-            let lastParent = "";
-            while (parent !== lastParent) {
-                lastParent = parent;
-                parent = parent.replace(componentSuffixes, '').replace(variationWords, '');
+            
+            // Try to find the longest prefix that exists as a standalone spell
+            // Or if the last part is a known component keyword
+            for (let i = parts.length - 1; i > 0; i--) {
+                let potentialParent = parts.slice(0, i).join('_');
+                let lastPart = parts[i];
+
+                if (allSpellNames.has(potentialParent) || componentKeywords.some(k => lastPart.includes(k))) {
+                    parent = potentialParent;
+                    break;
+                }
             }
 
             const component = fullName.replace(parent, '').replace(/^_/, '') || "MAIN ACTION";
