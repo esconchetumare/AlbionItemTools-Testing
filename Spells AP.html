@@ -16,95 +16,46 @@
             --enemy: #c92a2a;
             --caster: #1864ab;
             --self: #5f3dc4;
+            --value-gold: #ffca28;
         }
 
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-        }
-
-        .container { 
-            max-width: 1200px; 
-            margin: auto; 
-            background: var(--container-bg); 
-            padding: 30px; 
-            min-height: 100vh;
-        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg); color: var(--text-main); }
+        .container { max-width: 1200px; margin: auto; background: var(--container-bg); padding: 30px; min-height: 100vh; }
 
         .search-container {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--container-bg);
-            padding: 10px 0 20px 0;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 20px;
+            position: sticky; top: 0; z-index: 100; background: var(--container-bg);
+            padding: 10px 0 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 20px;
         }
 
         #spellSearch {
-            width: 100%;
-            padding: 12px 20px;
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-bright);
-            font-size: 1rem;
-            outline: none;
-            box-sizing: border-box;
+            width: 100%; padding: 12px 20px; background: var(--panel-bg);
+            border: 1px solid var(--border); border-radius: 8px; color: var(--text-bright);
         }
 
-        #spellSearch:focus { border-color: var(--accent); }
-
-        .parent-block { 
-            border: 1px solid var(--border); 
-            margin-bottom: 30px; 
-            border-radius: 10px; 
-            overflow: hidden; 
-            background: var(--panel-bg); 
+        .parent-block { border: 1px solid var(--border); margin-bottom: 30px; border-radius: 10px; overflow: hidden; background: var(--panel-bg); }
+        
+        .parent-header {
+            background: #141517; padding: 15px 25px; border-bottom: 2px solid var(--accent);
+            display: flex; justify-content: space-between; align-items: center;
         }
+        .parent-title { color: var(--accent); font-size: 1.2em; font-weight: 800; text-transform: uppercase; }
+        .parent-summary { font-family: monospace; color: var(--value-gold); font-size: 1.1em; font-weight: bold; }
 
-        .parent-title { 
-            background: #141517; 
-            color: var(--accent); 
-            padding: 15px 25px; 
-            font-size: 1.4em; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            border-bottom: 2px solid var(--accent); 
-        }
+        .component-box { margin: 15px; border: 1px solid var(--border); border-radius: 8px; background: rgba(0,0,0,0.2); }
+        .component-header { background: rgba(255,255,255,0.03); padding: 8px 15px; font-weight: bold; font-size: 0.85em; color: #94a3b8; border-bottom: 1px solid var(--border); }
 
-        .component-box { 
-            margin: 15px; 
-            border: 1px solid var(--border); 
-            border-radius: 8px; 
-            background: rgba(0,0,0,0.2); 
-        }
-
-        .component-header { 
-            background: rgba(255,255,255,0.03); 
-            padding: 10px 15px; 
-            font-weight: bold; 
-            border-bottom: 1px solid var(--border);
-            color: var(--text-bright);
-            font-size: 0.9em;
-        }
-
-        .target-badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 0.75em; font-weight: bold; text-transform: uppercase; margin: 10px 0; }
+        .target-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; font-weight: bold; text-transform: uppercase; margin: 8px 15px; }
         .target-enemy { background: #5c0e0e; color: #ff8787; }
         .target-caster { background: #0b2e4f; color: #74c0fc; }
-        .target-self { background: #26194d; color: #b197fc; }
 
-        .effect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; padding: 0 15px 15px 15px; }
-        .effect-item { background: var(--panel-bg); border: 1px solid var(--border); padding: 12px; border-radius: 6px; }
+        .effect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; padding: 0 15px 15px 15px; }
+        .effect-item { background: var(--panel-bg); border: 1px solid var(--border); padding: 10px; border-radius: 6px; font-size: 0.9em; }
         
-        .charge-logic { margin-top: 10px; padding: 8px; background: #2d2412; border: 1px solid #4d3d1a; border-radius: 4px; font-size: 0.85em; }
-        .charge-title { color: var(--accent); font-weight: bold; font-size: 0.75em; text-transform: uppercase; margin-bottom: 4px; display: block; }
-        .charge-row { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .charge-logic { margin-top: 8px; padding: 6px; background: #2d2412; border: 1px solid #4d3d1a; border-radius: 4px; font-size: 0.8em; }
+        .charge-row { display: flex; justify-content: space-between; padding: 1px 0; }
         
-        code { color: #ffca28; font-weight: bold; background: rgba(255, 202, 40, 0.1); padding: 2px 5px; border-radius: 3px; }
-        .source-info { font-size: 0.7em; color: #5c5f66; margin-top: 8px; font-family: monospace; }
+        code { color: var(--value-gold); font-weight: bold; background: rgba(255, 202, 40, 0.1); padding: 1px 4px; border-radius: 3px; }
+        .source-info { font-size: 0.65em; color: #5c5f66; margin-top: 5px; font-family: monospace; }
         
         #sentinel { height: 20px; }
     </style>
@@ -113,35 +64,27 @@
 
 <div class="container">
     <div class="search-container">
-        <h1 style="color: var(--text-bright); margin: 0 0 15px 0; font-size: 1.5rem;">Spell Inspector (Advanced Nesting)</h1>
-        <input type="text" id="spellSearch" placeholder="Search spells (e.g. CRYSTAL_SCYTHE_DASH)...">
+        <h1 style="color: var(--text-bright); margin: 0 0 10px 0; font-size: 1.2rem;">Spell Inspector (Compact)</h1>
+        <input type="text" id="spellSearch" placeholder="Search spells...">
     </div>
-    
     <div id="results"></div>
     <div id="sentinel"></div>
 </div>
 
 <script>
     const FILE_NAME = 'spells.xml';
-    
-    // Explicit keywords that indicate a sub-component regardless of parent existence
-    const componentKeywords = [
-        'DAMAGE', 'EFFECT', 'HIT', 'CONDITION', 'STACK', 'BUFF', 'REMOVAL', 
-        'TRIGGER', 'BASE', 'RAW', 'MULTI', 'ROOT', 'BLEED', 'COMBO', 
-        'OVERTIME', 'PULSE', 'CLEANUP', 'ZONE', 'CDR', 'APPLY', 'AREA', 'TRACKER'
-    ];
+    const componentKeywords = ['DAMAGE', 'EFFECT', 'HIT', 'CONDITION', 'STACK', 'BUFF', 'REMOVAL', 'TRIGGER', 'BASE', 'RAW', 'MULTI', 'ROOT', 'BLEED', 'COMBO', 'OVERTIME', 'PULSE', 'ZONE', 'CDR', 'AREA', 'TRACKER', 'DASH'];
 
     let fullHierarchy = [];
     let filteredList = [];
     let currentIndex = 0;
-    const PAGE_SIZE = 10;
+    const PAGE_SIZE = 15;
 
     window.addEventListener('DOMContentLoaded', async () => {
         try {
             const response = await fetch(FILE_NAME);
-            if (!response.ok) throw new Error("Could not load spells.xml");
-            const text = await response.text();
-            const xmlDoc = new DOMParser().parseFromString(text, "text/xml");
+            if (!response.ok) throw new Error("File not found");
+            const xmlDoc = new DOMParser().parseFromString(await response.text(), "text/xml");
             parseHierarchy(xmlDoc);
             
             document.getElementById('spellSearch').addEventListener('input', (e) => {
@@ -153,10 +96,7 @@
             filteredList = [...fullHierarchy];
             setupInfiniteScroll();
             resetAndRender();
-
-        } catch (error) {
-            document.getElementById('results').innerHTML = `<div style="color:var(--enemy)">Error: ${error.message}</div>`;
-        }
+        } catch (e) { document.getElementById('results').innerText = e.message; }
     });
 
     function parseHierarchy(xml) {
@@ -166,93 +106,79 @@
 
         spells.forEach(spell => {
             const fullName = spell.getAttribute('uniquename') || "UNKNOWN";
-            
             let parts = fullName.split('_');
             let parent = fullName;
             
-            // Search backwards for the longest valid parent
             for (let i = parts.length - 1; i > 0; i--) {
-                let potentialParent = parts.slice(0, i).join('_');
-                let lastPart = parts[i];
-
-                // If the prefix is a known spell OR the suffix is a known component keyword
-                if (allSpellNames.has(potentialParent) || componentKeywords.includes(lastPart)) {
-                    parent = potentialParent;
-                    // Special case: if parent also has a parent (e.g. DASH_ZONE -> DASH), keep going
-                    let deeperParts = parent.split('_');
-                    for (let j = deeperParts.length - 1; j > 0; j--) {
-                        let evenDeeper = deeperParts.slice(0, j).join('_');
-                        if (allSpellNames.has(evenDeeper)) {
-                            parent = evenDeeper;
-                        }
+                let potential = parts.slice(0, i).join('_');
+                if (allSpellNames.has(potential) || componentKeywords.includes(parts[i])) {
+                    parent = potential;
+                    // Recursive check for deeper roots
+                    let subParts = parent.split('_');
+                    for(let j = subParts.length - 1; j > 0; j--) {
+                        if(allSpellNames.has(subParts.slice(0,j).join('_'))) parent = subParts.slice(0,j).join('_');
                     }
                     break;
                 }
             }
 
-            const componentLabel = fullName.replace(parent, '').replace(/^_/, '') || "MAIN ACTION";
-            
-            if (!dataMap[parent]) dataMap[parent] = {};
-            if (!dataMap[parent][componentLabel]) dataMap[parent][componentLabel] = {};
+            const compLabel = fullName === parent ? "MAIN ACTION" : fullName.replace(parent + '_', '');
+            if (!dataMap[parent]) dataMap[parent] = { name: parent, summary: "", components: {} };
+            if (!dataMap[parent].components[compLabel]) dataMap[parent].components[compLabel] = {};
 
             const extract = (el, type) => {
                 const target = el.getAttribute('target') || 'default';
-                if (!dataMap[parent][componentLabel][target]) dataMap[parent][componentLabel][target] = [];
+                const attr = el.getAttribute('attribute') || el.getAttribute('type');
+                const val = el.getAttribute('change') || el.getAttribute('value');
                 
-                let effect = {
-                    type, source: fullName, 
-                    attr: el.getAttribute('attribute') || el.getAttribute('type'),
-                    val: el.getAttribute('change') || el.getAttribute('value'),
-                    time: el.getAttribute('time'),
-                    charges: []
-                };
+                // If it's the main action, bubble the primary value to the header
+                if (compLabel === "MAIN ACTION" && (attr === 'health' || attr === 'damage' || attr === 'hit')) {
+                    dataMap[parent].summary = `${attr.toUpperCase()}: ${val}`;
+                }
 
-                const cs = el.querySelector('IfCharge, IfConsumeCharges');
-                if (cs) {
-                    effect.charges.push({
+                if (!dataMap[parent].components[compLabel][target]) dataMap[parent].components[compLabel][target] = [];
+                dataMap[parent].components[compLabel][target].push({
+                    type, source: fullName, attr, val, time: el.getAttribute('time'),
+                    charges: Array.from(el.querySelectorAll('IfCharge, IfConsumeCharges')).map(cs => ({
                         spell: cs.getAttribute('chargespell') || cs.getAttribute('spell'),
                         items: Array.from(cs.querySelectorAll('change')).map(o => ({
                             min: o.getAttribute('mincharges') || 'Consumed',
                             newVal: o.getAttribute('value')
                         }))
-                    });
-                }
-                dataMap[parent][componentLabel][target].push(effect);
+                    }))
+                });
             };
 
-            Array.from(spell.getElementsByTagName('directattributechange')).forEach(el => extract(el, 'Attribute Change'));
-            Array.from(spell.getElementsByTagName('buffovertime')).forEach(el => extract(el, 'Buff Over Time'));
-            Array.from(spell.getElementsByTagName('channelingspell')).forEach(chan => {
-                Array.from(chan.getElementsByTagName('directattributechange')).forEach(el => extract(el, 'Channel Effect'));
-            });
+            Array.from(spell.getElementsByTagName('directattributechange')).forEach(el => extract(el, 'Attribute'));
+            Array.from(spell.getElementsByTagName('buffovertime')).forEach(el => extract(el, 'Overtime'));
         });
-
-        fullHierarchy = Object.keys(dataMap).sort().map(name => ({ name, data: dataMap[name] }));
+        fullHierarchy = Object.values(dataMap).sort((a,b) => a.name.localeCompare(b.name));
     }
 
     function renderSpellBlock(item) {
         const block = document.createElement('div');
         block.className = 'parent-block';
-        let html = `<div class="parent-title">${item.name}</div>`;
+        let html = `
+            <div class="parent-header">
+                <span class="parent-title">${item.name}</span>
+                <span class="parent-summary">${item.summary}</span>
+            </div>`;
 
-        Object.keys(item.data).forEach(compName => {
+        Object.keys(item.components).forEach(compName => {
             html += `<div class="component-box"><div class="component-header">${compName.replace(/_/g, ' ')}</div>`;
-            Object.keys(item.data[compName]).forEach(target => {
-                html += `<div style="padding: 0 15px;"><span class="target-badge target-${target.toLowerCase()}">${target}</span></div><div class="effect-grid">`;
-                item.data[compName][target].forEach(e => {
-                    let chargeHtml = e.charges.map(c => `
+            Object.keys(item.components[compName]).forEach(target => {
+                html += `<span class="target-badge target-${target.toLowerCase()}">${target}</span><div class="effect-grid">`;
+                item.components[compName][target].forEach(e => {
+                    let cHtml = e.charges.map(c => `
                         <div class="charge-logic">
-                            <span class="charge-title">${c.spell}</span>
-                            ${c.items.map(row => `<div class="charge-row"><span>${row.min}</span><b>${row.newVal}</b></div>`).join('')}
+                            <div style="color:var(--accent); font-size:0.7em; margin-bottom:3px;">${c.spell}</div>
+                            ${c.items.map(r => `<div class="charge-row"><span>${r.min}</span><b>${r.newVal}</b></div>`).join('')}
                         </div>`).join('');
-
-                    html += `
-                        <div class="effect-item">
-                            <div style="font-size:0.65em; font-weight:bold; color:var(--accent); margin-bottom:4px;">${e.type}</div>
-                            <b>${e.attr}</b>: <code>${e.val}</code>${e.time ? ` over ${e.time}s` : ''}
-                            ${chargeHtml}
-                            <div class="source-info">XML: ${e.source}</div>
-                        </div>`;
+                    html += `<div class="effect-item">
+                        <b>${e.attr}</b>: <code>${e.val}</code>${e.time ? ` (${e.time}s)` : ''}
+                        ${cHtml}
+                        <div class="source-info">${e.source}</div>
+                    </div>`;
                 });
                 html += `</div>`;
             });
@@ -262,26 +188,17 @@
         return block;
     }
 
-    function resetAndRender() {
-        document.getElementById('results').innerHTML = '';
-        currentIndex = 0;
-        loadMore();
-    }
-
+    function resetAndRender() { document.getElementById('results').innerHTML = ''; currentIndex = 0; loadMore(); }
     function loadMore() {
         const results = document.getElementById('results');
-        const nextBatch = filteredList.slice(currentIndex, currentIndex + PAGE_SIZE);
-        nextBatch.forEach(item => results.appendChild(renderSpellBlock(item)));
+        const batch = filteredList.slice(currentIndex, currentIndex + PAGE_SIZE);
+        batch.forEach(item => results.appendChild(renderSpellBlock(item)));
         currentIndex += PAGE_SIZE;
     }
-
     function setupInfiniteScroll() {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && currentIndex < filteredList.length) {
-                loadMore();
-            }
-        }, { threshold: 0.1 });
-        observer.observe(document.getElementById('sentinel'));
+        new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && currentIndex < filteredList.length) loadMore();
+        }, { threshold: 0.1 }).observe(document.getElementById('sentinel'));
     }
 </script>
 </body>
