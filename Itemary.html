@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itemary - Albion Assets Inspector</title>
     <style>
+        /* All existing styles remain unchanged */
         @media (max-width: 768px) {
             body { flex-direction: column; height: 100dvh; }
             .sidebar { width: 100%; height: 40%; border-right: none; border-bottom: 2px solid var(--accent); flex: none; }
@@ -145,6 +146,7 @@
     let returnRate = 0;
     let priceCache = JSON.parse(localStorage.getItem('itemary_prices')) || {};
     let spellsMap = {};
+    let spellsRawNodes = {}; // STORE RAW XML NODES FOR LOCAREF RESOLUTION
 
     const statToProgressionMap = {
         'abilitypower': 'abilitypowerprogression',
@@ -157,6 +159,43 @@
         'crowdcontrolresistance': 'crowdcontrolresistanceprogression',
         'fishingspeed': 'fishingspeedprogression'
     };
+
+    // INJECTED LOCAREFERENCE RESOLVER
+    function resolveLocaTag(spellNode, tag) {
+        if (!tag) return null;
+        let cleanTag = tag.replace(/\$/g, '');
+        let targetNode = spellNode;
+        let path = cleanTag;
+
+        if (cleanTag.includes('.')) {
+            const parts = cleanTag.split('.');
+            if (spellsRawNodes[parts[0]]) {
+                targetNode = spellsRawNodes[parts[0]];
+                path = parts.slice(1).join('.');
+            }
+        }
+
+        const segments = path.split('.');
+        let current = targetNode;
+
+        for (let i = 0; i < segments.length; i++) {
+            let segment = segments[i];
+            let index = 0;
+            const match = segment.match(/(.+)\[(\d+)\]/);
+            if (match) {
+                segment = match[1];
+                index = parseInt(match[2]);
+            }
+
+            if (i === segments.length - 1) {
+                return current.querySelectorAll(segment)[index]?.getAttribute(segment) || current.getAttribute(segment);
+            } else {
+                current = current.querySelectorAll(segment)[index];
+                if (!current) return null;
+            }
+        }
+        return null;
+    }
 
     function processNames(text) {
         const lines = text.split(/\r?\n/);
@@ -196,7 +235,6 @@
         progressionLookup = {};
         const progTypes = ['mainhand_1h', 'mainhand_2h', 'offhand', 'head', 'armor', 'shoes', 'bag', 'cape', 'mount', 'potion', 'food', 'transformation', 'legendaryitemtraits'];
 
-        // PASS 1: Collection
         for (let node of root.children) {
             const nodeName = node.nodeName.toLowerCase();
             if (progTypes.includes(nodeName)) {
@@ -255,7 +293,6 @@
             }
         }
 
-        // PASS 2: Recursive Spell Resolution
         const resolveSpells = (item, visited = new Set()) => {
             if (visited.has(item.id)) return []; 
             visited.add(item.id);
@@ -286,12 +323,16 @@
         for (let node of root.children) {
             const name = node.getAttribute('uniquename');
             if (name) {
+                spellsRawNodes[name] = node; // STORE RAW NODE
                 const changes = Array.from(node.querySelectorAll('directattributechange')).map(dac => ({
                     target: dac.getAttribute('target'),
                     attr: dac.getAttribute('attribute'),
                     change: dac.getAttribute('change'),
                     type: dac.getAttribute('effecttype')
                 }));
+                // CAPTURE LOCAREFERENCES
+                const locaRefs = Array.from(node.querySelectorAll('locareference')).map(lr => lr.getAttribute('tag'));
+
                 spellsMap[name] = {
                     name: name, sprite: node.getAttribute('uisprite'),
                     desc: node.getAttribute('descriptionlocatag') || "",
@@ -301,7 +342,9 @@
                     cast: node.getAttribute('castingtime'),
                     hit: node.getAttribute('hitdelay'),
                     stand: node.getAttribute('standtime'),
-                    changes: changes
+                    changes: changes,
+                    locaRefs: locaRefs,
+                    rawNode: node
                 };
             }
         }
@@ -455,7 +498,6 @@
             const keysToProcess = [...new Set([...Object.keys(item.all), 'hitpointsmax'])].filter(k => combatKeys.includes(k.toLowerCase()));
             const template = progressionLookup[progType] || {};
             
-            // PRE-CALCULATE CURRENT ABILITY POWER FOR SPELL SCALING
             const baseAPStat = parseFloat(item.all['abilitypower']) || 100;
             const apProgFactor = parseFloat(template['abilitypowerprogression']) || 1.0825;
             const currentAP = baseAPStat * Math.pow(apProgFactor, currentIP / 100);
@@ -477,7 +519,7 @@
             }).join('');
             document.getElementById('combatStatContainer').innerHTML = `<h3 class="section-title" style="color:var(--combat);">Calculated Combat Stats</h3><div class="attr-grid">${combatHtml || 'No combat stats'}</div>`;
 
-            // UPDATE SPELL VALUES USING (Base * currentAP / 100)
+            // SPELL UPDATE SECTION INCLUDING LOCAREFERENCE RESOLUTION
             const spellContainer = document.getElementById('spellContainer');
             if (spellContainer) {
                 spellContainer.innerHTML = Object.keys(groupedSpells).map(slotName => `
@@ -494,6 +536,23 @@
                                     </div>
                                     <span class="attr-label">Tag: ${s.tag || 'N/A'}</span>
                                     <div class="formula-info" style="margin-top:5px; color:var(--text); font-size:0.75rem;">${formatSpellDesc(data.desc)}</div>
+                                    
+                                    ${data.locaRefs && data.locaRefs.length > 0 ? `
+                                        <div style="margin-top: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;">
+                                            ${data.locaRefs.map(tag => {
+                                                const baseVal = parseFloat(resolveLocaTag(data.rawNode, tag));
+                                                if(isNaN(baseVal)) return '';
+                                                // Formula: Base * (Progression ^ (IP/100))
+                                                const scaled = baseVal * Math.pow(apProgFactor, currentIP / 100);
+                                                return `
+                                                    <div class="spell-stat-line">
+                                                        <span class="spell-stat-label">${tag}</span>
+                                                        <span class="spell-stat-val" style="color:var(--tier)">${scaled.toFixed(2)}</span>
+                                                    </div>
+                                                `;
+                                            }).join('')}
+                                        </div>` : ''}
+
                                     <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 8px; font-size: 0.7rem; color: var(--blue-grey);">
                                         ${data.recast ? `<div>Recast: <b style="color:#fff">${data.recast}s</b></div>` : ''}
                                         ${data.energy ? `<div>Energy: <b style="color:#fff">${data.energy}</b></div>` : ''}
@@ -501,6 +560,7 @@
                                         ${data.hit ? `<div>Hit Delay: <b style="color:#fff">${data.hit}s</b></div>` : ''}
                                         ${data.stand ? `<div>Stand: <b style="color:#fff">${data.stand}s</b></div>` : ''}
                                     </div>
+                                    
                                     ${data.changes && data.changes.length > 0 ? `
                                         <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
                                             ${data.changes.map(c => {
@@ -537,6 +597,7 @@
         rrrPreset.addEventListener('change', updateFinalRR);
         focusToggle.addEventListener('change', updateFinalRR);
     }
+    // ... (Keep existing initFilters, updateSubFilter, runFilter, renderChunk exactly as they are) ...
     function initFilters() {
         const getSet = (k) => [...new Set(items.map(i => i[k]))].sort((a,b) => a.localeCompare(b, undefined, {numeric: true}));
         document.getElementById('tierFilter').innerHTML = '<option value="all">Tier</option>' + getSet('tier').map(v => `<option value="${v}">T${v}</option>`).join('');
