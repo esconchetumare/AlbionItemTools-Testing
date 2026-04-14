@@ -562,24 +562,42 @@
                                     </div>
                                     
                                     ${data.changes && data.changes.length > 0 ? `
-                                        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
-                                            ${data.changes.map(c => {
-                                                const baseVal = parseFloat(c.change) || 0;
-                                                const scaledVal = baseVal * (currentAP / 100);
-                                                let color = 'var(--combat)';
-                                                if (c.attr === 'health' && baseVal > 0) color = '#3fb950';
-                                                if (c.attr === 'shield') color = 'var(--tier)';
-                                                return `
-                                                    <div class="spell-stat-line">
-                                                        <span class="spell-stat-label">${c.target || ''} ${c.attr || ''} ${c.type ? `(${c.type})` : ''}</span>
-                                                        <span class="spell-stat-val" style="color:${color}">${scaledVal.toFixed(2)}</span>
-                                                    </div>
-                                                    <div class="formula-info" style="text-align:right; font-size:0.6rem;">${baseVal} * (${currentAP.toFixed(2)} / 100)</div>
-                                                `;
-                                            }).join('')}
-                                        </div>` : ''}
-                                </div>`;
-                        }).join('')}
+                                    <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5px;">
+                                        ${data.changes.map(c => {
+                                            const baseVal = parseFloat(c.change) || 0;
+                                            
+                                            // Apply the spell progression formula
+                                            // Base * (Progression ^ (IP / 100))
+                                            const scaledVal = baseVal * Math.pow(apProgFactor, currentIP / 100);
+                                            
+                                            let label = c.attr || 'Effect';
+                                            let color = 'var(--combat)';
+                                            
+                                            // Logic to display as damage/health/shield
+                                            if (c.attr === 'health') {
+                                                if (baseVal < 0) {
+                                                    label = 'Damage';
+                                                    color = 'var(--combat)';
+                                                } else {
+                                                    label = 'Healing';
+                                                    color = '#3fb950'; // Green for health/healing
+                                                }
+                                            } else if (c.attr === 'shield') {
+                                                label = 'Shield';
+                                                color = 'var(--tier)'; // Gold/Tier color for shields
+                                            }
+
+                                            return `
+                                                <div class="spell-stat-line">
+                                                    <span class="spell-stat-label">${c.target || ''} ${label} ${c.type ? `(${c.type})` : ''}</span>
+                                                    <span class="spell-stat-val" style="color:${color}">${Math.abs(scaledVal).toFixed(2)}</span>
+                                                </div>
+                                                <div class="formula-info" style="text-align:right; font-size:0.6rem;">
+                                                    ${baseVal} * (${apProgFactor}^(${currentIP}/100))
+                                                </div>
+                                            `;
+                                        }).join('')}
+                                    </div>` : ''}
                     </div>`).join('');
             }
         };
