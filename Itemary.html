@@ -375,7 +375,6 @@
         
         const unitCostDisplay = document.getElementById('unitCostValue');
         const netLeftHeader = document.getElementById('netLeftHeader');
-        if(netLeftHeader) netLeftHeader.innerText = batchSize === 1 ? 'Left' : 'Net';
         if(grandTotalDisplay) grandTotalDisplay.innerText = runningGrandTotal.toLocaleString();
         if(unitCostDisplay) unitCostDisplay.innerText = totalItemsProduced > 0 ? Math.ceil(runningGrandTotal / totalItemsProduced).toLocaleString() : "0";
 
