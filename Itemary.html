@@ -372,7 +372,13 @@
             let displayLabel = (nameMap[res.name] || formatCopyName(res.name)).replace(/^T\d(\.\d)?\s*/i, '').replace(/\s*Level\s*\d+\s*/gi, '').trim();
             return `<tr><td><div style="display:flex; align-items:center; gap:8px;"><img class="res-icon" src="https://render.albiononline.com/v1/item/${getRenderId(res.name)}.png" onerror="this.style.display='none'"><span style="color: var(--resource)">${displayLabel}</span></div></td><td><input type="number" class="price-input" data-res="${res.name}" value="${currentPrice}" min="0"></td><td class="res-total">${initialNeeded}</td><td class="res-net">${net}</td><td class="res-cost">${rowTotalCost.toLocaleString()}</td></tr>`;
         }).join('') || '<tr><td colspan="5">No recipe data available</td></tr>';
+        
+        const unitCostDisplay = document.getElementById('unitCostValue');
+        const netLeftHeader = document.getElementById('netLeftHeader');
+        if(netLeftHeader) netLeftHeader.innerText = batchSize === 1 ? 'Left' : 'Net';
         if(grandTotalDisplay) grandTotalDisplay.innerText = runningGrandTotal.toLocaleString();
+        if(unitCostDisplay) unitCostDisplay.innerText = totalItemsProduced > 0 ? Math.ceil(runningGrandTotal / totalItemsProduced).toLocaleString() : "0";
+
         tableBody.querySelectorAll('.price-input').forEach(input => {
             input.addEventListener('input', (e) => {
                 const resName = e.target.getAttribute('data-res');
@@ -383,6 +389,7 @@
                 let newGrand = 0;
                 tableBody.querySelectorAll('.res-cost').forEach(c => newGrand += parseInt(c.innerText.replace(/,/g, '')) || 0);
                 grandTotalDisplay.innerText = newGrand.toLocaleString();
+                if(unitCostDisplay) unitCostDisplay.innerText = totalItemsProduced > 0 ? Math.ceil(newGrand / totalItemsProduced).toLocaleString() : "0";
             });
         });
     }
@@ -441,7 +448,7 @@
                 <div class="calc-input-group"><label>Return %</label><input type="number" id="rrrInput" class="calc-input" value="${returnRate}" step="0.1"></div>
             </div>
             <div id="yieldDisplay" style="font-size:0.75rem;color:var(--blue-grey);margin-bottom:10px;font-weight:bold;"></div>
-            <div class="cosy-block"><table class="calc-table"><thead><tr><th>Resource</th><th>Price/ea</th><th>Raw</th><th>Net</th><th>Total Cost</th></tr></thead><tbody id="calcTableBody"></tbody></table><div class="grand-total">Total Silver: <span id="grandTotalValue" class="grand-val">0</span></div></div>
+            <div class="cosy-block"><table class="calc-table"><thead><tr><th>Resource</th><th>Price/ea</th><th>Raw</th><th id="netLeftHeader">Net</th><th>Total Cost</th></tr></thead><tbody id="calcTableBody"></tbody></table><div class="grand-total">Total Silver: <span id="grandTotalValue" class="grand-val">0</span></div><div class="grand-total" style="border-top: none; padding-top: 5px; margin-top: 0; font-size: 0.95rem; color: #8b949e;">Unit Cost: <span id="unitCostValue" class="grand-val" style="color: var(--silver);">0</span></div></div>
             <h3 class="section-title">${enchantLevel > 0 ? 'Enchanted' : 'Base'} Requirements</h3>
             <div class="enchant-methods-wrapper">
                 ${(activeEnchant ? activeEnchant.craftingMethods : item.baseMethods).map((method, idx) => `<div class="cosy-block"><div class="method-label">CRAFT ${method.amountCrafted > 1 ? `(Yields ${method.amountCrafted})` : ''}</div>${method.resources.map(r => renderRecipeRow(r)).join('')}</div>`).join('')}
