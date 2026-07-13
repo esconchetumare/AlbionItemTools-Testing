@@ -332,22 +332,30 @@
     let allPossibleCats = new Set();
     let currentSort = { col: 'Efficiency', dir: -1 }; 
     let displayLimit = 50;
-    let maxEffGlobal = 0, maxSilEffGlobal = 0;
+    
+    // Updated to track maxInfamyEffGlobal
+    let maxEffGlobal = 0, maxSilEffGlobal = 0, maxInfamyEffGlobal = 0;
 
-    let prefs = JSON.parse(localStorage.getItem('mobPrefsV25')) || {
-        cols: ['Tier', 'Identity', 'True_HP', 'eHP', 'Fame', 'Silver', 'Efficiency', 'Silver Eff.'],
+    // Updated localStorage key to force refresh for new Infamy columns
+    let prefs = JSON.parse(localStorage.getItem('mobPrefsV26')) || {
+        cols: ['Tier', 'Identity', 'True_HP', 'eHP', 'Fame', 'Efficiency', 'Infamy', 'Infamy Eff.'],
         orderedStats: [], enabledCats: [], showSilverDebug: false, showLootDebug: false
     };
 
     const COL_MAP = {
         'Tier': { label: 'T', sort: m => parseInt(m.tier), render: m => `<td>T${m.tier}</td>` },
-        'Identity': { label: 'Name', sort: m => m._displayLabel, render: m => `<td><b>${m._displayLabel}</b><div style="font-size:0.6rem; color:#666">${m.uniquename}</div></td>` },
+        // Updated Identity render
+        'Identity': { label: 'Name', sort: m => m.uniquename, render: m => `<td><b>${m.uniquename}</b></td>` },
         'True_HP': { label: 'HP (Adj)', sort: m => m._trueHP, render: m => `<td>${Math.floor(m._trueHP).toLocaleString()}</td>` },
         'eHP': { label: 'eHP', sort: m => m._trueEHP, render: m => `<td>${Math.floor(m._trueEHP).toLocaleString()}</td>` },
         'Fame': { label: 'Fame', sort: m => m._adjFame, render: m => `<td class="val-fame">${Math.floor(m._adjFame).toLocaleString()}</td>` },
         'Silver': { label: 'Silver', sort: m => m._adjSilver, render: m => `<td>${Math.floor(m._adjSilver).toLocaleString()}${prefs.showSilverDebug ? m._silverDebug : ''}</td>` },
         'Efficiency': { label: 'Fame Eff.', sort: m => m._eff, render: (m, max) => `<td style="color:${getColorScale(m._eff, max)}; font-weight:bold;">${m._eff.toFixed(3)}</td>` },
         'Silver Eff.': { label: 'Silver Eff.', sort: m => m._silEff, render: (m, max) => `<td style="color:${getColorScale(m._silEff, max)}; font-weight:bold;">${m._silEff.toFixed(4)}</td>` },
+        // Added Infamy column
+        'Infamy': { label: 'Infamy', sort: m => m._infamy, render: m => `<td>${Math.floor(m._infamy).toLocaleString()}</td>` },
+        // Added Infamy Efficiency column
+        'Infamy Eff.': { label: 'Infamy Eff.', sort: m => m._infamyEff, render: (m, max) => `<td style="color:${getColorScale(m._infamyEff, max)}; font-weight:bold;">${m._infamyEff.toFixed(4)}</td>` },
         'Faction': { label: 'Faction', sort: m => m.faction, render: m => `<td>${m.faction||'-'}</td>` }
     };
 
@@ -453,7 +461,7 @@
             else m._rank = "std";
 
             const f = (m.faction || "").toUpperCase();
-            m._fClass = f.includes("MORGANA") ? "f-morgana" : f.includes("KEEPER") ? "f-keeper" : f.includes("UNDEAD") ? "f-undead" : f.includes("ROYAL") ? "f-royal" : f.includes("KING") ? "f-king" : "";
+            m._fClass = f.includes("MORGANA") ? "f-morgana" : f.includes("KEEPER") ? "f-keeper" : f.includes("UNDEAD") ? "f-royal" : f.includes("KING") ? "f-king" : "";
             
             const lootNode = mob.getElementsByTagName("Loot")[0];
             m._lootNode = lootNode; 
@@ -504,7 +512,6 @@
     let html = '';
 
     const zoneLootMult = ZONE_DATA[document.getElementById('zoneFilter').value].l;
-    // Added: Premium multiplier for loot (1.5x if active)
     const premiumMult = document.getElementById('premiumToggle').checked ? 1.5 : 1.0;
     const showDebug = prefs.showLootDebug;
 
@@ -531,7 +538,6 @@
             debugStr = `(W:${weight}/TW:${totalWeight})`;
         } else if (child.hasAttribute('chance')) {
             let baseChance = parseFloat(child.getAttribute('chance'));
-            // Updated: Applied premiumMult to the local probability calculation
             localProb = baseChance * zoneLootMult * premiumMult;
             debugStr = `(${baseChance} * Zone:${zoneLootMult} * Prem:${premiumMult})`;
         }
@@ -684,11 +690,17 @@
         const container = document.getElementById('tableBody');
         const slice = currentFilteredData.slice(isAppend ? displayLimit - 50 : 0, displayLimit);
         
+        // Updated column dynamic max checking for color scaling
         const rowsHtml = slice.map((m, i) => {
             const index = (isAppend ? displayLimit - 50 : 0) + i;
             return `
             <tr class="main-row ${m._fClass}" onclick="toggleDetail(${index})">
-                ${prefs.cols.map(c => COL_MAP[c].render(m, c.includes('Silver') ? maxSilEffGlobal : maxEffGlobal)).join('')}
+                ${prefs.cols.map(c => {
+                    let maxVal = maxEffGlobal;
+                    if (c.includes('Silver')) maxVal = maxSilEffGlobal;
+                    if (c.includes('Infamy')) maxVal = maxInfamyEffGlobal;
+                    return COL_MAP[c].render(m, maxVal);
+                }).join('')}
             </tr>
             <tr class="detail-row" id="detail-${index}">
                 <td colspan="${prefs.cols.length}">
@@ -763,7 +775,9 @@
         document.getElementById('z-fame').innerText = `x${z.f}`; document.getElementById('z-loot').innerText = `x${z.l}`;
         document.getElementById('z-silver').innerText = `x${z.s}`; document.getElementById('z-gather').innerText = `x${z.g}`;
         document.getElementById('z-fish').innerText = `x${z.fi}`; document.getElementById('z-stats').innerText = `x${z.b}`;
-        maxEffGlobal = 0; maxSilEffGlobal = 0;
+        
+        // Reset Max Tracking for global table color coding
+        maxEffGlobal = 0; maxSilEffGlobal = 0; maxInfamyEffGlobal = 0;
         
         globalMobData.forEach(m => {
             let yieldStat = (m._hType && harvestLookup[m._hType]) ? (harvestLookup[m._hType][m._hTier] || 1.0) : 1.0;
@@ -774,8 +788,16 @@
             m._silverDebug = `<div style="font-size:0.6rem;color:#666">Logic: T${m._hTier} ${m._hType||'Default'} | Formula: INT(INT(FLOOR(INT(${m._baseSilver}*${yieldStat})*${z.s})*0.9)/1.156*${prem})</div>`;
             m._trueHP = m._baseHP * z.b; m._trueEHP = m._trueHP * (1 + m._avgRes / 100);
             m._adjFame = m._baseFame * z.f * prem;
-            m._eff = m._adjFame / (m._trueEHP || 1); m._silEff = m._adjSilver / (m._trueEHP || 1);
-            if(m._eff > maxEffGlobal) maxEffGlobal = m._eff; if(m._silEff > maxSilEffGlobal) maxSilEffGlobal = m._silEff;
+            m._eff = m._adjFame / (m._trueEHP || 1); 
+            m._silEff = m._adjSilver / (m._trueEHP || 1);
+            
+            // Added Infamy Calculations
+            m._infamy = parseFloat(m.infamy) || 0;
+            m._infamyEff = m._trueEHP > 0 ? (m._infamy / m._trueEHP) : 0;
+
+            if(m._eff > maxEffGlobal) maxEffGlobal = m._eff; 
+            if(m._silEff > maxSilEffGlobal) maxSilEffGlobal = m._silEff;
+            if(m._infamyEff > maxInfamyEffGlobal) maxInfamyEffGlobal = m._infamyEff;
         });
         
         const ranks = { 
@@ -823,7 +845,7 @@
     function toggleCol(c) { prefs.cols = prefs.cols.includes(c) ? prefs.cols.filter(x => x!==c) : [...prefs.cols, c]; save(); }
     function toggleCat(cat) { prefs.enabledCats = prefs.enabledCats.includes(cat) ? prefs.enabledCats.filter(x => x!==cat) : [...prefs.enabledCats, cat]; save(); }
     function toggleStat(s) { prefs.orderedStats = prefs.orderedStats.includes(s) ? prefs.orderedStats.filter(x => x !== s) : [...prefs.orderedStats, s]; save(); }
-    function save() { localStorage.setItem('mobPrefsV25', JSON.stringify(prefs)); render(); }
+    function save() { localStorage.setItem('mobPrefsV26', JSON.stringify(prefs)); render(); }
     function setSort(c) { if(currentSort.col === c) currentSort.dir *= -1; else { currentSort.col = c; currentSort.dir = -1; } render(); }
     function setupTierFilter() { const tiers = [...new Set(globalMobData.map(m => m.tier))].sort(); document.getElementById('tierFilter').innerHTML = '<option value="all">All Tiers</option>' + tiers.map(t => `<option value="${t}">T${t}</option>`).join(''); }
     function showTab(t) { document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = 'none'); document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active')); document.getElementById(t + 'Tab').style.display = 'block'; event.currentTarget.classList.add('active'); }
