@@ -697,9 +697,10 @@
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const targetId = urlParams.get('id');
+        const targetEnch = urlParams.get('ench');
         
         if (targetId) {
-            // 1. Find the search box and inject the ID
+            // 1. Inject the Base ID into the search box
             const searchBox = document.querySelector('input[type="text"]');
             if (searchBox) {
                 searchBox.value = targetId;
@@ -707,30 +708,58 @@
                 searchBox.dispatchEvent(new Event('change', { bubbles: true }));
             }
 
-            // 2. Setup a repeating check to wait for the table to populate, then click the item
+            // 2. Dual-Phase Polling (Find Item -> Find Enchantment)
             let attempts = 0;
+            let itemClicked = false;
+            
             const tryClick = setInterval(() => {
                 attempts++;
                 
-                // Grab all table rows or list items. 
-                // (If Itemxary uses a specific class for its rows, you can add it to this list)
-                const rows = document.querySelectorAll('tr, .item-row, .list-item, .search-result');
-                let clicked = false;
-
-                for (let row of rows) {
-                    // Check if this row contains the ID, and make sure it isn't the table header
-                    if (row.textContent.includes(targetId) && !row.closest('thead')) {
-                        row.click();
-                        clicked = true;
-                        break; // Stop looking once we find and click it
+                // PHASE 1: Click the main item in the search list
+                if (!itemClicked) {
+                    const rows = document.querySelectorAll('tr, .item-row, .list-item, .search-result');
+                    for (let row of rows) {
+                        // Check if this row contains the ID and isn't a table header
+                        if (row.textContent.includes(targetId) && !row.closest('thead')) {
+                            row.click();
+                            itemClicked = true;
+                            break;
+                        }
+                    }
+                }
+                
+                // PHASE 2: Click the enchantment tab in the main frame
+                if (itemClicked) {
+                    if (targetEnch && targetEnch !== "0") {
+                        // Look for elements that might be the tab (buttons, spans, divs)
+                        const clickableElements = document.querySelectorAll('button, .tab, .enchant-btn, span, div');
+                        let enchClicked = false;
+                        
+                        for (let el of clickableElements) {
+                            // Check if the text matches exactly ".1", ".2", etc.
+                            const txt = el.textContent.trim();
+                            if (txt === `.${targetEnch}` || txt === `. ${targetEnch}`) {
+                                el.click();
+                                enchClicked = true;
+                                break;
+                            }
+                        }
+                        
+                        // If we clicked the enchantment, we are done!
+                        if (enchClicked || attempts > 20) {
+                            clearInterval(tryClick);
+                        }
+                    } else {
+                        // If there is no enchantment (ench=0), stop polling after Phase 1
+                        clearInterval(tryClick);
                     }
                 }
 
-                // Stop the interval if we successfully clicked it, or if it times out (2 seconds max)
-                if (clicked || attempts > 20) {
+                // Failsafe: Stop looking entirely after 3 seconds so it doesn't loop infinitely
+                if (attempts > 30) {
                     clearInterval(tryClick);
                 }
-            }, 100); // Check every 100ms
+            }, 100);
         }
     });
 </script>
