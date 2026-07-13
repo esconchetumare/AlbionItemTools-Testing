@@ -693,5 +693,46 @@
         }
     });
 </script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetId = urlParams.get('id');
+        
+        if (targetId) {
+            // 1. Find the search box and inject the ID
+            const searchBox = document.querySelector('input[type="text"]');
+            if (searchBox) {
+                searchBox.value = targetId;
+                searchBox.dispatchEvent(new Event('input', { bubbles: true }));
+                searchBox.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
+            // 2. Setup a repeating check to wait for the table to populate, then click the item
+            let attempts = 0;
+            const tryClick = setInterval(() => {
+                attempts++;
+                
+                // Grab all table rows or list items. 
+                // (If Itemxary uses a specific class for its rows, you can add it to this list)
+                const rows = document.querySelectorAll('tr, .item-row, .list-item, .search-result');
+                let clicked = false;
+
+                for (let row of rows) {
+                    // Check if this row contains the ID, and make sure it isn't the table header
+                    if (row.textContent.includes(targetId) && !row.closest('thead')) {
+                        row.click();
+                        clicked = true;
+                        break; // Stop looking once we find and click it
+                    }
+                }
+
+                // Stop the interval if we successfully clicked it, or if it times out (2 seconds max)
+                if (clicked || attempts > 20) {
+                    clearInterval(tryClick);
+                }
+            }, 100); // Check every 100ms
+        }
+    });
+</script>
 </body>
 </html>
