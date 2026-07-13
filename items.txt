@@ -1,1002 +1,1002 @@
-UNIQUE_HIDEOUT                                                   : Hideout Construction Kit
-T3_2H_TOOL_TRACKING                                              : Journeyman's Tracking Toolkit
-T4_2H_TOOL_TRACKING                                              : Adept's Tracking Toolkit
-T5_2H_TOOL_TRACKING                                              : Expert's Tracking Toolkit
-T6_2H_TOOL_TRACKING                                              : Master's Tracking Toolkit
-T7_2H_TOOL_TRACKING                                              : Grandmaster's Tracking Toolkit
-T8_2H_TOOL_TRACKING                                              : Elder's Tracking Toolkit
-T1_FARM_CARROT_SEED                                              : Carrot Seeds
-T2_FARM_BEAN_SEED                                                : Bean Seeds
-T3_FARM_WHEAT_SEED                                               : Wheat Seeds
-T4_FARM_TURNIP_SEED                                              : Turnip Seeds
-T5_FARM_CABBAGE_SEED                                             : Cabbage Seeds
-T6_FARM_POTATO_SEED                                              : Potato Seeds
-T7_FARM_CORN_SEED                                                : Corn Seeds
-T8_FARM_PUMPKIN_SEED                                             : Pumpkin Seeds
-T2_FARM_AGARIC_SEED                                              : Arcane Agaric Seeds
-T3_FARM_COMFREY_SEED                                             : Brightleaf Comfrey Seeds
-T4_FARM_BURDOCK_SEED                                             : Crenellated Burdock Seeds
-T5_FARM_TEASEL_SEED                                              : Dragon Teasel Seeds
-T6_FARM_FOXGLOVE_SEED                                            : Elusive Foxglove Seeds
-T7_FARM_MULLEIN_SEED                                             : Firetouched Mullein Seeds
-T8_FARM_YARROW_SEED                                              : Ghoul Yarrow Seeds
-T3_FARM_OX_BABY                                                  : Journeyman's Ox Calf
-T4_FARM_OX_BABY                                                  : Adept's Ox Calf
-T5_FARM_OX_BABY                                                  : Expert's Ox Calf
-T6_FARM_OX_BABY                                                  : Master's Ox Calf
-T7_FARM_OX_BABY                                                  : Grandmaster's Ox Calf
-T8_FARM_OX_BABY                                                  : Elder's Ox Calf
-T3_FARM_OX_GROWN                                                 : Journeyman's Ox
-T4_FARM_OX_GROWN                                                 : Adept's Ox
-T5_FARM_OX_GROWN                                                 : Expert's Ox
-T6_FARM_OX_GROWN                                                 : Master's Ox
-T7_FARM_OX_GROWN                                                 : Grandmaster's Ox
-T8_FARM_OX_GROWN                                                 : Elder's Ox
-T3_FARM_HORSE_BABY                                               : Journeyman's Foal
-T4_FARM_HORSE_BABY                                               : Adept's Foal
-T5_FARM_HORSE_BABY                                               : Expert's Foal
-T6_FARM_HORSE_BABY                                               : Master's Foal
-T7_FARM_HORSE_BABY                                               : Grandmaster's Foal
-T8_FARM_HORSE_BABY                                               : Elder's Foal
-T3_FARM_HORSE_GROWN                                              : Journeyman's Horse
-T4_FARM_HORSE_GROWN                                              : Adept's Horse
-T5_FARM_HORSE_GROWN                                              : Expert's Horse
-T6_FARM_HORSE_GROWN                                              : Master's Horse
-T7_FARM_HORSE_GROWN                                              : Grandmaster's Horse
-T8_FARM_HORSE_GROWN                                              : Elder's Horse
-T6_FARM_DIREWOLF_BABY                                            : Direwolf Pup
-T7_FARM_DIREBOAR_BABY                                            : Direboar Piglet
-T8_FARM_DIREBEAR_BABY                                            : Direbear Cub
-T7_FARM_SWAMPDRAGON_BABY                                         : Swamp Dragon Pup
-T8_FARM_MAMMOTH_BABY                                             : Mammoth Calf
-T5_FARM_COUGAR_BABY                                              : Swiftclaw Cub
-T8_FARM_DIREWOLF_BABY                                            : Ghostwolf Pup
-T4_FARM_GIANTSTAG_BABY                                           : Adept's Fawn
-T6_FARM_GIANTSTAG_BABY                                           : Master's Fawn
-T6_FARM_GIANTSTAG_MOOSE_BABY                                     : Moose Calf
-T8_FARM_RABBIT_EASTER_BABY                                       : Vibrant Spring Cottontail Egg
-T8_FARM_RABBIT_EASTER_BABY_DARK                                  : Eerie Cottontail Egg
-T8_FARM_RABBIT_EASTER_GROWN                                      : Tame Spring Cottontail
-T8_FARM_RABBIT_EASTER_GROWN_DARK                                 : "Tame" Caerleon Cottontail
-T5_FARM_MOABIRD_FW_BRIDGEWATCH_BABY                              : Baby Moabird
-T5_FARM_DIREBEAR_FW_FORTSTERLING_BABY                            : Winter Bear Cub
-T5_FARM_DIREBOAR_FW_LYMHURST_BABY                                : Wild Boarlet
-T5_FARM_RAM_FW_MARTLOCK_BABY                                     : Bighorn Ram Lamb
-T5_FARM_SWAMPDRAGON_FW_THETFORD_BABY                             : Baby Swamp Salamander
-T5_FARM_GREYWOLF_FW_CAERLEON_BABY                                : Caerleon Greywolf Pup
-T5_FARM_OWL_FW_BRECILIEN_BABY                                    : Mystic Owlet
-T5_FARM_SPIDER_HELL_BABY                                         : Hellspinner Baby
-T8_FARM_MOABIRD_FW_BRIDGEWATCH_BABY                              : Baby Elite Terrorbird
-T8_FARM_DIREBEAR_FW_FORTSTERLING_BABY                            : Elite Winter Bear Cub
-T8_FARM_DIREBOAR_FW_LYMHURST_BABY                                : Elite Wild Boarlet
-T8_FARM_RAM_FW_MARTLOCK_BABY                                     : Elite Bighorn Ram Lamb
-T8_FARM_SWAMPDRAGON_FW_THETFORD_BABY                             : Baby Elite Swamp Salamander
-T8_FARM_GREYWOLF_FW_CAERLEON_BABY                                : Elite Greywolf Pup
-T8_FARM_OWL_FW_BRECILIEN_BABY                                    : Elite Mystic Owlet
-T8_FARM_SPIDER_HELL_BABY                                         : Soulspinner Baby
-T6_FARM_DIREWOLF_GROWN                                           : Tame Direwolf
-T7_FARM_DIREBOAR_GROWN                                           : Tame Direboar
-T8_FARM_DIREBEAR_GROWN                                           : Tame Direbear
-T7_FARM_SWAMPDRAGON_GROWN                                        : Tame Swamp Dragon
-T8_FARM_MAMMOTH_GROWN                                            : Tame Mammoth
-T5_FARM_COUGAR_GROWN                                             : Tame Swiftclaw
-T8_FARM_DIREWOLF_GROWN                                           : Tame Ghostwolf
-T4_FARM_GIANTSTAG_GROWN                                          : Adept's Tame Giant Stag
-T6_FARM_GIANTSTAG_GROWN                                          : Master's Tame Giant Stag
-T6_FARM_GIANTSTAG_MOOSE_GROWN                                    : Tame Moose
-T5_FARM_MOABIRD_FW_BRIDGEWATCH_GROWN                             : Tame Moabird
-T5_FARM_DIREBEAR_FW_FORTSTERLING_GROWN                           : Tame Winter Bear
-T5_FARM_DIREBOAR_FW_LYMHURST_GROWN                               : Tame Wild Boar
-T5_FARM_RAM_FW_MARTLOCK_GROWN                                    : Tame Bighorn Ram
-T5_FARM_SWAMPDRAGON_FW_THETFORD_GROWN                            : Tame Swamp Salamander
-T5_FARM_GREYWOLF_FW_CAERLEON_GROWN                               : Tame Greywolf
-T5_FARM_OWL_FW_BRECILIEN_GROWN                                   : Tame Mystic Owl
-T5_FARM_SPIDER_HELL_GROWN                                        : Tame Hellspinner
-T8_FARM_MOABIRD_FW_BRIDGEWATCH_GROWN                             : Tame Elite Terrorbird
-T8_FARM_DIREBEAR_FW_FORTSTERLING_GROWN                           : Tame Elite Winter Bear
-T8_FARM_DIREBOAR_FW_LYMHURST_GROWN                               : Tame Elite Wild Boar
-T8_FARM_RAM_FW_MARTLOCK_GROWN                                    : Tame Elite Bighorn Ram
-T8_FARM_SWAMPDRAGON_FW_THETFORD_GROWN                            : Tame Elite Swamp Salamander
-T8_FARM_GREYWOLF_FW_CAERLEON_GROWN                               : Tame Elite Greywolf
-T8_FARM_OWL_FW_BRECILIEN_GROWN                                   : Tame Elite Mystic Owl
-T8_FARM_SPIDER_HELL_GROWN                                        : Tame Soulspinner
-T3_FARM_CHICKEN_BABY                                             : Baby Chickens
-T4_FARM_GOAT_BABY                                                : Kid
-T5_FARM_GOOSE_BABY                                               : Gosling
-T6_FARM_SHEEP_BABY                                               : Lamb
-T7_FARM_PIG_BABY                                                 : Piglet
-T8_FARM_COW_BABY                                                 : Calf
-T3_FARM_CHICKEN_GROWN                                            : Chicken
-T4_FARM_GOAT_GROWN                                               : Goat
-T5_FARM_GOOSE_GROWN                                              : Goose
-T6_FARM_SHEEP_GROWN                                              : Sheep
-T7_FARM_PIG_GROWN                                                : Pig
-T8_FARM_COW_GROWN                                                : Cow
-T6_MOUNTUPGRADE_GIANTSTAG_XMAS                                   : Decorative Stag Bridle
-UNIQUE_MOUNTUPGRADE_RAM_XMAS                                     : Decorative Ram Bridle
-T5_MOUNTUPGRADE_HORSE_CURSE                                      : Necromantic Elixir
-T8_MOUNTUPGRADE_HORSE_CURSE                                      : Spectral Mask
-T8_MOUNTUPGRADE_COUGAR_KEEPER                                    : Sacred Bone Marrow
-T5_MOUNTUPGRADE_HORSE_MORGANA                                    : Morgana Mare Saddle
-T8_MOUNTUPGRADE_HORSE_MORGANA                                    : Infernal Horseshoes
-T1_CARROT                                                        : Carrots
-T2_BEAN                                                          : Beans
-T3_WHEAT                                                         : Sheaf of Wheat
-T4_TURNIP                                                        : Turnips
-T5_CABBAGE                                                       : Cabbage
-T6_POTATO                                                        : Potatoes
-T7_CORN                                                          : Bundle of Corn
-T8_PUMPKIN                                                       : Pumpkin
-T2_AGARIC                                                        : Arcane Agaric
-T3_COMFREY                                                       : Brightleaf Comfrey
-T4_BURDOCK                                                       : Crenellated Burdock
-T5_TEASEL                                                        : Dragon Teasel
-T6_FOXGLOVE                                                      : Elusive Foxglove
-T7_MULLEIN                                                       : Firetouched Mullein
-T8_YARROW                                                        : Ghoul Yarrow
-T3_EGG                                                           : Hen Eggs
-T4_MILK                                                          : Goat's Milk
-T5_EGG                                                           : Goose Eggs
-T6_MILK                                                          : Sheep's Milk
-T8_MILK                                                          : Cow's Milk
-T1_FISH_FRESHWATER_ALL_COMMON                                    : Common Rudd
-T2_FISH_FRESHWATER_ALL_COMMON                                    : Striped Carp
-T3_FISH_FRESHWATER_ALL_COMMON                                    : Albion Perch
-T4_FISH_FRESHWATER_ALL_COMMON                                    : Bluescale Pike
-T5_FISH_FRESHWATER_ALL_COMMON                                    : Spotted Trout
-T6_FISH_FRESHWATER_ALL_COMMON                                    : Brightscale Zander
-T7_FISH_FRESHWATER_ALL_COMMON                                    : Danglemouth Catfish
-T8_FISH_FRESHWATER_ALL_COMMON                                    : River Sturgeon
-T1_FISH_SALTWATER_ALL_COMMON                                     : Common Herring
-T2_FISH_SALTWATER_ALL_COMMON                                     : Striped Mackerel
-T3_FISH_SALTWATER_ALL_COMMON                                     : Flatshore Plaice
-T4_FISH_SALTWATER_ALL_COMMON                                     : Bluescale Cod
-T5_FISH_SALTWATER_ALL_COMMON                                     : Spotted Wolffish
-T6_FISH_SALTWATER_ALL_COMMON                                     : Strongfin Salmon
-T7_FISH_SALTWATER_ALL_COMMON                                     : Bluefin Tuna
-T8_FISH_SALTWATER_ALL_COMMON                                     : Steelscale Swordfish
-T3_FISH_FRESHWATER_FOREST_RARE                                   : Greenriver Eel
-T5_FISH_FRESHWATER_FOREST_RARE                                   : Redspring Eel
-T7_FISH_FRESHWATER_FOREST_RARE                                   : Deadwater Eel
-T3_FISH_FRESHWATER_MOUNTAIN_RARE                                 : Upland Coldeye
-T5_FISH_FRESHWATER_MOUNTAIN_RARE                                 : Mountain Blindeye
-T7_FISH_FRESHWATER_MOUNTAIN_RARE                                 : Frostpeak Deadeye
-T3_FISH_FRESHWATER_HIGHLANDS_RARE                                : Stonestream Lurcher
-T5_FISH_FRESHWATER_HIGHLANDS_RARE                                : Rushwater Lurcher
-T7_FISH_FRESHWATER_HIGHLANDS_RARE                                : Thunderfall Lurcher
-T3_FISH_FRESHWATER_STEPPE_RARE                                   : Lowriver Crab
-T5_FISH_FRESHWATER_STEPPE_RARE                                   : Drybrook Crab
-T7_FISH_FRESHWATER_STEPPE_RARE                                   : Dusthole Crab
-T3_FISH_FRESHWATER_SWAMP_RARE                                    : Greenmoor Clam
-T5_FISH_FRESHWATER_SWAMP_RARE                                    : Murkwater Clam
-T7_FISH_FRESHWATER_SWAMP_RARE                                    : Blackbog Clam
-T3_FISH_SALTWATER_ALL_RARE                                       : Shallowshore Squid
-T5_FISH_SALTWATER_ALL_RARE                                       : Midwater Octopus
-T7_FISH_SALTWATER_ALL_RARE                                       : Deepwater Kraken
-T3_FISH_FRESHWATER_AVALON_RARE                                   : Whitefog Snapper
-T5_FISH_FRESHWATER_AVALON_RARE                                   : Clearhaze Snapper
-T7_FISH_FRESHWATER_AVALON_RARE                                   : Puremist Snapper
-T1_SEAWEED                                                       : Seaweed
-T8_FISH_SALTWATER_ALL_BOSS_SHARK                                 : Shark
-T1_FISHCHOPS                                                     : Chopped Fish
-T1_FISHSAUCE_LEVEL1                                              : Basic Fish Sauce
-T1_FISHSAUCE_LEVEL2                                              : Fancy Fish Sauce
-T1_FISHSAUCE_LEVEL3                                              : Special Fish Sauce
-TREASURE_KNOWLEDGE_RARITY1                                       : Corrupted Scroll
-TREASURE_KNOWLEDGE_RARITY2                                       : Thin Booklet
-TREASURE_KNOWLEDGE_RARITY3                                       : Ancient Tome
-TREASURE_SILVERWARE_RARITY1                                      : Silver Cup
-TREASURE_SILVERWARE_RARITY2                                      : Silver Mirror
-TREASURE_SILVERWARE_RARITY3                                      : Silver Candelabrum
-TREASURE_DECORATIVE_RARITY1                                      : Simple Stone Toy
-TREASURE_DECORATIVE_RARITY2                                      : Stone Mask
-TREASURE_DECORATIVE_RARITY3                                      : Stone Idol
-TREASURE_CEREMONIAL_RARITY1                                      : Ornamental Scepter
-TREASURE_CEREMONIAL_RARITY2                                      : Globus Cruciger
-TREASURE_CEREMONIAL_RARITY3                                      : Golden Crown
-TREASURE_TRIBAL_RARITY1                                          : Feather Talisman
-TREASURE_TRIBAL_RARITY2                                          : Dreamcatcher
-TREASURE_TRIBAL_RARITY3                                          : Holy Fetish
-TREASURE_RITUAL_RARITY1                                          : Ritual Candles
-TREASURE_RITUAL_RARITY2                                          : Blood Chalice
-TREASURE_RITUAL_RARITY3                                          : Sacrificial Dagger
-TREASURE_AVALON_RARITY1                                          : Golden Frame
-TREASURE_AVALON_RARITY2                                          : Golden Gyroscope
-TREASURE_AVALON_RARITY3                                          : Golden Sextant
-QUESTITEM_TUTORIAL_HERETIC_PLANS                                 
-QUESTITEM_TRANSFER_LETTER                                        : Letter of Transfer
-QUESTITEM_LIGHT_BLUEPRINTS                                       : Delivery: Blueprints
-QUESTITEM_LIGHT_MANUSCRIPTS                                      : Delivery: Artistic Manuscripts
-QUESTITEM_LIGHT_SURVEYS                                          : Delivery: Geomantic Surveys
-QUESTITEM_HEAVY_MORTAR                                           : Delivery: Mortar
-QUESTITEM_HEAVY_CRATE                                            : Delivery: Crates
-QUESTITEM_HEAVY_BARREL                                           : Delivery: Barrels
-QUESTITEM_LIGHT_FUR                                              : Delivery: Heavy Fur
-QUESTITEM_LIGHT_THEPACKAGE                                       : Delivery: "The Package"
-QUESTITEM_LIGHT_PATROLROUTE                                      : Delivery: Patrol Route
-QUESTITEM_HEAVY_MOONSHINE                                        : Delivery: Geoff the Brigand's All-Natural Enriched Moonshine
-QUESTITEM_LIGHT_KITTENS                                          : Delivery: Sack of Kittens
-QUESTITEM_LIGHT_BEES                                             : Delivery: Beehives
-QUESTITEM_LIGHT_OLDCLOTHES                                       : Delivery: Old Clothes
-QUESTITEM_HEAVY_FARMTOOLS                                        : Delivery: Farmyard Tools
-QUESTITEM_HEAVY_MANURE                                           : Delivery: Pile of Manure
-QUESTITEM_LIGHT_ASSASSINATION                                    : Delivery: Assassination Order
-QUESTITEM_LIGHT_CASUALTIES                                       : Delivery: Casualty Report
-QUESTITEM_LIGHT_RINGS                                            : Delivery: Regimental Rings
-QUESTITEM_HEAVY_MEDICAL                                          : Delivery: Medical Supplies
-QUESTITEM_HEAVY_FIREBARREL                                       : Delivery: Sensitive Barrels
-QUESTITEM_CARAVAN_TRADEPACK_CAERLEON_LIGHT                       
-QUESTITEM_CARAVAN_TRADEPACK_CAERLEON_MEDIUM                      
-QUESTITEM_CARAVAN_TRADEPACK_CAERLEON_HEAVY                       
-QUESTITEM_CARAVAN_TRADEPACK_SWAMP_LIGHT                          
-QUESTITEM_CARAVAN_TRADEPACK_SWAMP_MEDIUM                         
-QUESTITEM_CARAVAN_TRADEPACK_SWAMP_HEAVY                          
-QUESTITEM_CARAVAN_TRADEPACK_FOREST_LIGHT                         
-QUESTITEM_CARAVAN_TRADEPACK_FOREST_MEDIUM                        
-QUESTITEM_CARAVAN_TRADEPACK_FOREST_HEAVY                         
-QUESTITEM_CARAVAN_TRADEPACK_STEPPE_LIGHT                         
-QUESTITEM_CARAVAN_TRADEPACK_STEPPE_MEDIUM                        
-QUESTITEM_CARAVAN_TRADEPACK_STEPPE_HEAVY                         
-QUESTITEM_CARAVAN_TRADEPACK_HIGHLAND_LIGHT                       
-QUESTITEM_CARAVAN_TRADEPACK_HIGHLAND_MEDIUM                      
-QUESTITEM_CARAVAN_TRADEPACK_HIGHLAND_HEAVY                       
-QUESTITEM_CARAVAN_TRADEPACK_MOUNTAIN_LIGHT                       
-QUESTITEM_CARAVAN_TRADEPACK_MOUNTAIN_MEDIUM                      
-QUESTITEM_CARAVAN_TRADEPACK_MOUNTAIN_HEAVY                       
-QUESTITEM_TOKEN_ARENA_UNRANKED                                   : Arena Sigil
-QUESTITEM_TOKEN_ARENA_CRYSTAL                                    
-QUESTITEM_TOKEN_AVALON                                           : Avalonian Energy
-QUESTITEM_TOKEN_MISTS                                            : Faerie Fire
-QUESTITEM_TOKEN_SMUGGLER                                         : Smuggler's Coin
-QUESTITEM_STANDING_SMUGGLER                                      : Buy a round
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_WINTER_EVENT                   
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_UNDEAD_RECRUITMENT             
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_UNDEAD_RECRUITMENT            
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_KEEPER_STONEWARS               
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_KEEPER_STONEWARS              
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_HERETIC_LUMBERCAMP             
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_HERETIC_LUMBERCAMP            
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_KEEPER_MUSHROOM                
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_KEEPER_MUSHROOM               
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_MORGANA_TRHEESISTERS           
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_MORGANA_TRHEESISTERS          
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
-QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_MORGANA_TORTURER               
-QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_MORGANA_TORTURER              
-QUESTITEM_TOKEN_ROYAL_HORSE                                      : Royal Horse Token
-QUESTITEM_TOKEN_ROYAL_T4                                         : Adept's Royal Sigil
-QUESTITEM_TOKEN_ROYAL_T5                                         : Expert's Royal Sigil
-QUESTITEM_TOKEN_ROYAL_T6                                         : Master's Royal Sigil
-QUESTITEM_TOKEN_ROYAL_T7                                         : Grandmaster's Royal Sigil
-QUESTITEM_TOKEN_ROYAL_T8                                         : Elder's Royal Sigil
-QUESTITEM_TOKEN_KEEPER                                           : Keeper Totem
-QUESTITEM_TOKEN_MORGANA                                          : Morgana's Favor
-QUESTITEM_TOKEN_UNDEAD                                           : Undead Knucklebone
-QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017                             : Pumpkin Pip
-QUESTITEM_TOKEN_EVENT_EASTER_2018                                : Fool's Golden Egg
-QUESTITEM_TOKEN_ADC_FRAME                                        : Adventurer Token
-T4_SKILLBOOK_GATHER_FIBER                                        : Adept Fiber Harvester Tome
-T5_SKILLBOOK_GATHER_FIBER                                        : Expert Fiber Harvester Tome
-T6_SKILLBOOK_GATHER_FIBER                                        : Master Fiber Harvester Tome
-T7_SKILLBOOK_GATHER_FIBER                                        : Grandmaster Fiber Harvester Tome
-T8_SKILLBOOK_GATHER_FIBER                                        : Elder Fiber Harvester Tome
-T4_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
-T5_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
-T6_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
-T7_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
-T8_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
-T4_SKILLBOOK_GATHER_HIDE                                         : Adept Animal Skinner Tome
-T5_SKILLBOOK_GATHER_HIDE                                         : Expert Animal Skinner Tome
-T6_SKILLBOOK_GATHER_HIDE                                         : Master Animal Skinner Tome
-T7_SKILLBOOK_GATHER_HIDE                                         : Grandmaster Animal Skinner Tome
-T8_SKILLBOOK_GATHER_HIDE                                         : Elder Animal Skinner Tome
-T4_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
-T5_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
-T6_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
-T7_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
-T8_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
-T4_SKILLBOOK_GATHER_ORE                                          : Adept Ore Miner Tome
-T5_SKILLBOOK_GATHER_ORE                                          : Expert Ore Miner Tome
-T6_SKILLBOOK_GATHER_ORE                                          : Master Ore Miner Tome
-T7_SKILLBOOK_GATHER_ORE                                          : Grandmaster Ore Miner Tome
-T8_SKILLBOOK_GATHER_ORE                                          : Elder Ore Miner Tome
-T4_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
-T5_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
-T6_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
-T7_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
-T8_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
-T4_SKILLBOOK_GATHER_ROCK                                         : Adept Quarrier Tome
-T5_SKILLBOOK_GATHER_ROCK                                         : Expert Quarrier Tome
-T6_SKILLBOOK_GATHER_ROCK                                         : Master Quarrier Tome
-T7_SKILLBOOK_GATHER_ROCK                                         : Grandmaster Quarrier Tome
-T8_SKILLBOOK_GATHER_ROCK                                         : Elder Quarrier Tome
-T4_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
-T5_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
-T6_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
-T7_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
-T8_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
-T4_SKILLBOOK_GATHER_WOOD                                         : Adept Lumberjack Tome
-T5_SKILLBOOK_GATHER_WOOD                                         : Expert Lumberjack Tome
-T6_SKILLBOOK_GATHER_WOOD                                         : Master Lumberjack Tome
-T7_SKILLBOOK_GATHER_WOOD                                         : Grandmaster Lumberjack Tome
-T8_SKILLBOOK_GATHER_WOOD                                         : Elder Lumberjack Tome
-T4_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
-T5_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
-T6_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
-T7_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
-T8_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
-T4_SKILLBOOK_STANDARD                                            : Adept's Tome of Insight
-T1_SKILLBOOK_NONTRADABLE                                         : Beginner's Tome of Insight
-T2_SKILLBOOK_NONTRADABLE                                         : Novice's Tome of Insight
-T3_SKILLBOOK_NONTRADABLE                                         : Journeyman's Tome of Insight
-T4_SKILLBOOK_NONTRADABLE                                         : Adept's Tome of Insight
-T5_SKILLBOOK_NONTRADABLE                                         : Expert's Tome of Insight
-T6_SKILLBOOK_NONTRADABLE                                         : Master's Tome of Insight
-T7_SKILLBOOK_NONTRADABLE                                         : Grandmaster's Tome of Insight
-T8_SKILLBOOK_NONTRADABLE                                         : Elder's Tome of Insight
-T8_CONSUMABLE_SPECIAL_NONTRADABLE@1                              
-T1_LEARNINGPOINTS_NONTRADABLE                                    : Beginner's Tome of Learning
-T2_LEARNINGPOINTS_NONTRADABLE                                    : Novice's Tome of Learning
-T3_LEARNINGPOINTS_NONTRADABLE                                    : Journeyman's Tome of Learning
-T4_LEARNINGPOINTS_NONTRADABLE                                    : Adept's Tome of Learning
-T5_LEARNINGPOINTS_NONTRADABLE                                    : Expert's Tome of Learning
-T6_LEARNINGPOINTS_NONTRADABLE                                    : Master's Tome of Learning
-T7_LEARNINGPOINTS_NONTRADABLE                                    : Grandmaster's Tome of Learning
-T8_LEARNINGPOINTS_NONTRADABLE                                    : Elder's Tome of Learning
-T3_PREMIUMITEM_3_NONTRADABLE                                     : Three Days of Premium
-T1_SILVERBAG_NONTRADABLE                                         : Beginner's Bag of Silver
-T2_SILVERBAG_NONTRADABLE                                         : Novice's Bag of Silver
-T3_SILVERBAG_NONTRADABLE                                         : Journeyman's Bag of Silver
-T4_SILVERBAG_NONTRADABLE                                         : Adept's Bag of Silver
-T5_SILVERBAG_NONTRADABLE                                         : Expert's Bag of Silver
-T6_SILVERBAG_NONTRADABLE                                         : Master's Bag of Silver
-T7_SILVERBAG_NONTRADABLE                                         : Grandmaster's Bag of Silver
-T8_SILVERBAG_NONTRADABLE                                         : Elder's Bag of Silver
-UNIQUE_FOCUSPOTION_TUTORIAL_01                                   
-T3_FOCUSPOTION_NONTRADABLE                                       : Journeyman's Focus Restoration Potion
-T4_FOCUSPOTION_NONTRADABLE                                       : Adept's Focus Restoration Potion
-T5_FOCUSPOTION_NONTRADABLE                                       : Expert's Focus Restoration Potion
-T6_FOCUSPOTION_NONTRADABLE                                       : Master's Focus Restoration Potion
-UNIQUE_FOCUSPOTION_ADC_NONTRADABLE_01                            : Focus Restoration Potion
-T8_FOCUSPOTION_NONTRADABLE                                       : Elder's Focus Restoration Potion
-UNIQUE_FOCUSPOTION_ADC_GENERAL_01                                
-T2_POTION_HEAL                                                   : Minor Healing Potion
-T2_POTION_HEAL@1                                                 : Minor Healing Potion
-T2_POTION_HEAL@2                                                 : Minor Healing Potion
-T2_POTION_HEAL@3                                                 : Minor Healing Potion
-T4_POTION_HEAL                                                   : Healing Potion
-T4_POTION_HEAL@1                                                 : Healing Potion
-T4_POTION_HEAL@2                                                 : Healing Potion
-T4_POTION_HEAL@3                                                 : Healing Potion
-T6_POTION_HEAL                                                   : Major Healing Potion
-T6_POTION_HEAL@1                                                 : Major Healing Potion
-T6_POTION_HEAL@2                                                 : Major Healing Potion
-T6_POTION_HEAL@3                                                 : Major Healing Potion
-T2_POTION_ENERGY                                                 : Minor Energy Potion
-T2_POTION_ENERGY@1                                               : Minor Energy Potion
-T2_POTION_ENERGY@2                                               : Minor Energy Potion
-T2_POTION_ENERGY@3                                               : Minor Energy Potion
-T4_POTION_ENERGY                                                 : Energy Potion
-T4_POTION_ENERGY@1                                               : Energy Potion
-T4_POTION_ENERGY@2                                               : Energy Potion
-T4_POTION_ENERGY@3                                               : Energy Potion
-T6_POTION_ENERGY                                                 : Major Energy Potion
-T6_POTION_ENERGY@1                                               : Major Energy Potion
-T6_POTION_ENERGY@2                                               : Major Energy Potion
-T6_POTION_ENERGY@3                                               : Major Energy Potion
-T3_POTION_REVIVE                                                 : Minor Gigantify Potion
-T3_POTION_REVIVE@1                                               : Minor Gigantify Potion
-T3_POTION_REVIVE@2                                               : Minor Gigantify Potion
-T3_POTION_REVIVE@3                                               : Minor Gigantify Potion
-T5_POTION_REVIVE                                                 : Gigantify Potion
-T5_POTION_REVIVE@1                                               : Gigantify Potion
-T5_POTION_REVIVE@2                                               : Gigantify Potion
-T5_POTION_REVIVE@3                                               : Gigantify Potion
-T7_POTION_REVIVE                                                 : Major Gigantify Potion
-T7_POTION_REVIVE@1                                               : Major Gigantify Potion
-T7_POTION_REVIVE@2                                               : Major Gigantify Potion
-T7_POTION_REVIVE@3                                               : Major Gigantify Potion
-T3_POTION_STONESKIN                                              : Minor Resistance Potion
-T3_POTION_STONESKIN@1                                            : Minor Resistance Potion
-T3_POTION_STONESKIN@2                                            : Minor Resistance Potion
-T3_POTION_STONESKIN@3                                            : Minor Resistance Potion
-T5_POTION_STONESKIN                                              : Resistance Potion
-T5_POTION_STONESKIN@1                                            : Resistance Potion
-T5_POTION_STONESKIN@2                                            : Resistance Potion
-T5_POTION_STONESKIN@3                                            : Resistance Potion
-T7_POTION_STONESKIN                                              : Major Resistance Potion
-T7_POTION_STONESKIN@1                                            : Major Resistance Potion
-T7_POTION_STONESKIN@2                                            : Major Resistance Potion
-T7_POTION_STONESKIN@3                                            : Major Resistance Potion
-T3_POTION_SLOWFIELD                                              : Minor Sticky Potion
-T3_POTION_SLOWFIELD@1                                            : Minor Sticky Potion
-T3_POTION_SLOWFIELD@2                                            : Minor Sticky Potion
-T3_POTION_SLOWFIELD@3                                            : Minor Sticky Potion
-T5_POTION_SLOWFIELD                                              : Sticky Potion
-T5_POTION_SLOWFIELD@1                                            : Sticky Potion
-T5_POTION_SLOWFIELD@2                                            : Sticky Potion
-T5_POTION_SLOWFIELD@3                                            : Sticky Potion
-T7_POTION_SLOWFIELD                                              : Major Sticky Potion
-T7_POTION_SLOWFIELD@1                                            : Major Sticky Potion
-T7_POTION_SLOWFIELD@2                                            : Major Sticky Potion
-T7_POTION_SLOWFIELD@3                                            : Major Sticky Potion
-T4_POTION_COOLDOWN                                               : Minor Poison Potion
-T4_POTION_COOLDOWN@1                                             : Minor Poison Potion
-T4_POTION_COOLDOWN@2                                             : Minor Poison Potion
-T4_POTION_COOLDOWN@3                                             : Minor Poison Potion
-T6_POTION_COOLDOWN                                               : Poison Potion
-T6_POTION_COOLDOWN@1                                             : Poison Potion
-T6_POTION_COOLDOWN@2                                             : Poison Potion
-T6_POTION_COOLDOWN@3                                             : Poison Potion
-T8_POTION_COOLDOWN                                               : Major Poison Potion
-T8_POTION_COOLDOWN@1                                             : Major Poison Potion
-T8_POTION_COOLDOWN@2                                             : Major Poison Potion
-T8_POTION_COOLDOWN@3                                             : Major Poison Potion
-T8_POTION_CLEANSE                                                : Invisibility Potion
-T8_POTION_CLEANSE@1                                              : Invisibility Potion
-T8_POTION_CLEANSE@2                                              : Invisibility Potion
-T8_POTION_CLEANSE@3                                              : Invisibility Potion
-T3_POTION_MOB_RESET                                              : Minor Calming Potion
-T3_POTION_MOB_RESET@1                                            : Minor Calming Potion
-T3_POTION_MOB_RESET@2                                            : Minor Calming Potion
-T3_POTION_MOB_RESET@3                                            : Minor Calming Potion
-T5_POTION_MOB_RESET                                              : Calming Potion
-T5_POTION_MOB_RESET@1                                            : Calming Potion
-T5_POTION_MOB_RESET@2                                            : Calming Potion
-T5_POTION_MOB_RESET@3                                            : Calming Potion
-T7_POTION_MOB_RESET                                              : Major Calming Potion
-T7_POTION_MOB_RESET@1                                            : Major Calming Potion
-T7_POTION_MOB_RESET@2                                            : Major Calming Potion
-T7_POTION_MOB_RESET@3                                            : Major Calming Potion
-T3_POTION_CLEANSE2                                               : Minor Cleansing Potion
-T3_POTION_CLEANSE2@1                                             : Minor Cleansing Potion
-T3_POTION_CLEANSE2@2                                             : Minor Cleansing Potion
-T3_POTION_CLEANSE2@3                                             : Minor Cleansing Potion
-T5_POTION_CLEANSE2                                               : Cleansing Potion
-T5_POTION_CLEANSE2@1                                             : Cleansing Potion
-T5_POTION_CLEANSE2@2                                             : Cleansing Potion
-T5_POTION_CLEANSE2@3                                             : Cleansing Potion
-T7_POTION_CLEANSE2                                               : Major Cleansing Potion
-T7_POTION_CLEANSE2@1                                             : Major Cleansing Potion
-T7_POTION_CLEANSE2@2                                             : Major Cleansing Potion
-T7_POTION_CLEANSE2@3                                             : Major Cleansing Potion
-T3_POTION_ACID                                                   : Minor Acid Potion
-T3_POTION_ACID@1                                                 : Minor Acid Potion
-T3_POTION_ACID@2                                                 : Minor Acid Potion
-T3_POTION_ACID@3                                                 : Minor Acid Potion
-T5_POTION_ACID                                                   : Acid Potion
-T5_POTION_ACID@1                                                 : Acid Potion
-T5_POTION_ACID@2                                                 : Acid Potion
-T5_POTION_ACID@3                                                 : Acid Potion
-T7_POTION_ACID                                                   : Major Acid Potion
-T7_POTION_ACID@1                                                 : Major Acid Potion
-T7_POTION_ACID@2                                                 : Major Acid Potion
-T7_POTION_ACID@3                                                 : Major Acid Potion
-T4_POTION_BERSERK                                                : Minor Berserk Potion
-T4_POTION_BERSERK@1                                              : Minor Berserk Potion
-T4_POTION_BERSERK@2                                              : Minor Berserk Potion
-T4_POTION_BERSERK@3                                              : Minor Berserk Potion
-T6_POTION_BERSERK                                                : Berserk Potion
-T6_POTION_BERSERK@1                                              : Berserk Potion
-T6_POTION_BERSERK@2                                              : Berserk Potion
-T6_POTION_BERSERK@3                                              : Berserk Potion
-T8_POTION_BERSERK                                                : Major Berserk Potion
-T8_POTION_BERSERK@1                                              : Major Berserk Potion
-T8_POTION_BERSERK@2                                              : Major Berserk Potion
-T8_POTION_BERSERK@3                                              : Major Berserk Potion
-T4_POTION_LAVA                                                   : Minor Hellfire Potion
-T4_POTION_LAVA@1                                                 : Minor Hellfire Potion
-T4_POTION_LAVA@2                                                 : Minor Hellfire Potion
-T4_POTION_LAVA@3                                                 : Minor Hellfire Potion
-T6_POTION_LAVA                                                   : Hellfire Potion
-T6_POTION_LAVA@1                                                 : Hellfire Potion
-T6_POTION_LAVA@2                                                 : Hellfire Potion
-T6_POTION_LAVA@3                                                 : Hellfire Potion
-T8_POTION_LAVA                                                   : Major Hellfire Potion
-T8_POTION_LAVA@1                                                 : Major Hellfire Potion
-T8_POTION_LAVA@2                                                 : Major Hellfire Potion
-T8_POTION_LAVA@3                                                 : Major Hellfire Potion
-T4_POTION_GATHER                                                 : Minor Gathering Potion
-T4_POTION_GATHER@1                                               : Minor Gathering Potion
-T4_POTION_GATHER@2                                               : Minor Gathering Potion
-T4_POTION_GATHER@3                                               : Minor Gathering Potion
-T6_POTION_GATHER                                                 : Gathering Potion
-T6_POTION_GATHER@1                                               : Gathering Potion
-T6_POTION_GATHER@2                                               : Gathering Potion
-T6_POTION_GATHER@3                                               : Gathering Potion
-T8_POTION_GATHER                                                 : Major Gathering Potion
-T8_POTION_GATHER@1                                               : Major Gathering Potion
-T8_POTION_GATHER@2                                               : Major Gathering Potion
-T8_POTION_GATHER@3                                               : Major Gathering Potion
-T4_POTION_TORNADO                                                : Minor Tornado in a Bottle
-T4_POTION_TORNADO@1                                              : Minor Tornado in a Bottle
-T4_POTION_TORNADO@2                                              : Minor Tornado in a Bottle
-T4_POTION_TORNADO@3                                              : Minor Tornado in a Bottle
-T6_POTION_TORNADO                                                : Tornado in a Bottle
-T6_POTION_TORNADO@1                                              : Tornado in a Bottle
-T6_POTION_TORNADO@2                                              : Tornado in a Bottle
-T6_POTION_TORNADO@3                                              : Tornado in a Bottle
-T8_POTION_TORNADO                                                : Major Tornado in a Bottle
-T8_POTION_TORNADO@1                                              : Major Tornado in a Bottle
-T8_POTION_TORNADO@2                                              : Major Tornado in a Bottle
-T8_POTION_TORNADO@3                                              : Major Tornado in a Bottle
-T1_WORM                                                          : Earthworm
-T1_FISHINGBAIT                                                   : Simple Fish Bait
-T3_FISHINGBAIT                                                   : Fancy Fish Bait
-T5_FISHINGBAIT                                                   : Special Fish Bait
-T1_MEAL_GRILLEDFISH                                              : Grilled Fish
-T1_MEAL_SEAWEEDSALAD                                             : Seaweed Salad
-T1_MEAL_SOUP                                                     : Carrot Soup
-T1_MEAL_SOUP@1                                                   : Carrot Soup
-T1_MEAL_SOUP@2                                                   : Carrot Soup
-T1_MEAL_SOUP@3                                                   : Carrot Soup
-T3_MEAL_SOUP                                                     : Wheat Soup
-T3_MEAL_SOUP@1                                                   : Wheat Soup
-T3_MEAL_SOUP@2                                                   : Wheat Soup
-T3_MEAL_SOUP@3                                                   : Wheat Soup
-T5_MEAL_SOUP                                                     : Cabbage Soup
-T5_MEAL_SOUP@1                                                   : Cabbage Soup
-T5_MEAL_SOUP@2                                                   : Cabbage Soup
-T5_MEAL_SOUP@3                                                   : Cabbage Soup
-T1_MEAL_SOUP_FISH                                                : Greenmoor Clam Soup
-T1_MEAL_SOUP_FISH@1                                              : Greenmoor Clam Soup
-T1_MEAL_SOUP_FISH@2                                              : Greenmoor Clam Soup
-T1_MEAL_SOUP_FISH@3                                              : Greenmoor Clam Soup
-T3_MEAL_SOUP_FISH                                                : Murkwater Clam Soup
-T3_MEAL_SOUP_FISH@1                                              : Murkwater Clam Soup
-T3_MEAL_SOUP_FISH@2                                              : Murkwater Clam Soup
-T3_MEAL_SOUP_FISH@3                                              : Murkwater Clam Soup
-T5_MEAL_SOUP_FISH                                                : Blackbog Clam Soup
-T5_MEAL_SOUP_FISH@1                                              : Blackbog Clam Soup
-T5_MEAL_SOUP_FISH@2                                              : Blackbog Clam Soup
-T5_MEAL_SOUP_FISH@3                                              : Blackbog Clam Soup
-T2_MEAL_SALAD                                                    : Bean Salad
-T2_MEAL_SALAD@1                                                  : Bean Salad
-T2_MEAL_SALAD@2                                                  : Bean Salad
-T2_MEAL_SALAD@3                                                  : Bean Salad
-T4_MEAL_SALAD                                                    : Turnip Salad
-T4_MEAL_SALAD@1                                                  : Turnip Salad
-T4_MEAL_SALAD@2                                                  : Turnip Salad
-T4_MEAL_SALAD@3                                                  : Turnip Salad
-T6_MEAL_SALAD                                                    : Potato Salad
-T6_MEAL_SALAD@1                                                  : Potato Salad
-T6_MEAL_SALAD@2                                                  : Potato Salad
-T6_MEAL_SALAD@3                                                  : Potato Salad
-T2_MEAL_SALAD_FISH                                               : Shallowshore Squid Salad
-T2_MEAL_SALAD_FISH@1                                             : Shallowshore Squid Salad
-T2_MEAL_SALAD_FISH@2                                             : Shallowshore Squid Salad
-T2_MEAL_SALAD_FISH@3                                             : Shallowshore Squid Salad
-T4_MEAL_SALAD_FISH                                               : Midwater Octopus Salad
-T4_MEAL_SALAD_FISH@1                                             : Midwater Octopus Salad
-T4_MEAL_SALAD_FISH@2                                             : Midwater Octopus Salad
-T4_MEAL_SALAD_FISH@3                                             : Midwater Octopus Salad
-T6_MEAL_SALAD_FISH                                               : Deepwater Kraken Salad
-T6_MEAL_SALAD_FISH@1                                             : Deepwater Kraken Salad
-T6_MEAL_SALAD_FISH@2                                             : Deepwater Kraken Salad
-T6_MEAL_SALAD_FISH@3                                             : Deepwater Kraken Salad
-T3_MEAL_PIE                                                      : Chicken Pie
-T3_MEAL_PIE@1                                                    : Chicken Pie
-T3_MEAL_PIE@2                                                    : Chicken Pie
-T3_MEAL_PIE@3                                                    : Chicken Pie
-T5_MEAL_PIE                                                      : Goose Pie
-T5_MEAL_PIE@1                                                    : Goose Pie
-T5_MEAL_PIE@2                                                    : Goose Pie
-T5_MEAL_PIE@3                                                    : Goose Pie
-T7_MEAL_PIE                                                      : Pork Pie
-T7_MEAL_PIE@1                                                    : Pork Pie
-T7_MEAL_PIE@2                                                    : Pork Pie
-T7_MEAL_PIE@3                                                    : Pork Pie
-T3_MEAL_PIE_FISH                                                 : Upland Coldeye Pie
-T3_MEAL_PIE_FISH@1                                               : Upland Coldeye Pie
-T3_MEAL_PIE_FISH@2                                               : Upland Coldeye Pie
-T3_MEAL_PIE_FISH@3                                               : Upland Coldeye Pie
-T5_MEAL_PIE_FISH                                                 : Mountain Blindeye Pie
-T5_MEAL_PIE_FISH@1                                               : Mountain Blindeye Pie
-T5_MEAL_PIE_FISH@2                                               : Mountain Blindeye Pie
-T5_MEAL_PIE_FISH@3                                               : Mountain Blindeye Pie
-T7_MEAL_PIE_FISH                                                 : Frostpeak Deadeye Pie
-T7_MEAL_PIE_FISH@1                                               : Frostpeak Deadeye Pie
-T7_MEAL_PIE_FISH@2                                               : Frostpeak Deadeye Pie
-T7_MEAL_PIE_FISH@3                                               : Frostpeak Deadeye Pie
-T3_MEAL_OMELETTE                                                 : Chicken Omelette
-T3_MEAL_OMELETTE@1                                               : Chicken Omelette
-T3_MEAL_OMELETTE@2                                               : Chicken Omelette
-T3_MEAL_OMELETTE@3                                               : Chicken Omelette
-T5_MEAL_OMELETTE                                                 : Goose Omelette
-T5_MEAL_OMELETTE@1                                               : Goose Omelette
-T5_MEAL_OMELETTE@2                                               : Goose Omelette
-T5_MEAL_OMELETTE@3                                               : Goose Omelette
-T7_MEAL_OMELETTE                                                 : Pork Omelette
-T7_MEAL_OMELETTE@1                                               : Pork Omelette
-T7_MEAL_OMELETTE@2                                               : Pork Omelette
-T7_MEAL_OMELETTE@3                                               : Pork Omelette
-T3_MEAL_OMELETTE_FISH                                            : Lowriver Crab Omelette
-T3_MEAL_OMELETTE_FISH@1                                          : Lowriver Crab Omelette
-T3_MEAL_OMELETTE_FISH@2                                          : Lowriver Crab Omelette
-T3_MEAL_OMELETTE_FISH@3                                          : Lowriver Crab Omelette
-T5_MEAL_OMELETTE_FISH                                            : Drybrook Crab Omelette
-T5_MEAL_OMELETTE_FISH@1                                          : Drybrook Crab Omelette
-T5_MEAL_OMELETTE_FISH@2                                          : Drybrook Crab Omelette
-T5_MEAL_OMELETTE_FISH@3                                          : Drybrook Crab Omelette
-T7_MEAL_OMELETTE_FISH                                            : Dusthole Crab Omelette
-T7_MEAL_OMELETTE_FISH@1                                          : Dusthole Crab Omelette
-T7_MEAL_OMELETTE_FISH@2                                          : Dusthole Crab Omelette
-T7_MEAL_OMELETTE_FISH@3                                          : Dusthole Crab Omelette
-T3_MEAL_OMELETTE_AVALON                                          : Avalonian Chicken Omelette
-T3_MEAL_OMELETTE_AVALON@1                                        : Avalonian Chicken Omelette
-T3_MEAL_OMELETTE_AVALON@2                                        : Avalonian Chicken Omelette
-T3_MEAL_OMELETTE_AVALON@3                                        : Avalonian Chicken Omelette
-T5_MEAL_OMELETTE_AVALON                                          : Avalonian Goose Omelette
-T5_MEAL_OMELETTE_AVALON@1                                        : Avalonian Goose Omelette
-T5_MEAL_OMELETTE_AVALON@2                                        : Avalonian Goose Omelette
-T5_MEAL_OMELETTE_AVALON@3                                        : Avalonian Goose Omelette
-T7_MEAL_OMELETTE_AVALON                                          : Avalonian Pork Omelette
-T7_MEAL_OMELETTE_AVALON@1                                        : Avalonian Pork Omelette
-T7_MEAL_OMELETTE_AVALON@2                                        : Avalonian Pork Omelette
-T7_MEAL_OMELETTE_AVALON@3                                        : Avalonian Pork Omelette
-T4_MEAL_STEW                                                     : Goat Stew
-T4_MEAL_STEW@1                                                   : Goat Stew
-T4_MEAL_STEW@2                                                   : Goat Stew
-T4_MEAL_STEW@3                                                   : Goat Stew
-T6_MEAL_STEW                                                     : Mutton Stew
-T6_MEAL_STEW@1                                                   : Mutton Stew
-T6_MEAL_STEW@2                                                   : Mutton Stew
-T6_MEAL_STEW@3                                                   : Mutton Stew
-T8_MEAL_STEW                                                     : Beef Stew
-T8_MEAL_STEW@1                                                   : Beef Stew
-T8_MEAL_STEW@2                                                   : Beef Stew
-T8_MEAL_STEW@3                                                   : Beef Stew
-T4_MEAL_STEW_FISH                                                : Greenriver Eel Stew
-T4_MEAL_STEW_FISH@1                                              : Greenriver Eel Stew
-T4_MEAL_STEW_FISH@2                                              : Greenriver Eel Stew
-T4_MEAL_STEW_FISH@3                                              : Greenriver Eel Stew
-T6_MEAL_STEW_FISH                                                : Redspring Eel Stew
-T6_MEAL_STEW_FISH@1                                              : Redspring Eel Stew
-T6_MEAL_STEW_FISH@2                                              : Redspring Eel Stew
-T6_MEAL_STEW_FISH@3                                              : Redspring Eel Stew
-T8_MEAL_STEW_FISH                                                : Deadwater Eel Stew
-T8_MEAL_STEW_FISH@1                                              : Deadwater Eel Stew
-T8_MEAL_STEW_FISH@2                                              : Deadwater Eel Stew
-T8_MEAL_STEW_FISH@3                                              : Deadwater Eel Stew
-T4_MEAL_STEW_AVALON                                              : Avalonian Goat Stew
-T4_MEAL_STEW_AVALON@1                                            : Avalonian Goat Stew
-T4_MEAL_STEW_AVALON@2                                            : Avalonian Goat Stew
-T4_MEAL_STEW_AVALON@3                                            : Avalonian Goat Stew
-T6_MEAL_STEW_AVALON                                              : Avalonian Mutton Stew
-T6_MEAL_STEW_AVALON@1                                            : Avalonian Mutton Stew
-T6_MEAL_STEW_AVALON@2                                            : Avalonian Mutton Stew
-T6_MEAL_STEW_AVALON@3                                            : Avalonian Mutton Stew
-T8_MEAL_STEW_AVALON                                              : Avalonian Beef Stew
-T8_MEAL_STEW_AVALON@1                                            : Avalonian Beef Stew
-T8_MEAL_STEW_AVALON@2                                            : Avalonian Beef Stew
-T8_MEAL_STEW_AVALON@3                                            : Avalonian Beef Stew
-T4_MEAL_SANDWICH                                                 : Goat Sandwich
-T4_MEAL_SANDWICH@1                                               : Goat Sandwich
-T4_MEAL_SANDWICH@2                                               : Goat Sandwich
-T4_MEAL_SANDWICH@3                                               : Goat Sandwich
-T6_MEAL_SANDWICH                                                 : Mutton Sandwich
-T6_MEAL_SANDWICH@1                                               : Mutton Sandwich
-T6_MEAL_SANDWICH@2                                               : Mutton Sandwich
-T6_MEAL_SANDWICH@3                                               : Mutton Sandwich
-T8_MEAL_SANDWICH                                                 : Beef Sandwich
-T8_MEAL_SANDWICH@1                                               : Beef Sandwich
-T8_MEAL_SANDWICH@2                                               : Beef Sandwich
-T8_MEAL_SANDWICH@3                                               : Beef Sandwich
-T4_MEAL_SANDWICH_FISH                                            : Stonestream Lurcher Sandwich
-T4_MEAL_SANDWICH_FISH@1                                          : Stonestream Lurcher Sandwich
-T4_MEAL_SANDWICH_FISH@2                                          : Stonestream Lurcher Sandwich
-T4_MEAL_SANDWICH_FISH@3                                          : Stonestream Lurcher Sandwich
-T6_MEAL_SANDWICH_FISH                                            : Rushwater Lurcher Sandwich
-T6_MEAL_SANDWICH_FISH@1                                          : Rushwater Lurcher Sandwich
-T6_MEAL_SANDWICH_FISH@2                                          : Rushwater Lurcher Sandwich
-T6_MEAL_SANDWICH_FISH@3                                          : Rushwater Lurcher Sandwich
-T8_MEAL_SANDWICH_FISH                                            : Thunderfall Lurcher Sandwich
-T8_MEAL_SANDWICH_FISH@1                                          : Thunderfall Lurcher Sandwich
-T8_MEAL_SANDWICH_FISH@2                                          : Thunderfall Lurcher Sandwich
-T8_MEAL_SANDWICH_FISH@3                                          : Thunderfall Lurcher Sandwich
-T4_MEAL_SANDWICH_AVALON                                          : Avalonian Goat Sandwich
-T4_MEAL_SANDWICH_AVALON@1                                        : Avalonian Goat Sandwich
-T4_MEAL_SANDWICH_AVALON@2                                        : Avalonian Goat Sandwich
-T4_MEAL_SANDWICH_AVALON@3                                        : Avalonian Goat Sandwich
-T6_MEAL_SANDWICH_AVALON                                          : Avalonian Mutton Sandwich
-T6_MEAL_SANDWICH_AVALON@1                                        : Avalonian Mutton Sandwich
-T6_MEAL_SANDWICH_AVALON@2                                        : Avalonian Mutton Sandwich
-T6_MEAL_SANDWICH_AVALON@3                                        : Avalonian Mutton Sandwich
-T8_MEAL_SANDWICH_AVALON                                          : Avalonian Beef Sandwich
-T8_MEAL_SANDWICH_AVALON@1                                        : Avalonian Beef Sandwich
-T8_MEAL_SANDWICH_AVALON@2                                        : Avalonian Beef Sandwich
-T8_MEAL_SANDWICH_AVALON@3                                        : Avalonian Beef Sandwich
-T3_MEAL_ROAST                                                    : Roast Chicken
-T3_MEAL_ROAST@1                                                  : Roast Chicken
-T3_MEAL_ROAST@2                                                  : Roast Chicken
-T3_MEAL_ROAST@3                                                  : Roast Chicken
-T5_MEAL_ROAST                                                    : Roast Goose
-T5_MEAL_ROAST@1                                                  : Roast Goose
-T5_MEAL_ROAST@2                                                  : Roast Goose
-T5_MEAL_ROAST@3                                                  : Roast Goose
-T7_MEAL_ROAST                                                    : Roast Pork
-T7_MEAL_ROAST@1                                                  : Roast Pork
-T7_MEAL_ROAST@2                                                  : Roast Pork
-T7_MEAL_ROAST@3                                                  : Roast Pork
-T3_MEAL_ROAST_FISH                                               : Roasted Whitefog Snapper
-T3_MEAL_ROAST_FISH@1                                             : Roasted Whitefog Snapper
-T3_MEAL_ROAST_FISH@2                                             : Roasted Whitefog Snapper
-T3_MEAL_ROAST_FISH@3                                             : Roasted Whitefog Snapper
-T5_MEAL_ROAST_FISH                                               : Roasted Clearhaze Snapper
-T5_MEAL_ROAST_FISH@1                                             : Roasted Clearhaze Snapper
-T5_MEAL_ROAST_FISH@2                                             : Roasted Clearhaze Snapper
-T5_MEAL_ROAST_FISH@3                                             : Roasted Clearhaze Snapper
-T7_MEAL_ROAST_FISH                                               : Roasted Puremist Snapper
-T7_MEAL_ROAST_FISH@1                                             : Roasted Puremist Snapper
-T7_MEAL_ROAST_FISH@2                                             : Roasted Puremist Snapper
-T7_MEAL_ROAST_FISH@3                                             : Roasted Puremist Snapper
-T3_MEAT                                                          : Raw Chicken
-T4_MEAT                                                          : Raw Goat
-T5_MEAT                                                          : Raw Goose
-T6_MEAT                                                          : Raw Mutton
-T7_MEAT                                                          : Raw Pork
-T8_MEAT                                                          : Raw Beef
-T4_BUTTER                                                        : Goat's Butter
-T6_BUTTER                                                        : Sheep's Butter
-T8_BUTTER                                                        : Cow's Butter
-T6_ALCOHOL                                                       : Potato Schnapps
-T7_ALCOHOL                                                       : Corn Hooch
-T8_ALCOHOL                                                       : Pumpkin Moonshine
-T4_BREAD                                                         : Bread
-T3_FLOUR                                                         : Flour
-T1_WOOD                                                          : Rough Logs
-T2_WOOD                                                          : Birch Logs
-T3_WOOD                                                          : Chestnut Logs
-T4_WOOD                                                          : Pine Logs
-T5_WOOD                                                          : Cedar Logs
-T6_WOOD                                                          : Bloodoak Logs
-T7_WOOD                                                          : Ashenbark Logs
-T8_WOOD                                                          : Whitewood Logs
-T4_WOOD_LEVEL1@1                                                 : Uncommon Pine Logs
-T5_WOOD_LEVEL1@1                                                 : Uncommon Cedar Logs
-T6_WOOD_LEVEL1@1                                                 : Uncommon Bloodoak Logs
-T7_WOOD_LEVEL1@1                                                 : Uncommon Ashenbark Logs
-T8_WOOD_LEVEL1@1                                                 : Uncommon Whitewood Logs
-T4_WOOD_LEVEL2@2                                                 : Rare Pine Logs
-T5_WOOD_LEVEL2@2                                                 : Rare Cedar Logs
-T6_WOOD_LEVEL2@2                                                 : Rare Bloodoak Logs
-T7_WOOD_LEVEL2@2                                                 : Rare Ashenbark Logs
-T8_WOOD_LEVEL2@2                                                 : Rare Whitewood Logs
-T4_WOOD_LEVEL3@3                                                 : Exceptional Pine Logs
-T5_WOOD_LEVEL3@3                                                 : Exceptional Cedar Logs
-T6_WOOD_LEVEL3@3                                                 : Exceptional Bloodoak Logs
-T7_WOOD_LEVEL3@3                                                 : Exceptional Ashenbark Logs
-T8_WOOD_LEVEL3@3                                                 : Exceptional Whitewood Logs
-T4_WOOD_LEVEL4@4                                                 : Pristine Pine Logs
-T5_WOOD_LEVEL4@4                                                 : Pristine Cedar Logs
-T6_WOOD_LEVEL4@4                                                 : Pristine Bloodoak Logs
-T7_WOOD_LEVEL4@4                                                 : Pristine Ashenbark Logs
-T8_WOOD_LEVEL4@4                                                 : Pristine Whitewood Logs
-T1_ROCK                                                          : Rough Stone
-T2_ROCK                                                          : Limestone
-T3_ROCK                                                          : Sandstone
-T4_ROCK                                                          : Travertine
-T5_ROCK                                                          : Granite
-T6_ROCK                                                          : Slate
-T7_ROCK                                                          : Basalt
-T8_ROCK                                                          : Marble
-T4_ROCK_LEVEL1@1                                                 : Uncommon Travertine
-T5_ROCK_LEVEL1@1                                                 : Uncommon Granite
-T6_ROCK_LEVEL1@1                                                 : Uncommon Slate
-T7_ROCK_LEVEL1@1                                                 : Uncommon Basalt
-T8_ROCK_LEVEL1@1                                                 : Uncommon Marble
-T4_ROCK_LEVEL2@2                                                 : Rare Travertine
-T5_ROCK_LEVEL2@2                                                 : Rare Granite
-T6_ROCK_LEVEL2@2                                                 : Rare Slate
-T7_ROCK_LEVEL2@2                                                 : Rare Basalt
-T8_ROCK_LEVEL2@2                                                 : Rare Marble
-T4_ROCK_LEVEL3@3                                                 : Exceptional Travertine
-T5_ROCK_LEVEL3@3                                                 : Exceptional Granite
-T6_ROCK_LEVEL3@3                                                 : Exceptional Slate
-T7_ROCK_LEVEL3@3                                                 : Exceptional Basalt
-T8_ROCK_LEVEL3@3                                                 : Exceptional Marble
-T2_ORE                                                           : Copper Ore
-T3_ORE                                                           : Tin Ore
-T4_ORE                                                           : Iron Ore
-T5_ORE                                                           : Titanium Ore
-T6_ORE                                                           : Runite Ore
-T7_ORE                                                           : Meteorite Ore
-T8_ORE                                                           : Adamantium Ore
-T4_ORE_LEVEL1@1                                                  : Uncommon Iron Ore
-T5_ORE_LEVEL1@1                                                  : Uncommon Titanium Ore
-T6_ORE_LEVEL1@1                                                  : Uncommon Runite Ore
-T7_ORE_LEVEL1@1                                                  : Uncommon Meteorite Ore
-T8_ORE_LEVEL1@1                                                  : Uncommon Adamantium Ore
-T4_ORE_LEVEL2@2                                                  : Rare Iron Ore
-T5_ORE_LEVEL2@2                                                  : Rare Titanium Ore
-T6_ORE_LEVEL2@2                                                  : Rare Runite Ore
-T7_ORE_LEVEL2@2                                                  : Rare Meteorite Ore
-T8_ORE_LEVEL2@2                                                  : Rare Adamantium Ore
-T4_ORE_LEVEL3@3                                                  : Exceptional Iron Ore
-T5_ORE_LEVEL3@3                                                  : Exceptional Titanium Ore
-T6_ORE_LEVEL3@3                                                  : Exceptional Runite Ore
-T7_ORE_LEVEL3@3                                                  : Exceptional Meteorite Ore
-T8_ORE_LEVEL3@3                                                  : Exceptional Adamantium Ore
-T4_ORE_LEVEL4@4                                                  : Pristine Iron Ore
-T5_ORE_LEVEL4@4                                                  : Pristine Titanium Ore
-T6_ORE_LEVEL4@4                                                  : Pristine Runite Ore
-T7_ORE_LEVEL4@4                                                  : Pristine Meteorite Ore
-T8_ORE_LEVEL4@4                                                  : Pristine Adamantium Ore
-T1_HIDE                                                          : Scraps of Hide
-T2_HIDE                                                          : Rugged Hide
-T3_HIDE                                                          : Thin Hide
-T4_HIDE                                                          : Medium Hide
-T5_HIDE                                                          : Heavy Hide
-T6_HIDE                                                          : Robust Hide
-T7_HIDE                                                          : Thick Hide
-T8_HIDE                                                          : Resilient Hide
+   UNIQUE_HIDEOUT                                                   : Hideout Construction Kit
+   T3_2H_TOOL_TRACKING                                              : Journeyman's Tracking Toolkit
+   T4_2H_TOOL_TRACKING                                              : Adept's Tracking Toolkit
+   T5_2H_TOOL_TRACKING                                              : Expert's Tracking Toolkit
+   T6_2H_TOOL_TRACKING                                              : Master's Tracking Toolkit
+   T7_2H_TOOL_TRACKING                                              : Grandmaster's Tracking Toolkit
+   T8_2H_TOOL_TRACKING                                              : Elder's Tracking Toolkit
+   T1_FARM_CARROT_SEED                                              : Carrot Seeds
+   T2_FARM_BEAN_SEED                                                : Bean Seeds
+  T3_FARM_WHEAT_SEED                                               : Wheat Seeds
+  T4_FARM_TURNIP_SEED                                              : Turnip Seeds
+  T5_FARM_CABBAGE_SEED                                             : Cabbage Seeds
+  T6_FARM_POTATO_SEED                                              : Potato Seeds
+  T7_FARM_CORN_SEED                                                : Corn Seeds
+  T8_FARM_PUMPKIN_SEED                                             : Pumpkin Seeds
+  T2_FARM_AGARIC_SEED                                              : Arcane Agaric Seeds
+  T3_FARM_COMFREY_SEED                                             : Brightleaf Comfrey Seeds
+  T4_FARM_BURDOCK_SEED                                             : Crenellated Burdock Seeds
+  T5_FARM_TEASEL_SEED                                              : Dragon Teasel Seeds
+  T6_FARM_FOXGLOVE_SEED                                            : Elusive Foxglove Seeds
+  T7_FARM_MULLEIN_SEED                                             : Firetouched Mullein Seeds
+  T8_FARM_YARROW_SEED                                              : Ghoul Yarrow Seeds
+  T3_FARM_OX_BABY                                                  : Journeyman's Ox Calf
+  T4_FARM_OX_BABY                                                  : Adept's Ox Calf
+  T5_FARM_OX_BABY                                                  : Expert's Ox Calf
+  T6_FARM_OX_BABY                                                  : Master's Ox Calf
+  T7_FARM_OX_BABY                                                  : Grandmaster's Ox Calf
+  T8_FARM_OX_BABY                                                  : Elder's Ox Calf
+  T3_FARM_OX_GROWN                                                 : Journeyman's Ox
+  T4_FARM_OX_GROWN                                                 : Adept's Ox
+  T5_FARM_OX_GROWN                                                 : Expert's Ox
+  T6_FARM_OX_GROWN                                                 : Master's Ox
+  T7_FARM_OX_GROWN                                                 : Grandmaster's Ox
+  T8_FARM_OX_GROWN                                                 : Elder's Ox
+  T3_FARM_HORSE_BABY                                               : Journeyman's Foal
+  T4_FARM_HORSE_BABY                                               : Adept's Foal
+  T5_FARM_HORSE_BABY                                               : Expert's Foal
+  T6_FARM_HORSE_BABY                                               : Master's Foal
+  T7_FARM_HORSE_BABY                                               : Grandmaster's Foal
+  T8_FARM_HORSE_BABY                                               : Elder's Foal
+  T3_FARM_HORSE_GROWN                                              : Journeyman's Horse
+  T4_FARM_HORSE_GROWN                                              : Adept's Horse
+  T5_FARM_HORSE_GROWN                                              : Expert's Horse
+  T6_FARM_HORSE_GROWN                                              : Master's Horse
+  T7_FARM_HORSE_GROWN                                              : Grandmaster's Horse
+  T8_FARM_HORSE_GROWN                                              : Elder's Horse
+  T6_FARM_DIREWOLF_BABY                                            : Direwolf Pup
+  T7_FARM_DIREBOAR_BABY                                            : Direboar Piglet
+  T8_FARM_DIREBEAR_BABY                                            : Direbear Cub
+  T7_FARM_SWAMPDRAGON_BABY                                         : Swamp Dragon Pup
+  T8_FARM_MAMMOTH_BABY                                             : Mammoth Calf
+  T5_FARM_COUGAR_BABY                                              : Swiftclaw Cub
+  T8_FARM_DIREWOLF_BABY                                            : Ghostwolf Pup
+  T4_FARM_GIANTSTAG_BABY                                           : Adept's Fawn
+  T6_FARM_GIANTSTAG_BABY                                           : Master's Fawn
+  T6_FARM_GIANTSTAG_MOOSE_BABY                                     : Moose Calf
+  T8_FARM_RABBIT_EASTER_BABY                                       : Vibrant Spring Cottontail Egg
+  T8_FARM_RABBIT_EASTER_BABY_DARK                                  : Eerie Cottontail Egg
+  T8_FARM_RABBIT_EASTER_GROWN                                      : Tame Spring Cottontail
+  T8_FARM_RABBIT_EASTER_GROWN_DARK                                 : "Tame" Caerleon Cottontail
+  T5_FARM_MOABIRD_FW_BRIDGEWATCH_BABY                              : Baby Moabird
+  T5_FARM_DIREBEAR_FW_FORTSTERLING_BABY                            : Winter Bear Cub
+  T5_FARM_DIREBOAR_FW_LYMHURST_BABY                                : Wild Boarlet
+  T5_FARM_RAM_FW_MARTLOCK_BABY                                     : Bighorn Ram Lamb
+  T5_FARM_SWAMPDRAGON_FW_THETFORD_BABY                             : Baby Swamp Salamander
+  T5_FARM_GREYWOLF_FW_CAERLEON_BABY                                : Caerleon Greywolf Pup
+  T5_FARM_OWL_FW_BRECILIEN_BABY                                    : Mystic Owlet
+  T5_FARM_SPIDER_HELL_BABY                                         : Hellspinner Baby
+  T8_FARM_MOABIRD_FW_BRIDGEWATCH_BABY                              : Baby Elite Terrorbird
+  T8_FARM_DIREBEAR_FW_FORTSTERLING_BABY                            : Elite Winter Bear Cub
+  T8_FARM_DIREBOAR_FW_LYMHURST_BABY                                : Elite Wild Boarlet
+  T8_FARM_RAM_FW_MARTLOCK_BABY                                     : Elite Bighorn Ram Lamb
+  T8_FARM_SWAMPDRAGON_FW_THETFORD_BABY                             : Baby Elite Swamp Salamander
+  T8_FARM_GREYWOLF_FW_CAERLEON_BABY                                : Elite Greywolf Pup
+  T8_FARM_OWL_FW_BRECILIEN_BABY                                    : Elite Mystic Owlet
+  T8_FARM_SPIDER_HELL_BABY                                         : Soulspinner Baby
+  T6_FARM_DIREWOLF_GROWN                                           : Tame Direwolf
+  T7_FARM_DIREBOAR_GROWN                                           : Tame Direboar
+  T8_FARM_DIREBEAR_GROWN                                           : Tame Direbear
+  T7_FARM_SWAMPDRAGON_GROWN                                        : Tame Swamp Dragon
+  T8_FARM_MAMMOTH_GROWN                                            : Tame Mammoth
+  T5_FARM_COUGAR_GROWN                                             : Tame Swiftclaw
+  T8_FARM_DIREWOLF_GROWN                                           : Tame Ghostwolf
+  T4_FARM_GIANTSTAG_GROWN                                          : Adept's Tame Giant Stag
+  T6_FARM_GIANTSTAG_GROWN                                          : Master's Tame Giant Stag
+  T6_FARM_GIANTSTAG_MOOSE_GROWN                                    : Tame Moose
+  T5_FARM_MOABIRD_FW_BRIDGEWATCH_GROWN                             : Tame Moabird
+  T5_FARM_DIREBEAR_FW_FORTSTERLING_GROWN                           : Tame Winter Bear
+  T5_FARM_DIREBOAR_FW_LYMHURST_GROWN                               : Tame Wild Boar
+  T5_FARM_RAM_FW_MARTLOCK_GROWN                                    : Tame Bighorn Ram
+  T5_FARM_SWAMPDRAGON_FW_THETFORD_GROWN                            : Tame Swamp Salamander
+  T5_FARM_GREYWOLF_FW_CAERLEON_GROWN                               : Tame Greywolf
+  T5_FARM_OWL_FW_BRECILIEN_GROWN                                   : Tame Mystic Owl
+  T5_FARM_SPIDER_HELL_GROWN                                        : Tame Hellspinner
+  T8_FARM_MOABIRD_FW_BRIDGEWATCH_GROWN                             : Tame Elite Terrorbird
+  T8_FARM_DIREBEAR_FW_FORTSTERLING_GROWN                           : Tame Elite Winter Bear
+  T8_FARM_DIREBOAR_FW_LYMHURST_GROWN                               : Tame Elite Wild Boar
+  T8_FARM_RAM_FW_MARTLOCK_GROWN                                    : Tame Elite Bighorn Ram
+  T8_FARM_SWAMPDRAGON_FW_THETFORD_GROWN                            : Tame Elite Swamp Salamander
+ T8_FARM_GREYWOLF_FW_CAERLEON_GROWN                               : Tame Elite Greywolf
+ T8_FARM_OWL_FW_BRECILIEN_GROWN                                   : Tame Elite Mystic Owl
+ T8_FARM_SPIDER_HELL_GROWN                                        : Tame Soulspinner
+ T3_FARM_CHICKEN_BABY                                             : Baby Chickens
+ T4_FARM_GOAT_BABY                                                : Kid
+ T5_FARM_GOOSE_BABY                                               : Gosling
+ T6_FARM_SHEEP_BABY                                               : Lamb
+ T7_FARM_PIG_BABY                                                 : Piglet
+ T8_FARM_COW_BABY                                                 : Calf
+ T3_FARM_CHICKEN_GROWN                                            : Chicken
+ T4_FARM_GOAT_GROWN                                               : Goat
+ T5_FARM_GOOSE_GROWN                                              : Goose
+ T6_FARM_SHEEP_GROWN                                              : Sheep
+ T7_FARM_PIG_GROWN                                                : Pig
+ T8_FARM_COW_GROWN                                                : Cow
+ T6_MOUNTUPGRADE_GIANTSTAG_XMAS                                   : Decorative Stag Bridle
+ UNIQUE_MOUNTUPGRADE_RAM_XMAS                                     : Decorative Ram Bridle
+ T5_MOUNTUPGRADE_HORSE_CURSE                                      : Necromantic Elixir
+ T8_MOUNTUPGRADE_HORSE_CURSE                                      : Spectral Mask
+ T8_MOUNTUPGRADE_COUGAR_KEEPER                                    : Sacred Bone Marrow
+ T5_MOUNTUPGRADE_HORSE_MORGANA                                    : Morgana Mare Saddle
+ T8_MOUNTUPGRADE_HORSE_MORGANA                                    : Infernal Horseshoes
+ T1_CARROT                                                        : Carrots
+ T2_BEAN                                                          : Beans
+ T3_WHEAT                                                         : Sheaf of Wheat
+ T4_TURNIP                                                        : Turnips
+ T5_CABBAGE                                                       : Cabbage
+ T6_POTATO                                                        : Potatoes
+ T7_CORN                                                          : Bundle of Corn
+ T8_PUMPKIN                                                       : Pumpkin
+ T2_AGARIC                                                        : Arcane Agaric
+ T3_COMFREY                                                       : Brightleaf Comfrey
+ T4_BURDOCK                                                       : Crenellated Burdock
+ T5_TEASEL                                                        : Dragon Teasel
+ T6_FOXGLOVE                                                      : Elusive Foxglove
+ T7_MULLEIN                                                       : Firetouched Mullein
+ T8_YARROW                                                        : Ghoul Yarrow
+ T3_EGG                                                           : Hen Eggs
+ T4_MILK                                                          : Goat's Milk
+ T5_EGG                                                           : Goose Eggs
+ T6_MILK                                                          : Sheep's Milk
+ T8_MILK                                                          : Cow's Milk
+ T1_FISH_FRESHWATER_ALL_COMMON                                    : Common Rudd
+ T2_FISH_FRESHWATER_ALL_COMMON                                    : Striped Carp
+ T3_FISH_FRESHWATER_ALL_COMMON                                    : Albion Perch
+ T4_FISH_FRESHWATER_ALL_COMMON                                    : Bluescale Pike
+ T5_FISH_FRESHWATER_ALL_COMMON                                    : Spotted Trout
+ T6_FISH_FRESHWATER_ALL_COMMON                                    : Brightscale Zander
+ T7_FISH_FRESHWATER_ALL_COMMON                                    : Danglemouth Catfish
+ T8_FISH_FRESHWATER_ALL_COMMON                                    : River Sturgeon
+ T1_FISH_SALTWATER_ALL_COMMON                                     : Common Herring
+ T2_FISH_SALTWATER_ALL_COMMON                                     : Striped Mackerel
+ T3_FISH_SALTWATER_ALL_COMMON                                     : Flatshore Plaice
+ T4_FISH_SALTWATER_ALL_COMMON                                     : Bluescale Cod
+ T5_FISH_SALTWATER_ALL_COMMON                                     : Spotted Wolffish
+ T6_FISH_SALTWATER_ALL_COMMON                                     : Strongfin Salmon
+ T7_FISH_SALTWATER_ALL_COMMON                                     : Bluefin Tuna
+ T8_FISH_SALTWATER_ALL_COMMON                                     : Steelscale Swordfish
+ T3_FISH_FRESHWATER_FOREST_RARE                                   : Greenriver Eel
+ T5_FISH_FRESHWATER_FOREST_RARE                                   : Redspring Eel
+ T7_FISH_FRESHWATER_FOREST_RARE                                   : Deadwater Eel
+ T3_FISH_FRESHWATER_MOUNTAIN_RARE                                 : Upland Coldeye
+ T5_FISH_FRESHWATER_MOUNTAIN_RARE                                 : Mountain Blindeye
+ T7_FISH_FRESHWATER_MOUNTAIN_RARE                                 : Frostpeak Deadeye
+ T3_FISH_FRESHWATER_HIGHLANDS_RARE                                : Stonestream Lurcher
+ T5_FISH_FRESHWATER_HIGHLANDS_RARE                                : Rushwater Lurcher
+ T7_FISH_FRESHWATER_HIGHLANDS_RARE                                : Thunderfall Lurcher
+ T3_FISH_FRESHWATER_STEPPE_RARE                                   : Lowriver Crab
+ T5_FISH_FRESHWATER_STEPPE_RARE                                   : Drybrook Crab
+ T7_FISH_FRESHWATER_STEPPE_RARE                                   : Dusthole Crab
+ T3_FISH_FRESHWATER_SWAMP_RARE                                    : Greenmoor Clam
+ T5_FISH_FRESHWATER_SWAMP_RARE                                    : Murkwater Clam
+ T7_FISH_FRESHWATER_SWAMP_RARE                                    : Blackbog Clam
+ T3_FISH_SALTWATER_ALL_RARE                                       : Shallowshore Squid
+ T5_FISH_SALTWATER_ALL_RARE                                       : Midwater Octopus
+ T7_FISH_SALTWATER_ALL_RARE                                       : Deepwater Kraken
+ T3_FISH_FRESHWATER_AVALON_RARE                                   : Whitefog Snapper
+ T5_FISH_FRESHWATER_AVALON_RARE                                   : Clearhaze Snapper
+ T7_FISH_FRESHWATER_AVALON_RARE                                   : Puremist Snapper
+ T1_SEAWEED                                                       : Seaweed
+ T8_FISH_SALTWATER_ALL_BOSS_SHARK                                 : Shark
+ T1_FISHCHOPS                                                     : Chopped Fish
+ T1_FISHSAUCE_LEVEL1                                              : Basic Fish Sauce
+ T1_FISHSAUCE_LEVEL2                                              : Fancy Fish Sauce
+ T1_FISHSAUCE_LEVEL3                                              : Special Fish Sauce
+ TREASURE_KNOWLEDGE_RARITY1                                       : Corrupted Scroll
+ TREASURE_KNOWLEDGE_RARITY2                                       : Thin Booklet
+ TREASURE_KNOWLEDGE_RARITY3                                       : Ancient Tome
+ TREASURE_SILVERWARE_RARITY1                                      : Silver Cup
+ TREASURE_SILVERWARE_RARITY2                                      : Silver Mirror
+ TREASURE_SILVERWARE_RARITY3                                      : Silver Candelabrum
+ TREASURE_DECORATIVE_RARITY1                                      : Simple Stone Toy
+ TREASURE_DECORATIVE_RARITY2                                      : Stone Mask
+ TREASURE_DECORATIVE_RARITY3                                      : Stone Idol
+ TREASURE_CEREMONIAL_RARITY1                                      : Ornamental Scepter
+ TREASURE_CEREMONIAL_RARITY2                                      : Globus Cruciger
+ TREASURE_CEREMONIAL_RARITY3                                      : Golden Crown
+ TREASURE_TRIBAL_RARITY1                                          : Feather Talisman
+ TREASURE_TRIBAL_RARITY2                                          : Dreamcatcher
+ TREASURE_TRIBAL_RARITY3                                          : Holy Fetish
+ TREASURE_RITUAL_RARITY1                                          : Ritual Candles
+ TREASURE_RITUAL_RARITY2                                          : Blood Chalice
+ TREASURE_RITUAL_RARITY3                                          : Sacrificial Dagger
+ TREASURE_AVALON_RARITY1                                          : Golden Frame
+ TREASURE_AVALON_RARITY2                                          : Golden Gyroscope
+ TREASURE_AVALON_RARITY3                                          : Golden Sextant
+ QUESTITEM_TUTORIAL_HERETIC_PLANS                                 
+ QUESTITEM_TRANSFER_LETTER                                        : Letter of Transfer
+ QUESTITEM_LIGHT_BLUEPRINTS                                       : Delivery: Blueprints
+ QUESTITEM_LIGHT_MANUSCRIPTS                                      : Delivery: Artistic Manuscripts
+ QUESTITEM_LIGHT_SURVEYS                                          : Delivery: Geomantic Surveys
+ QUESTITEM_HEAVY_MORTAR                                           : Delivery: Mortar
+ QUESTITEM_HEAVY_CRATE                                            : Delivery: Crates
+ QUESTITEM_HEAVY_BARREL                                           : Delivery: Barrels
+ QUESTITEM_LIGHT_FUR                                              : Delivery: Heavy Fur
+ QUESTITEM_LIGHT_THEPACKAGE                                       : Delivery: "The Package"
+ QUESTITEM_LIGHT_PATROLROUTE                                      : Delivery: Patrol Route
+ QUESTITEM_HEAVY_MOONSHINE                                        : Delivery: Geoff the Brigand's All-Natural Enriched Moonshine
+ QUESTITEM_LIGHT_KITTENS                                          : Delivery: Sack of Kittens
+ QUESTITEM_LIGHT_BEES                                             : Delivery: Beehives
+ QUESTITEM_LIGHT_OLDCLOTHES                                       : Delivery: Old Clothes
+ QUESTITEM_HEAVY_FARMTOOLS                                        : Delivery: Farmyard Tools
+ QUESTITEM_HEAVY_MANURE                                           : Delivery: Pile of Manure
+ QUESTITEM_LIGHT_ASSASSINATION                                    : Delivery: Assassination Order
+ QUESTITEM_LIGHT_CASUALTIES                                       : Delivery: Casualty Report
+ QUESTITEM_LIGHT_RINGS                                            : Delivery: Regimental Rings
+ QUESTITEM_HEAVY_MEDICAL                                          : Delivery: Medical Supplies
+ QUESTITEM_HEAVY_FIREBARREL                                       : Delivery: Sensitive Barrels
+ QUESTITEM_CARAVAN_TRADEPACK_CAERLEON_LIGHT                       
+ QUESTITEM_CARAVAN_TRADEPACK_CAERLEON_MEDIUM                      
+ QUESTITEM_CARAVAN_TRADEPACK_CAERLEON_HEAVY                       
+ QUESTITEM_CARAVAN_TRADEPACK_SWAMP_LIGHT                          
+ QUESTITEM_CARAVAN_TRADEPACK_SWAMP_MEDIUM                         
+ QUESTITEM_CARAVAN_TRADEPACK_SWAMP_HEAVY                          
+ QUESTITEM_CARAVAN_TRADEPACK_FOREST_LIGHT                         
+ QUESTITEM_CARAVAN_TRADEPACK_FOREST_MEDIUM                        
+ QUESTITEM_CARAVAN_TRADEPACK_FOREST_HEAVY                         
+ QUESTITEM_CARAVAN_TRADEPACK_STEPPE_LIGHT                         
+ QUESTITEM_CARAVAN_TRADEPACK_STEPPE_MEDIUM                        
+ QUESTITEM_CARAVAN_TRADEPACK_STEPPE_HEAVY                         
+ QUESTITEM_CARAVAN_TRADEPACK_HIGHLAND_LIGHT                       
+ QUESTITEM_CARAVAN_TRADEPACK_HIGHLAND_MEDIUM                      
+ QUESTITEM_CARAVAN_TRADEPACK_HIGHLAND_HEAVY                       
+ QUESTITEM_CARAVAN_TRADEPACK_MOUNTAIN_LIGHT                       
+ QUESTITEM_CARAVAN_TRADEPACK_MOUNTAIN_MEDIUM                      
+ QUESTITEM_CARAVAN_TRADEPACK_MOUNTAIN_HEAVY                       
+ QUESTITEM_TOKEN_ARENA_UNRANKED                                   : Arena Sigil
+ QUESTITEM_TOKEN_ARENA_CRYSTAL                                    
+ QUESTITEM_TOKEN_AVALON                                           : Avalonian Energy
+ QUESTITEM_TOKEN_MISTS                                            : Faerie Fire
+ QUESTITEM_TOKEN_SMUGGLER                                         : Smuggler's Coin
+ QUESTITEM_STANDING_SMUGGLER                                      : Buy a round
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_WINTER_EVENT                   
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_UNDEAD_RECRUITMENT             
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_UNDEAD_RECRUITMENT            
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_HERETIC_FISHYBUSINESS          
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_HERETIC_FISHYBUSINESS         
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_KEEPER_STONEWARS               
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_KEEPER_STONEWARS              
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_HERETIC_LUMBERCAMP             
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_HERETIC_LUMBERCAMP            
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_UNDEAD_SEWERSCRYPT             
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_UNDEAD_SEWERSCRYPT            
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_KEEPER_MUSHROOM                
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_KEEPER_MUSHROOM               
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_MORGANA_TRHEESISTERS           
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_MORGANA_TRHEESISTERS          
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_UNDEAD_ETERNALBATTLE           
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_UNDEAD_ETERNALBATTLE          
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_HERETIC_FISTFULOFSILVER        
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_HERETIC_FISTFULOFSILVER       
+ QUESTITEM_EXP_TOKEN_D1_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D2_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D3_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D4_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D5_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D6_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D7_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D8_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D9_T6_EXP_HRD_MORGANA_TORTURER               
+ QUESTITEM_EXP_TOKEN_D10_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_EXP_TOKEN_D11_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_EXP_TOKEN_D12_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_EXP_TOKEN_D13_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_EXP_TOKEN_D14_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_EXP_TOKEN_D15_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_EXP_TOKEN_D16_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_EXP_TOKEN_D17_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_EXP_TOKEN_D18_T6_EXP_HRD_MORGANA_TORTURER              
+ QUESTITEM_TOKEN_ROYAL_HORSE                                      : Royal Horse Token
+ QUESTITEM_TOKEN_ROYAL_T4                                         : Adept's Royal Sigil
+ QUESTITEM_TOKEN_ROYAL_T5                                         : Expert's Royal Sigil
+ QUESTITEM_TOKEN_ROYAL_T6                                         : Master's Royal Sigil
+ QUESTITEM_TOKEN_ROYAL_T7                                         : Grandmaster's Royal Sigil
+ QUESTITEM_TOKEN_ROYAL_T8                                         : Elder's Royal Sigil
+ QUESTITEM_TOKEN_KEEPER                                           : Keeper Totem
+ QUESTITEM_TOKEN_MORGANA                                          : Morgana's Favor
+ QUESTITEM_TOKEN_UNDEAD                                           : Undead Knucklebone
+ QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017                             : Pumpkin Pip
+ QUESTITEM_TOKEN_EVENT_EASTER_2018                                : Fool's Golden Egg
+ QUESTITEM_TOKEN_ADC_FRAME                                        : Adventurer Token
+ T4_SKILLBOOK_GATHER_FIBER                                        : Adept Fiber Harvester Tome
+ T5_SKILLBOOK_GATHER_FIBER                                        : Expert Fiber Harvester Tome
+ T6_SKILLBOOK_GATHER_FIBER                                        : Master Fiber Harvester Tome
+ T7_SKILLBOOK_GATHER_FIBER                                        : Grandmaster Fiber Harvester Tome
+ T8_SKILLBOOK_GATHER_FIBER                                        : Elder Fiber Harvester Tome
+ T4_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
+ T5_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
+ T6_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
+ T7_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
+ T8_SKILLBOOK_GATHER_FIBER_NONTRADABLE                            
+ T4_SKILLBOOK_GATHER_HIDE                                         : Adept Animal Skinner Tome
+ T5_SKILLBOOK_GATHER_HIDE                                         : Expert Animal Skinner Tome
+ T6_SKILLBOOK_GATHER_HIDE                                         : Master Animal Skinner Tome
+ T7_SKILLBOOK_GATHER_HIDE                                         : Grandmaster Animal Skinner Tome
+ T8_SKILLBOOK_GATHER_HIDE                                         : Elder Animal Skinner Tome
+ T4_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
+ T5_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
+ T6_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
+ T7_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
+ T8_SKILLBOOK_GATHER_HIDE_NONTRADABLE                             
+ T4_SKILLBOOK_GATHER_ORE                                          : Adept Ore Miner Tome
+ T5_SKILLBOOK_GATHER_ORE                                          : Expert Ore Miner Tome
+ T6_SKILLBOOK_GATHER_ORE                                          : Master Ore Miner Tome
+ T7_SKILLBOOK_GATHER_ORE                                          : Grandmaster Ore Miner Tome
+ T8_SKILLBOOK_GATHER_ORE                                          : Elder Ore Miner Tome
+ T4_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
+ T5_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
+ T6_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
+ T7_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
+ T8_SKILLBOOK_GATHER_ORE_NONTRADABLE                              
+ T4_SKILLBOOK_GATHER_ROCK                                         : Adept Quarrier Tome
+ T5_SKILLBOOK_GATHER_ROCK                                         : Expert Quarrier Tome
+ T6_SKILLBOOK_GATHER_ROCK                                         : Master Quarrier Tome
+ T7_SKILLBOOK_GATHER_ROCK                                         : Grandmaster Quarrier Tome
+ T8_SKILLBOOK_GATHER_ROCK                                         : Elder Quarrier Tome
+ T4_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
+ T5_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
+ T6_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
+ T7_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
+ T8_SKILLBOOK_GATHER_ROCK_NONTRADABLE                             
+ T4_SKILLBOOK_GATHER_WOOD                                         : Adept Lumberjack Tome
+ T5_SKILLBOOK_GATHER_WOOD                                         : Expert Lumberjack Tome
+ T6_SKILLBOOK_GATHER_WOOD                                         : Master Lumberjack Tome
+ T7_SKILLBOOK_GATHER_WOOD                                         : Grandmaster Lumberjack Tome
+ T8_SKILLBOOK_GATHER_WOOD                                         : Elder Lumberjack Tome
+ T4_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
+ T5_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
+ T6_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
+ T7_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
+ T8_SKILLBOOK_GATHER_WOOD_NONTRADABLE                             
+ T4_SKILLBOOK_STANDARD                                            : Adept's Tome of Insight
+ T1_SKILLBOOK_NONTRADABLE                                         : Beginner's Tome of Insight
+ T2_SKILLBOOK_NONTRADABLE                                         : Novice's Tome of Insight
+ T3_SKILLBOOK_NONTRADABLE                                         : Journeyman's Tome of Insight
+ T4_SKILLBOOK_NONTRADABLE                                         : Adept's Tome of Insight
+ T5_SKILLBOOK_NONTRADABLE                                         : Expert's Tome of Insight
+ T6_SKILLBOOK_NONTRADABLE                                         : Master's Tome of Insight
+ T7_SKILLBOOK_NONTRADABLE                                         : Grandmaster's Tome of Insight
+ T8_SKILLBOOK_NONTRADABLE                                         : Elder's Tome of Insight
+ T8_CONSUMABLE_SPECIAL_NONTRADABLE@1                              
+ T1_LEARNINGPOINTS_NONTRADABLE                                    : Beginner's Tome of Learning
+ T2_LEARNINGPOINTS_NONTRADABLE                                    : Novice's Tome of Learning
+ T3_LEARNINGPOINTS_NONTRADABLE                                    : Journeyman's Tome of Learning
+ T4_LEARNINGPOINTS_NONTRADABLE                                    : Adept's Tome of Learning
+ T5_LEARNINGPOINTS_NONTRADABLE                                    : Expert's Tome of Learning
+ T6_LEARNINGPOINTS_NONTRADABLE                                    : Master's Tome of Learning
+ T7_LEARNINGPOINTS_NONTRADABLE                                    : Grandmaster's Tome of Learning
+ T8_LEARNINGPOINTS_NONTRADABLE                                    : Elder's Tome of Learning
+ T3_PREMIUMITEM_3_NONTRADABLE                                     : Three Days of Premium
+ T1_SILVERBAG_NONTRADABLE                                         : Beginner's Bag of Silver
+ T2_SILVERBAG_NONTRADABLE                                         : Novice's Bag of Silver
+ T3_SILVERBAG_NONTRADABLE                                         : Journeyman's Bag of Silver
+ T4_SILVERBAG_NONTRADABLE                                         : Adept's Bag of Silver
+ T5_SILVERBAG_NONTRADABLE                                         : Expert's Bag of Silver
+ T6_SILVERBAG_NONTRADABLE                                         : Master's Bag of Silver
+ T7_SILVERBAG_NONTRADABLE                                         : Grandmaster's Bag of Silver
+ T8_SILVERBAG_NONTRADABLE                                         : Elder's Bag of Silver
+ UNIQUE_FOCUSPOTION_TUTORIAL_01                                   
+ T3_FOCUSPOTION_NONTRADABLE                                       : Journeyman's Focus Restoration Potion
+ T4_FOCUSPOTION_NONTRADABLE                                       : Adept's Focus Restoration Potion
+ T5_FOCUSPOTION_NONTRADABLE                                       : Expert's Focus Restoration Potion
+ T6_FOCUSPOTION_NONTRADABLE                                       : Master's Focus Restoration Potion
+ UNIQUE_FOCUSPOTION_ADC_NONTRADABLE_01                            : Focus Restoration Potion
+ T8_FOCUSPOTION_NONTRADABLE                                       : Elder's Focus Restoration Potion
+ UNIQUE_FOCUSPOTION_ADC_GENERAL_01                                
+ T2_POTION_HEAL                                                   : Minor Healing Potion
+ T2_POTION_HEAL@1                                                 : Minor Healing Potion
+ T2_POTION_HEAL@2                                                 : Minor Healing Potion
+ T2_POTION_HEAL@3                                                 : Minor Healing Potion
+ T4_POTION_HEAL                                                   : Healing Potion
+ T4_POTION_HEAL@1                                                 : Healing Potion
+ T4_POTION_HEAL@2                                                 : Healing Potion
+ T4_POTION_HEAL@3                                                 : Healing Potion
+ T6_POTION_HEAL                                                   : Major Healing Potion
+ T6_POTION_HEAL@1                                                 : Major Healing Potion
+ T6_POTION_HEAL@2                                                 : Major Healing Potion
+ T6_POTION_HEAL@3                                                 : Major Healing Potion
+ T2_POTION_ENERGY                                                 : Minor Energy Potion
+ T2_POTION_ENERGY@1                                               : Minor Energy Potion
+ T2_POTION_ENERGY@2                                               : Minor Energy Potion
+ T2_POTION_ENERGY@3                                               : Minor Energy Potion
+ T4_POTION_ENERGY                                                 : Energy Potion
+ T4_POTION_ENERGY@1                                               : Energy Potion
+ T4_POTION_ENERGY@2                                               : Energy Potion
+ T4_POTION_ENERGY@3                                               : Energy Potion
+ T6_POTION_ENERGY                                                 : Major Energy Potion
+ T6_POTION_ENERGY@1                                               : Major Energy Potion
+ T6_POTION_ENERGY@2                                               : Major Energy Potion
+ T6_POTION_ENERGY@3                                               : Major Energy Potion
+ T3_POTION_REVIVE                                                 : Minor Gigantify Potion
+ T3_POTION_REVIVE@1                                               : Minor Gigantify Potion
+ T3_POTION_REVIVE@2                                               : Minor Gigantify Potion
+ T3_POTION_REVIVE@3                                               : Minor Gigantify Potion
+ T5_POTION_REVIVE                                                 : Gigantify Potion
+ T5_POTION_REVIVE@1                                               : Gigantify Potion
+ T5_POTION_REVIVE@2                                               : Gigantify Potion
+ T5_POTION_REVIVE@3                                               : Gigantify Potion
+ T7_POTION_REVIVE                                                 : Major Gigantify Potion
+ T7_POTION_REVIVE@1                                               : Major Gigantify Potion
+ T7_POTION_REVIVE@2                                               : Major Gigantify Potion
+ T7_POTION_REVIVE@3                                               : Major Gigantify Potion
+ T3_POTION_STONESKIN                                              : Minor Resistance Potion
+ T3_POTION_STONESKIN@1                                            : Minor Resistance Potion
+ T3_POTION_STONESKIN@2                                            : Minor Resistance Potion
+ T3_POTION_STONESKIN@3                                            : Minor Resistance Potion
+ T5_POTION_STONESKIN                                              : Resistance Potion
+ T5_POTION_STONESKIN@1                                            : Resistance Potion
+ T5_POTION_STONESKIN@2                                            : Resistance Potion
+ T5_POTION_STONESKIN@3                                            : Resistance Potion
+ T7_POTION_STONESKIN                                              : Major Resistance Potion
+ T7_POTION_STONESKIN@1                                            : Major Resistance Potion
+ T7_POTION_STONESKIN@2                                            : Major Resistance Potion
+ T7_POTION_STONESKIN@3                                            : Major Resistance Potion
+ T3_POTION_SLOWFIELD                                              : Minor Sticky Potion
+ T3_POTION_SLOWFIELD@1                                            : Minor Sticky Potion
+ T3_POTION_SLOWFIELD@2                                            : Minor Sticky Potion
+ T3_POTION_SLOWFIELD@3                                            : Minor Sticky Potion
+ T5_POTION_SLOWFIELD                                              : Sticky Potion
+ T5_POTION_SLOWFIELD@1                                            : Sticky Potion
+ T5_POTION_SLOWFIELD@2                                            : Sticky Potion
+ T5_POTION_SLOWFIELD@3                                            : Sticky Potion
+ T7_POTION_SLOWFIELD                                              : Major Sticky Potion
+ T7_POTION_SLOWFIELD@1                                            : Major Sticky Potion
+ T7_POTION_SLOWFIELD@2                                            : Major Sticky Potion
+ T7_POTION_SLOWFIELD@3                                            : Major Sticky Potion
+ T4_POTION_COOLDOWN                                               : Minor Poison Potion
+ T4_POTION_COOLDOWN@1                                             : Minor Poison Potion
+ T4_POTION_COOLDOWN@2                                             : Minor Poison Potion
+ T4_POTION_COOLDOWN@3                                             : Minor Poison Potion
+ T6_POTION_COOLDOWN                                               : Poison Potion
+ T6_POTION_COOLDOWN@1                                             : Poison Potion
+ T6_POTION_COOLDOWN@2                                             : Poison Potion
+ T6_POTION_COOLDOWN@3                                             : Poison Potion
+ T8_POTION_COOLDOWN                                               : Major Poison Potion
+ T8_POTION_COOLDOWN@1                                             : Major Poison Potion
+ T8_POTION_COOLDOWN@2                                             : Major Poison Potion
+ T8_POTION_COOLDOWN@3                                             : Major Poison Potion
+ T8_POTION_CLEANSE                                                : Invisibility Potion
+ T8_POTION_CLEANSE@1                                              : Invisibility Potion
+ T8_POTION_CLEANSE@2                                              : Invisibility Potion
+ T8_POTION_CLEANSE@3                                              : Invisibility Potion
+ T3_POTION_MOB_RESET                                              : Minor Calming Potion
+ T3_POTION_MOB_RESET@1                                            : Minor Calming Potion
+ T3_POTION_MOB_RESET@2                                            : Minor Calming Potion
+ T3_POTION_MOB_RESET@3                                            : Minor Calming Potion
+ T5_POTION_MOB_RESET                                              : Calming Potion
+ T5_POTION_MOB_RESET@1                                            : Calming Potion
+ T5_POTION_MOB_RESET@2                                            : Calming Potion
+ T5_POTION_MOB_RESET@3                                            : Calming Potion
+ T7_POTION_MOB_RESET                                              : Major Calming Potion
+ T7_POTION_MOB_RESET@1                                            : Major Calming Potion
+ T7_POTION_MOB_RESET@2                                            : Major Calming Potion
+ T7_POTION_MOB_RESET@3                                            : Major Calming Potion
+ T3_POTION_CLEANSE2                                               : Minor Cleansing Potion
+ T3_POTION_CLEANSE2@1                                             : Minor Cleansing Potion
+ T3_POTION_CLEANSE2@2                                             : Minor Cleansing Potion
+ T3_POTION_CLEANSE2@3                                             : Minor Cleansing Potion
+ T5_POTION_CLEANSE2                                               : Cleansing Potion
+ T5_POTION_CLEANSE2@1                                             : Cleansing Potion
+ T5_POTION_CLEANSE2@2                                             : Cleansing Potion
+ T5_POTION_CLEANSE2@3                                             : Cleansing Potion
+ T7_POTION_CLEANSE2                                               : Major Cleansing Potion
+ T7_POTION_CLEANSE2@1                                             : Major Cleansing Potion
+ T7_POTION_CLEANSE2@2                                             : Major Cleansing Potion
+ T7_POTION_CLEANSE2@3                                             : Major Cleansing Potion
+ T3_POTION_ACID                                                   : Minor Acid Potion
+ T3_POTION_ACID@1                                                 : Minor Acid Potion
+ T3_POTION_ACID@2                                                 : Minor Acid Potion
+ T3_POTION_ACID@3                                                 : Minor Acid Potion
+ T5_POTION_ACID                                                   : Acid Potion
+ T5_POTION_ACID@1                                                 : Acid Potion
+ T5_POTION_ACID@2                                                 : Acid Potion
+ T5_POTION_ACID@3                                                 : Acid Potion
+ T7_POTION_ACID                                                   : Major Acid Potion
+ T7_POTION_ACID@1                                                 : Major Acid Potion
+ T7_POTION_ACID@2                                                 : Major Acid Potion
+ T7_POTION_ACID@3                                                 : Major Acid Potion
+ T4_POTION_BERSERK                                                : Minor Berserk Potion
+ T4_POTION_BERSERK@1                                              : Minor Berserk Potion
+ T4_POTION_BERSERK@2                                              : Minor Berserk Potion
+ T4_POTION_BERSERK@3                                              : Minor Berserk Potion
+ T6_POTION_BERSERK                                                : Berserk Potion
+ T6_POTION_BERSERK@1                                              : Berserk Potion
+ T6_POTION_BERSERK@2                                              : Berserk Potion
+ T6_POTION_BERSERK@3                                              : Berserk Potion
+ T8_POTION_BERSERK                                                : Major Berserk Potion
+ T8_POTION_BERSERK@1                                              : Major Berserk Potion
+ T8_POTION_BERSERK@2                                              : Major Berserk Potion
+ T8_POTION_BERSERK@3                                              : Major Berserk Potion
+ T4_POTION_LAVA                                                   : Minor Hellfire Potion
+ T4_POTION_LAVA@1                                                 : Minor Hellfire Potion
+ T4_POTION_LAVA@2                                                 : Minor Hellfire Potion
+ T4_POTION_LAVA@3                                                 : Minor Hellfire Potion
+ T6_POTION_LAVA                                                   : Hellfire Potion
+ T6_POTION_LAVA@1                                                 : Hellfire Potion
+ T6_POTION_LAVA@2                                                 : Hellfire Potion
+ T6_POTION_LAVA@3                                                 : Hellfire Potion
+ T8_POTION_LAVA                                                   : Major Hellfire Potion
+ T8_POTION_LAVA@1                                                 : Major Hellfire Potion
+ T8_POTION_LAVA@2                                                 : Major Hellfire Potion
+ T8_POTION_LAVA@3                                                 : Major Hellfire Potion
+ T4_POTION_GATHER                                                 : Minor Gathering Potion
+ T4_POTION_GATHER@1                                               : Minor Gathering Potion
+ T4_POTION_GATHER@2                                               : Minor Gathering Potion
+ T4_POTION_GATHER@3                                               : Minor Gathering Potion
+ T6_POTION_GATHER                                                 : Gathering Potion
+ T6_POTION_GATHER@1                                               : Gathering Potion
+ T6_POTION_GATHER@2                                               : Gathering Potion
+ T6_POTION_GATHER@3                                               : Gathering Potion
+ T8_POTION_GATHER                                                 : Major Gathering Potion
+ T8_POTION_GATHER@1                                               : Major Gathering Potion
+ T8_POTION_GATHER@2                                               : Major Gathering Potion
+ T8_POTION_GATHER@3                                               : Major Gathering Potion
+ T4_POTION_TORNADO                                                : Minor Tornado in a Bottle
+ T4_POTION_TORNADO@1                                              : Minor Tornado in a Bottle
+ T4_POTION_TORNADO@2                                              : Minor Tornado in a Bottle
+ T4_POTION_TORNADO@3                                              : Minor Tornado in a Bottle
+ T6_POTION_TORNADO                                                : Tornado in a Bottle
+ T6_POTION_TORNADO@1                                              : Tornado in a Bottle
+ T6_POTION_TORNADO@2                                              : Tornado in a Bottle
+ T6_POTION_TORNADO@3                                              : Tornado in a Bottle
+ T8_POTION_TORNADO                                                : Major Tornado in a Bottle
+ T8_POTION_TORNADO@1                                              : Major Tornado in a Bottle
+ T8_POTION_TORNADO@2                                              : Major Tornado in a Bottle
+ T8_POTION_TORNADO@3                                              : Major Tornado in a Bottle
+ T1_WORM                                                          : Earthworm
+ T1_FISHINGBAIT                                                   : Simple Fish Bait
+ T3_FISHINGBAIT                                                   : Fancy Fish Bait
+ T5_FISHINGBAIT                                                   : Special Fish Bait
+ T1_MEAL_GRILLEDFISH                                              : Grilled Fish
+ T1_MEAL_SEAWEEDSALAD                                             : Seaweed Salad
+ T1_MEAL_SOUP                                                     : Carrot Soup
+ T1_MEAL_SOUP@1                                                   : Carrot Soup
+ T1_MEAL_SOUP@2                                                   : Carrot Soup
+ T1_MEAL_SOUP@3                                                   : Carrot Soup
+ T3_MEAL_SOUP                                                     : Wheat Soup
+ T3_MEAL_SOUP@1                                                   : Wheat Soup
+ T3_MEAL_SOUP@2                                                   : Wheat Soup
+ T3_MEAL_SOUP@3                                                   : Wheat Soup
+ T5_MEAL_SOUP                                                     : Cabbage Soup
+ T5_MEAL_SOUP@1                                                   : Cabbage Soup
+ T5_MEAL_SOUP@2                                                   : Cabbage Soup
+ T5_MEAL_SOUP@3                                                   : Cabbage Soup
+ T1_MEAL_SOUP_FISH                                                : Greenmoor Clam Soup
+ T1_MEAL_SOUP_FISH@1                                              : Greenmoor Clam Soup
+ T1_MEAL_SOUP_FISH@2                                              : Greenmoor Clam Soup
+ T1_MEAL_SOUP_FISH@3                                              : Greenmoor Clam Soup
+ T3_MEAL_SOUP_FISH                                                : Murkwater Clam Soup
+ T3_MEAL_SOUP_FISH@1                                              : Murkwater Clam Soup
+ T3_MEAL_SOUP_FISH@2                                              : Murkwater Clam Soup
+ T3_MEAL_SOUP_FISH@3                                              : Murkwater Clam Soup
+ T5_MEAL_SOUP_FISH                                                : Blackbog Clam Soup
+ T5_MEAL_SOUP_FISH@1                                              : Blackbog Clam Soup
+ T5_MEAL_SOUP_FISH@2                                              : Blackbog Clam Soup
+ T5_MEAL_SOUP_FISH@3                                              : Blackbog Clam Soup
+ T2_MEAL_SALAD                                                    : Bean Salad
+ T2_MEAL_SALAD@1                                                  : Bean Salad
+ T2_MEAL_SALAD@2                                                  : Bean Salad
+ T2_MEAL_SALAD@3                                                  : Bean Salad
+ T4_MEAL_SALAD                                                    : Turnip Salad
+ T4_MEAL_SALAD@1                                                  : Turnip Salad
+ T4_MEAL_SALAD@2                                                  : Turnip Salad
+ T4_MEAL_SALAD@3                                                  : Turnip Salad
+ T6_MEAL_SALAD                                                    : Potato Salad
+ T6_MEAL_SALAD@1                                                  : Potato Salad
+ T6_MEAL_SALAD@2                                                  : Potato Salad
+ T6_MEAL_SALAD@3                                                  : Potato Salad
+ T2_MEAL_SALAD_FISH                                               : Shallowshore Squid Salad
+ T2_MEAL_SALAD_FISH@1                                             : Shallowshore Squid Salad
+ T2_MEAL_SALAD_FISH@2                                             : Shallowshore Squid Salad
+ T2_MEAL_SALAD_FISH@3                                             : Shallowshore Squid Salad
+ T4_MEAL_SALAD_FISH                                               : Midwater Octopus Salad
+ T4_MEAL_SALAD_FISH@1                                             : Midwater Octopus Salad
+ T4_MEAL_SALAD_FISH@2                                             : Midwater Octopus Salad
+ T4_MEAL_SALAD_FISH@3                                             : Midwater Octopus Salad
+ T6_MEAL_SALAD_FISH                                               : Deepwater Kraken Salad
+ T6_MEAL_SALAD_FISH@1                                             : Deepwater Kraken Salad
+ T6_MEAL_SALAD_FISH@2                                             : Deepwater Kraken Salad
+ T6_MEAL_SALAD_FISH@3                                             : Deepwater Kraken Salad
+ T3_MEAL_PIE                                                      : Chicken Pie
+ T3_MEAL_PIE@1                                                    : Chicken Pie
+ T3_MEAL_PIE@2                                                    : Chicken Pie
+ T3_MEAL_PIE@3                                                    : Chicken Pie
+ T5_MEAL_PIE                                                      : Goose Pie
+ T5_MEAL_PIE@1                                                    : Goose Pie
+ T5_MEAL_PIE@2                                                    : Goose Pie
+ T5_MEAL_PIE@3                                                    : Goose Pie
+ T7_MEAL_PIE                                                      : Pork Pie
+ T7_MEAL_PIE@1                                                    : Pork Pie
+ T7_MEAL_PIE@2                                                    : Pork Pie
+ T7_MEAL_PIE@3                                                    : Pork Pie
+ T3_MEAL_PIE_FISH                                                 : Upland Coldeye Pie
+ T3_MEAL_PIE_FISH@1                                               : Upland Coldeye Pie
+ T3_MEAL_PIE_FISH@2                                               : Upland Coldeye Pie
+ T3_MEAL_PIE_FISH@3                                               : Upland Coldeye Pie
+ T5_MEAL_PIE_FISH                                                 : Mountain Blindeye Pie
+ T5_MEAL_PIE_FISH@1                                               : Mountain Blindeye Pie
+ T5_MEAL_PIE_FISH@2                                               : Mountain Blindeye Pie
+ T5_MEAL_PIE_FISH@3                                               : Mountain Blindeye Pie
+ T7_MEAL_PIE_FISH                                                 : Frostpeak Deadeye Pie
+ T7_MEAL_PIE_FISH@1                                               : Frostpeak Deadeye Pie
+ T7_MEAL_PIE_FISH@2                                               : Frostpeak Deadeye Pie
+ T7_MEAL_PIE_FISH@3                                               : Frostpeak Deadeye Pie
+ T3_MEAL_OMELETTE                                                 : Chicken Omelette
+ T3_MEAL_OMELETTE@1                                               : Chicken Omelette
+ T3_MEAL_OMELETTE@2                                               : Chicken Omelette
+ T3_MEAL_OMELETTE@3                                               : Chicken Omelette
+ T5_MEAL_OMELETTE                                                 : Goose Omelette
+ T5_MEAL_OMELETTE@1                                               : Goose Omelette
+ T5_MEAL_OMELETTE@2                                               : Goose Omelette
+ T5_MEAL_OMELETTE@3                                               : Goose Omelette
+ T7_MEAL_OMELETTE                                                 : Pork Omelette
+ T7_MEAL_OMELETTE@1                                               : Pork Omelette
+ T7_MEAL_OMELETTE@2                                               : Pork Omelette
+ T7_MEAL_OMELETTE@3                                               : Pork Omelette
+ T3_MEAL_OMELETTE_FISH                                            : Lowriver Crab Omelette
+ T3_MEAL_OMELETTE_FISH@1                                          : Lowriver Crab Omelette
+ T3_MEAL_OMELETTE_FISH@2                                          : Lowriver Crab Omelette
+ T3_MEAL_OMELETTE_FISH@3                                          : Lowriver Crab Omelette
+ T5_MEAL_OMELETTE_FISH                                            : Drybrook Crab Omelette
+ T5_MEAL_OMELETTE_FISH@1                                          : Drybrook Crab Omelette
+ T5_MEAL_OMELETTE_FISH@2                                          : Drybrook Crab Omelette
+ T5_MEAL_OMELETTE_FISH@3                                          : Drybrook Crab Omelette
+ T7_MEAL_OMELETTE_FISH                                            : Dusthole Crab Omelette
+ T7_MEAL_OMELETTE_FISH@1                                          : Dusthole Crab Omelette
+ T7_MEAL_OMELETTE_FISH@2                                          : Dusthole Crab Omelette
+ T7_MEAL_OMELETTE_FISH@3                                          : Dusthole Crab Omelette
+ T3_MEAL_OMELETTE_AVALON                                          : Avalonian Chicken Omelette
+ T3_MEAL_OMELETTE_AVALON@1                                        : Avalonian Chicken Omelette
+ T3_MEAL_OMELETTE_AVALON@2                                        : Avalonian Chicken Omelette
+ T3_MEAL_OMELETTE_AVALON@3                                        : Avalonian Chicken Omelette
+ T5_MEAL_OMELETTE_AVALON                                          : Avalonian Goose Omelette
+ T5_MEAL_OMELETTE_AVALON@1                                        : Avalonian Goose Omelette
+ T5_MEAL_OMELETTE_AVALON@2                                        : Avalonian Goose Omelette
+ T5_MEAL_OMELETTE_AVALON@3                                        : Avalonian Goose Omelette
+ T7_MEAL_OMELETTE_AVALON                                          : Avalonian Pork Omelette
+ T7_MEAL_OMELETTE_AVALON@1                                        : Avalonian Pork Omelette
+ T7_MEAL_OMELETTE_AVALON@2                                        : Avalonian Pork Omelette
+ T7_MEAL_OMELETTE_AVALON@3                                        : Avalonian Pork Omelette
+ T4_MEAL_STEW                                                     : Goat Stew
+ T4_MEAL_STEW@1                                                   : Goat Stew
+ T4_MEAL_STEW@2                                                   : Goat Stew
+ T4_MEAL_STEW@3                                                   : Goat Stew
+ T6_MEAL_STEW                                                     : Mutton Stew
+ T6_MEAL_STEW@1                                                   : Mutton Stew
+ T6_MEAL_STEW@2                                                   : Mutton Stew
+ T6_MEAL_STEW@3                                                   : Mutton Stew
+ T8_MEAL_STEW                                                     : Beef Stew
+ T8_MEAL_STEW@1                                                   : Beef Stew
+ T8_MEAL_STEW@2                                                   : Beef Stew
+ T8_MEAL_STEW@3                                                   : Beef Stew
+ T4_MEAL_STEW_FISH                                                : Greenriver Eel Stew
+ T4_MEAL_STEW_FISH@1                                              : Greenriver Eel Stew
+ T4_MEAL_STEW_FISH@2                                              : Greenriver Eel Stew
+ T4_MEAL_STEW_FISH@3                                              : Greenriver Eel Stew
+ T6_MEAL_STEW_FISH                                                : Redspring Eel Stew
+ T6_MEAL_STEW_FISH@1                                              : Redspring Eel Stew
+ T6_MEAL_STEW_FISH@2                                              : Redspring Eel Stew
+ T6_MEAL_STEW_FISH@3                                              : Redspring Eel Stew
+ T8_MEAL_STEW_FISH                                                : Deadwater Eel Stew
+ T8_MEAL_STEW_FISH@1                                              : Deadwater Eel Stew
+ T8_MEAL_STEW_FISH@2                                              : Deadwater Eel Stew
+ T8_MEAL_STEW_FISH@3                                              : Deadwater Eel Stew
+ T4_MEAL_STEW_AVALON                                              : Avalonian Goat Stew
+ T4_MEAL_STEW_AVALON@1                                            : Avalonian Goat Stew
+ T4_MEAL_STEW_AVALON@2                                            : Avalonian Goat Stew
+ T4_MEAL_STEW_AVALON@3                                            : Avalonian Goat Stew
+ T6_MEAL_STEW_AVALON                                              : Avalonian Mutton Stew
+ T6_MEAL_STEW_AVALON@1                                            : Avalonian Mutton Stew
+ T6_MEAL_STEW_AVALON@2                                            : Avalonian Mutton Stew
+ T6_MEAL_STEW_AVALON@3                                            : Avalonian Mutton Stew
+ T8_MEAL_STEW_AVALON                                              : Avalonian Beef Stew
+ T8_MEAL_STEW_AVALON@1                                            : Avalonian Beef Stew
+ T8_MEAL_STEW_AVALON@2                                            : Avalonian Beef Stew
+ T8_MEAL_STEW_AVALON@3                                            : Avalonian Beef Stew
+ T4_MEAL_SANDWICH                                                 : Goat Sandwich
+ T4_MEAL_SANDWICH@1                                               : Goat Sandwich
+ T4_MEAL_SANDWICH@2                                               : Goat Sandwich
+ T4_MEAL_SANDWICH@3                                               : Goat Sandwich
+ T6_MEAL_SANDWICH                                                 : Mutton Sandwich
+ T6_MEAL_SANDWICH@1                                               : Mutton Sandwich
+ T6_MEAL_SANDWICH@2                                               : Mutton Sandwich
+ T6_MEAL_SANDWICH@3                                               : Mutton Sandwich
+ T8_MEAL_SANDWICH                                                 : Beef Sandwich
+ T8_MEAL_SANDWICH@1                                               : Beef Sandwich
+ T8_MEAL_SANDWICH@2                                               : Beef Sandwich
+ T8_MEAL_SANDWICH@3                                               : Beef Sandwich
+ T4_MEAL_SANDWICH_FISH                                            : Stonestream Lurcher Sandwich
+ T4_MEAL_SANDWICH_FISH@1                                          : Stonestream Lurcher Sandwich
+ T4_MEAL_SANDWICH_FISH@2                                          : Stonestream Lurcher Sandwich
+ T4_MEAL_SANDWICH_FISH@3                                          : Stonestream Lurcher Sandwich
+ T6_MEAL_SANDWICH_FISH                                            : Rushwater Lurcher Sandwich
+ T6_MEAL_SANDWICH_FISH@1                                          : Rushwater Lurcher Sandwich
+ T6_MEAL_SANDWICH_FISH@2                                          : Rushwater Lurcher Sandwich
+ T6_MEAL_SANDWICH_FISH@3                                          : Rushwater Lurcher Sandwich
+ T8_MEAL_SANDWICH_FISH                                            : Thunderfall Lurcher Sandwich
+ T8_MEAL_SANDWICH_FISH@1                                          : Thunderfall Lurcher Sandwich
+ T8_MEAL_SANDWICH_FISH@2                                          : Thunderfall Lurcher Sandwich
+ T8_MEAL_SANDWICH_FISH@3                                          : Thunderfall Lurcher Sandwich
+ T4_MEAL_SANDWICH_AVALON                                          : Avalonian Goat Sandwich
+ T4_MEAL_SANDWICH_AVALON@1                                        : Avalonian Goat Sandwich
+ T4_MEAL_SANDWICH_AVALON@2                                        : Avalonian Goat Sandwich
+ T4_MEAL_SANDWICH_AVALON@3                                        : Avalonian Goat Sandwich
+ T6_MEAL_SANDWICH_AVALON                                          : Avalonian Mutton Sandwich
+ T6_MEAL_SANDWICH_AVALON@1                                        : Avalonian Mutton Sandwich
+ T6_MEAL_SANDWICH_AVALON@2                                        : Avalonian Mutton Sandwich
+ T6_MEAL_SANDWICH_AVALON@3                                        : Avalonian Mutton Sandwich
+ T8_MEAL_SANDWICH_AVALON                                          : Avalonian Beef Sandwich
+ T8_MEAL_SANDWICH_AVALON@1                                        : Avalonian Beef Sandwich
+ T8_MEAL_SANDWICH_AVALON@2                                        : Avalonian Beef Sandwich
+ T8_MEAL_SANDWICH_AVALON@3                                        : Avalonian Beef Sandwich
+ T3_MEAL_ROAST                                                    : Roast Chicken
+ T3_MEAL_ROAST@1                                                  : Roast Chicken
+ T3_MEAL_ROAST@2                                                  : Roast Chicken
+ T3_MEAL_ROAST@3                                                  : Roast Chicken
+ T5_MEAL_ROAST                                                    : Roast Goose
+ T5_MEAL_ROAST@1                                                  : Roast Goose
+ T5_MEAL_ROAST@2                                                  : Roast Goose
+ T5_MEAL_ROAST@3                                                  : Roast Goose
+ T7_MEAL_ROAST                                                    : Roast Pork
+ T7_MEAL_ROAST@1                                                  : Roast Pork
+ T7_MEAL_ROAST@2                                                  : Roast Pork
+ T7_MEAL_ROAST@3                                                  : Roast Pork
+ T3_MEAL_ROAST_FISH                                               : Roasted Whitefog Snapper
+ T3_MEAL_ROAST_FISH@1                                             : Roasted Whitefog Snapper
+ T3_MEAL_ROAST_FISH@2                                             : Roasted Whitefog Snapper
+ T3_MEAL_ROAST_FISH@3                                             : Roasted Whitefog Snapper
+ T5_MEAL_ROAST_FISH                                               : Roasted Clearhaze Snapper
+ T5_MEAL_ROAST_FISH@1                                             : Roasted Clearhaze Snapper
+ T5_MEAL_ROAST_FISH@2                                             : Roasted Clearhaze Snapper
+ T5_MEAL_ROAST_FISH@3                                             : Roasted Clearhaze Snapper
+ T7_MEAL_ROAST_FISH                                               : Roasted Puremist Snapper
+ T7_MEAL_ROAST_FISH@1                                             : Roasted Puremist Snapper
+ T7_MEAL_ROAST_FISH@2                                             : Roasted Puremist Snapper
+ T7_MEAL_ROAST_FISH@3                                             : Roasted Puremist Snapper
+ T3_MEAT                                                          : Raw Chicken
+ T4_MEAT                                                          : Raw Goat
+ T5_MEAT                                                          : Raw Goose
+ T6_MEAT                                                          : Raw Mutton
+ T7_MEAT                                                          : Raw Pork
+ T8_MEAT                                                          : Raw Beef
+ T4_BUTTER                                                        : Goat's Butter
+ T6_BUTTER                                                        : Sheep's Butter
+ T8_BUTTER                                                        : Cow's Butter
+ T6_ALCOHOL                                                       : Potato Schnapps
+ T7_ALCOHOL                                                       : Corn Hooch
+ T8_ALCOHOL                                                       : Pumpkin Moonshine
+ T4_BREAD                                                         : Bread
+ T3_FLOUR                                                         : Flour
+ T1_WOOD                                                          : Rough Logs
+ T2_WOOD                                                          : Birch Logs
+ T3_WOOD                                                          : Chestnut Logs
+ T4_WOOD                                                          : Pine Logs
+ T5_WOOD                                                          : Cedar Logs
+ T6_WOOD                                                          : Bloodoak Logs
+ T7_WOOD                                                          : Ashenbark Logs
+ T8_WOOD                                                          : Whitewood Logs
+ T4_WOOD_LEVEL1@1                                                 : Uncommon Pine Logs
+ T5_WOOD_LEVEL1@1                                                 : Uncommon Cedar Logs
+ T6_WOOD_LEVEL1@1                                                 : Uncommon Bloodoak Logs
+ T7_WOOD_LEVEL1@1                                                 : Uncommon Ashenbark Logs
+ T8_WOOD_LEVEL1@1                                                 : Uncommon Whitewood Logs
+ T4_WOOD_LEVEL2@2                                                 : Rare Pine Logs
+ T5_WOOD_LEVEL2@2                                                 : Rare Cedar Logs
+ T6_WOOD_LEVEL2@2                                                 : Rare Bloodoak Logs
+ T7_WOOD_LEVEL2@2                                                 : Rare Ashenbark Logs
+ T8_WOOD_LEVEL2@2                                                 : Rare Whitewood Logs
+ T4_WOOD_LEVEL3@3                                                 : Exceptional Pine Logs
+ T5_WOOD_LEVEL3@3                                                 : Exceptional Cedar Logs
+ T6_WOOD_LEVEL3@3                                                 : Exceptional Bloodoak Logs
+ T7_WOOD_LEVEL3@3                                                 : Exceptional Ashenbark Logs
+ T8_WOOD_LEVEL3@3                                                 : Exceptional Whitewood Logs
+ T4_WOOD_LEVEL4@4                                                 : Pristine Pine Logs
+ T5_WOOD_LEVEL4@4                                                 : Pristine Cedar Logs
+ T6_WOOD_LEVEL4@4                                                 : Pristine Bloodoak Logs
+ T7_WOOD_LEVEL4@4                                                 : Pristine Ashenbark Logs
+ T8_WOOD_LEVEL4@4                                                 : Pristine Whitewood Logs
+ T1_ROCK                                                          : Rough Stone
+ T2_ROCK                                                          : Limestone
+ T3_ROCK                                                          : Sandstone
+ T4_ROCK                                                          : Travertine
+ T5_ROCK                                                          : Granite
+ T6_ROCK                                                          : Slate
+ T7_ROCK                                                          : Basalt
+ T8_ROCK                                                          : Marble
+ T4_ROCK_LEVEL1@1                                                 : Uncommon Travertine
+ T5_ROCK_LEVEL1@1                                                 : Uncommon Granite
+ T6_ROCK_LEVEL1@1                                                 : Uncommon Slate
+ T7_ROCK_LEVEL1@1                                                 : Uncommon Basalt
+ T8_ROCK_LEVEL1@1                                                 : Uncommon Marble
+ T4_ROCK_LEVEL2@2                                                 : Rare Travertine
+ T5_ROCK_LEVEL2@2                                                 : Rare Granite
+ T6_ROCK_LEVEL2@2                                                 : Rare Slate
+ T7_ROCK_LEVEL2@2                                                 : Rare Basalt
+ T8_ROCK_LEVEL2@2                                                 : Rare Marble
+ T4_ROCK_LEVEL3@3                                                 : Exceptional Travertine
+ T5_ROCK_LEVEL3@3                                                 : Exceptional Granite
+ T6_ROCK_LEVEL3@3                                                 : Exceptional Slate
+ T7_ROCK_LEVEL3@3                                                 : Exceptional Basalt
+ T8_ROCK_LEVEL3@3                                                 : Exceptional Marble
+ T2_ORE                                                           : Copper Ore
+ T3_ORE                                                           : Tin Ore
+ T4_ORE                                                           : Iron Ore
+ T5_ORE                                                           : Titanium Ore
+ T6_ORE                                                           : Runite Ore
+ T7_ORE                                                           : Meteorite Ore
+ T8_ORE                                                           : Adamantium Ore
+ T4_ORE_LEVEL1@1                                                  : Uncommon Iron Ore
+ T5_ORE_LEVEL1@1                                                  : Uncommon Titanium Ore
+ T6_ORE_LEVEL1@1                                                  : Uncommon Runite Ore
+ T7_ORE_LEVEL1@1                                                  : Uncommon Meteorite Ore
+ T8_ORE_LEVEL1@1                                                  : Uncommon Adamantium Ore
+ T4_ORE_LEVEL2@2                                                  : Rare Iron Ore
+ T5_ORE_LEVEL2@2                                                  : Rare Titanium Ore
+ T6_ORE_LEVEL2@2                                                  : Rare Runite Ore
+ T7_ORE_LEVEL2@2                                                  : Rare Meteorite Ore
+ T8_ORE_LEVEL2@2                                                  : Rare Adamantium Ore
+ T4_ORE_LEVEL3@3                                                  : Exceptional Iron Ore
+ T5_ORE_LEVEL3@3                                                  : Exceptional Titanium Ore
+ T6_ORE_LEVEL3@3                                                  : Exceptional Runite Ore
+ T7_ORE_LEVEL3@3                                                  : Exceptional Meteorite Ore
+ T8_ORE_LEVEL3@3                                                  : Exceptional Adamantium Ore
+ T4_ORE_LEVEL4@4                                                  : Pristine Iron Ore
+ T5_ORE_LEVEL4@4                                                  : Pristine Titanium Ore
+ T6_ORE_LEVEL4@4                                                  : Pristine Runite Ore
+ T7_ORE_LEVEL4@4                                                  : Pristine Meteorite Ore
+ T8_ORE_LEVEL4@4                                                  : Pristine Adamantium Ore
+ T1_HIDE                                                          : Scraps of Hide
+ T2_HIDE                                                          : Rugged Hide
+ T3_HIDE                                                          : Thin Hide
+ T4_HIDE                                                          : Medium Hide
+ T5_HIDE                                                          : Heavy Hide
+ T6_HIDE                                                          : Robust Hide
+ T7_HIDE                                                          : Thick Hide
+ T8_HIDE                                                          : Resilient Hide
 T4_HIDE_LEVEL1@1                                                 : Uncommon Medium Hide
 T5_HIDE_LEVEL1@1                                                 : Uncommon Heavy Hide
 T6_HIDE_LEVEL1@1                                                 : Uncommon Robust Hide
@@ -3096,7 +3096,7 @@ T3_FURNITUREITEM_ANNIVERSARYBANNER_2022                          : Anniversary B
 T3_FURNITUREITEM_ANNIVERSARYBANNER_2023                          : Anniversary Banner - Orange
 T3_FURNITUREITEM_ANNIVERSARYBANNER_2024                          : Anniversary Banner - Purple
 T3_FURNITUREITEM_ANNIVERSARYBANNER_2025                          : Anniversary Banner - Light Blue
-T3_FURNITUREITEM_ANNIVERSARYBANNER_2026                          
+T3_FURNITUREITEM_ANNIVERSARYBANNER_2026                          : Anniversary Banner - Light Green
 UNIQUE_FURNITUREITEM_TELLAFRIEND_CHEST_A@1                       : Recruiter's Crate
 UNIQUE_FURNITUREITEM_TELLAFRIEND_CHEST_B@1                       : Recruiter's Chest
 UNIQUE_FURNITUREITEM_TELLAFRIEND_CHEST_C@1                       : Recruiter's Wooden Chest
@@ -8752,31 +8752,31 @@ T8_2H_DOUBLEBLADEDSTAFF@1                                        : Elder's Doubl
 T8_2H_DOUBLEBLADEDSTAFF@2                                        : Elder's Double Bladed Staff
 T8_2H_DOUBLEBLADEDSTAFF@3                                        : Elder's Double Bladed Staff
 T8_2H_DOUBLEBLADEDSTAFF@4                                        : Elder's Double Bladed Staff
-T4_2H_COMBATSTAFF_MORGANA                                        : Adept's Black Monk Stave
-T4_2H_COMBATSTAFF_MORGANA@1                                      : Adept's Black Monk Stave
-T4_2H_COMBATSTAFF_MORGANA@2                                      : Adept's Black Monk Stave
-T4_2H_COMBATSTAFF_MORGANA@3                                      : Adept's Black Monk Stave
-T4_2H_COMBATSTAFF_MORGANA@4                                      : Adept's Black Monk Stave
-T5_2H_COMBATSTAFF_MORGANA                                        : Expert's Black Monk Stave
-T5_2H_COMBATSTAFF_MORGANA@1                                      : Expert's Black Monk Stave
-T5_2H_COMBATSTAFF_MORGANA@2                                      : Expert's Black Monk Stave
-T5_2H_COMBATSTAFF_MORGANA@3                                      : Expert's Black Monk Stave
-T5_2H_COMBATSTAFF_MORGANA@4                                      : Expert's Black Monk Stave
-T6_2H_COMBATSTAFF_MORGANA                                        : Master's Black Monk Stave
-T6_2H_COMBATSTAFF_MORGANA@1                                      : Master's Black Monk Stave
-T6_2H_COMBATSTAFF_MORGANA@2                                      : Master's Black Monk Stave
-T6_2H_COMBATSTAFF_MORGANA@3                                      : Master's Black Monk Stave
-T6_2H_COMBATSTAFF_MORGANA@4                                      : Master's Black Monk Stave
-T7_2H_COMBATSTAFF_MORGANA                                        : Grandmaster's Black Monk Stave
-T7_2H_COMBATSTAFF_MORGANA@1                                      : Grandmaster's Black Monk Stave
-T7_2H_COMBATSTAFF_MORGANA@2                                      : Grandmaster's Black Monk Stave
-T7_2H_COMBATSTAFF_MORGANA@3                                      : Grandmaster's Black Monk Stave
-T7_2H_COMBATSTAFF_MORGANA@4                                      : Grandmaster's Black Monk Stave
-T8_2H_COMBATSTAFF_MORGANA                                        : Elder's Black Monk Stave
-T8_2H_COMBATSTAFF_MORGANA@1                                      : Elder's Black Monk Stave
-T8_2H_COMBATSTAFF_MORGANA@2                                      : Elder's Black Monk Stave
-T8_2H_COMBATSTAFF_MORGANA@3                                      : Elder's Black Monk Stave
-T8_2H_COMBATSTAFF_MORGANA@4                                      : Elder's Black Monk Stave
+T4_2H_COMBATSTAFF_MORGANA                                        : Adept's Black Monk Staff
+T4_2H_COMBATSTAFF_MORGANA@1                                      : Adept's Black Monk Staff
+T4_2H_COMBATSTAFF_MORGANA@2                                      : Adept's Black Monk Staff
+T4_2H_COMBATSTAFF_MORGANA@3                                      : Adept's Black Monk Staff
+T4_2H_COMBATSTAFF_MORGANA@4                                      : Adept's Black Monk Staff
+T5_2H_COMBATSTAFF_MORGANA                                        : Expert's Black Monk Staff
+T5_2H_COMBATSTAFF_MORGANA@1                                      : Expert's Black Monk Staff
+T5_2H_COMBATSTAFF_MORGANA@2                                      : Expert's Black Monk Staff
+T5_2H_COMBATSTAFF_MORGANA@3                                      : Expert's Black Monk Staff
+T5_2H_COMBATSTAFF_MORGANA@4                                      : Expert's Black Monk Staff
+T6_2H_COMBATSTAFF_MORGANA                                        : Master's Black Monk Staff
+T6_2H_COMBATSTAFF_MORGANA@1                                      : Master's Black Monk Staff
+T6_2H_COMBATSTAFF_MORGANA@2                                      : Master's Black Monk Staff
+T6_2H_COMBATSTAFF_MORGANA@3                                      : Master's Black Monk Staff
+T6_2H_COMBATSTAFF_MORGANA@4                                      : Master's Black Monk Staff
+T7_2H_COMBATSTAFF_MORGANA                                        : Grandmaster's Black Monk Staff
+T7_2H_COMBATSTAFF_MORGANA@1                                      : Grandmaster's Black Monk Staff
+T7_2H_COMBATSTAFF_MORGANA@2                                      : Grandmaster's Black Monk Staff
+T7_2H_COMBATSTAFF_MORGANA@3                                      : Grandmaster's Black Monk Staff
+T7_2H_COMBATSTAFF_MORGANA@4                                      : Grandmaster's Black Monk Staff
+T8_2H_COMBATSTAFF_MORGANA                                        : Elder's Black Monk Staff
+T8_2H_COMBATSTAFF_MORGANA@1                                      : Elder's Black Monk Staff
+T8_2H_COMBATSTAFF_MORGANA@2                                      : Elder's Black Monk Staff
+T8_2H_COMBATSTAFF_MORGANA@3                                      : Elder's Black Monk Staff
+T8_2H_COMBATSTAFF_MORGANA@4                                      : Elder's Black Monk Staff
 T4_2H_TWINSCYTHE_HELL                                            : Adept's Soulscythe
 T4_2H_TWINSCYTHE_HELL@1                                          : Adept's Soulscythe
 T4_2H_TWINSCYTHE_HELL@2                                          : Adept's Soulscythe
@@ -10532,10 +10532,10 @@ UNIQUE_AVATAR_GVGSEASON_30_CRYSTAL                               : Avatar: Cryst
 UNIQUE_AVATAR_GVGSEASON_30_SILVER                                : Avatar: Silver Harvester
 UNIQUE_AVATAR_GVGSEASON_31_CRYSTAL                               : Avatar: Crystal Lumberjack
 UNIQUE_AVATAR_GVGSEASON_31_SILVER                                : Avatar: Silver Lumberjack
-UNIQUE_AVATAR_GVGSEASON_32_CRYSTAL                               : Crystal War Champion
-UNIQUE_AVATAR_GVGSEASON_32_SILVER                                : Silver War Champion
-UNIQUE_AVATAR_GVGSEASON_33_CRYSTAL                               
-UNIQUE_AVATAR_GVGSEASON_33_SILVER                                
+UNIQUE_AVATAR_GVGSEASON_32_CRYSTAL                               : Avatar: Crystal War Champion
+UNIQUE_AVATAR_GVGSEASON_32_SILVER                                : Avatar: Silver War Champion
+UNIQUE_AVATAR_GVGSEASON_33_CRYSTAL                               : Avatar: Crystal Marked Warrior
+UNIQUE_AVATAR_GVGSEASON_33_SILVER                                : Avatar: Silver Marked Warrior
 UNIQUE_AVATAR_GVGSEASON_34_CRYSTAL                               
 UNIQUE_AVATAR_GVGSEASON_34_SILVER                                
 UNIQUE_AVATAR_GVGSEASON_14_CRYSTAL_SINGLE                        : Crystal Avatar - Season 14
@@ -10602,6 +10602,8 @@ UNIQUE_AVATAR_GVGSEASON_29_CRYSTAL_SINGLE                        : Crystal Avata
 UNIQUE_AVATAR_GVGSEASON_29_GOLD_SINGLE                           : Gold Avatar - Season 29
 UNIQUE_AVATAR_GVGSEASON_29_SILVER_SINGLE                         : Silver Avatar - Season 29
 UNIQUE_AVATAR_GVGSEASON_29_BRONZE_SINGLE                         : Bronze Avatar - Season 29
+UNIQUE_AVATAR_GVGSEASON_30_CRYSTAL_SINGLE                        
+UNIQUE_AVATAR_GVGSEASON_30_SILVER_SINGLE                         
 UNIQUE_AVATAR_GVGSEASON_LEGACY_AVATARS_GOLD                      
 UNIQUE_AVATAR_GVGSEASON_LEGACY_AVATARS_BRONZE                    
 UNIQUE_AVATARRING_CRUCIBLE_TOP10                                 : Avatar Ring: Crucible II Warrior
@@ -10748,6 +10750,7 @@ UNIQUE_UNLOCK_SKIN_HORSE_UNICORN_WHITE_TELLAFRIEND_UNTRADEABLE_2025
 SKIN_HORSE_JESTER_TELLAFRIEND                                    : Jester Horse
 UNIQUE_UNLOCK_SKIN_HORSE_JESTER_TELLAFRIEND                      : Riding Horse Skin: Jester Horse
 UNIQUE_UNLOCK_SKIN_HORSE_JESTER_TELLAFRIEND_UNTRADEABLE          
+UNIQUE_UNLOCK_SKIN_HORSE_JESTER_TELLAFRIEND_UNTRADEABLE_2026     
 SKIN_HORSE_VAMPIRE_TELLAFRIEND                                   : Horsferatu
 UNIQUE_UNLOCK_SKIN_HORSE_VAMPIRE_TELLAFRIEND                     : Riding Horse Skin: Horsferatu
 UNIQUE_UNLOCK_SKIN_HORSE_VAMPIRE_TELLAFRIEND_UNTRADEABLE         
@@ -10762,6 +10765,7 @@ UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_MORGANA                         : Armored Horse
 SKIN_ARMORED_HORSE_UNDEAD                                        : Armored Bonehorse
 UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_UNDEAD                          : Armored Horse Skin: Armored Bonehorse
 UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_UNDEAD_UNTRADEABLE              
+UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_UNDEAD_UNTRADEABLE_2026         
 SKIN_ARMORED_HORSE_T5_MOUNT_GUILD                                : Expert's Heraldic Warhorse
 SKIN_ARMORED_HORSE_T6_MOUNT_GUILD                                : Master's Heraldic Warhorse
 SKIN_ARMORED_HORSE_T7_MOUNT_GUILD                                : Grandmaster's Heraldic Warhorse
@@ -10800,6 +10804,7 @@ UNIQUE_UNLOCK_SKIN_OX_XMAS_YAK_TELLAFRIEND_UNTRADEABLE
 SKIN_OX_BETSY_TELLAFRIEND                                        : Ol' Betsy
 UNIQUE_UNLOCK_SKIN_OX_BETSY_TELLAFRIEND                          : Transport Ox Skin: Ol' Betsy
 UNIQUE_UNLOCK_SKIN_OX_BETSY_TELLAFRIEND_UNTRADEABLE              
+UNIQUE_UNLOCK_SKIN_OX_BETSY_TELLAFRIEND_UNTRADEABLE_2026         
 SKIN_DIREWOLF_WHITE                                              : Ghostwolf
 UNIQUE_UNLOCK_SKIN_DIREWOLF_WHITE                                : Direwolf Skin: Ghostwolf
 SKIN_DIREWOLF_SPECTER                                            : Specter Wolf
@@ -10863,6 +10868,7 @@ UNIQUE_UNLOCK_SKIN_GIANTSTAG_FAWN_TELLAFRIEND_UNTRADEABLE_2025
 SKIN_GIANTSTAG_ICE_MOOSE_TELLAFRIEND                             : Frost Moose
 UNIQUE_UNLOCK_SKIN_GIANTSTAG_ICE_MOOSE_TELLAFRIEND               : Stag Skin: Frost Moose
 UNIQUE_UNLOCK_SKIN_GIANTSTAG_ICE_MOOSE_TELLAFRIEND_UNTRADEABLE   
+UNIQUE_UNLOCK_SKIN_GIANTSTAG_ICE_MOOSE_TELLAFRIEND_UNTRADEABLE_2026
 SKIN_GIANTSTAG_MIST_DEER_TELLAFRIEND                             : Foglands Doe
 UNIQUE_UNLOCK_SKIN_GIANTSTAG_MIST_DEER_TELLAFRIEND               : Stag Skin: Foglands Doe
 UNIQUE_UNLOCK_SKIN_GIANTSTAG_MIST_DEER_TELLAFRIEND_UNTRADEABLE   
@@ -10889,6 +10895,7 @@ UNIQUE_UNLOCK_SKIN_COUGAR_OCCULT_UNTRADEABLE
 SKIN_COUGAR_ARMORED_GREY                                         : Steelplate Cougar
 UNIQUE_UNLOCK_SKIN_COUGAR_ARMORED_GREY                           : Swiftclaw Skin: Steelplate Cougar
 UNIQUE_UNLOCK_SKIN_COUGAR_ARMORED_GREY_UNTRADEABLE               
+UNIQUE_UNLOCK_SKIN_COUGAR_ARMORED_GREY_UNTRADEABLE_2026          
 SKIN_COUGAR_MUMMY_TELLAFRIEND                                    : Embalmed Tiger
 UNIQUE_UNLOCK_SKIN_COUGAR_MUMMY_TELLAFRIEND                      : Swiftclaw Skin: Embalmed Tiger
 UNIQUE_UNLOCK_SKIN_COUGAR_MUMMY_TELLAFRIEND_UNTRADEABLE          
@@ -10913,6 +10920,7 @@ UNIQUE_UNLOCK_SKIN_DIREBEAR_PANDA_TELLAFRIEND_UNTRADEABLE
 SKIN_LIZARD_SAND_SALAMANDER_TELLAFRIEND                          : Recruiter's Sand Salamander
 UNIQUE_UNLOCK_SKIN_LIZARD_SAND_SALAMANDER_TELLAFRIEND            : Swamp Dragon Skin: Recruiter's Sand Salamander
 UNIQUE_UNLOCK_SKIN_LIZARD_SAND_SALAMANDER_TELLAFRIEND_UNTRADEABLE
+UNIQUE_UNLOCK_SKIN_LIZARD_SAND_SALAMANDER_TELLAFRIEND_UNTRADEABLE_2026
 SKIN_DONKEY_HALLOWEEN                                            : Jack o' Donkey
 UNIQUE_UNLOCK_SKIN_DONKEY_HALLOWEEN                              : Mule Skin: Jack o' Donkey
 SKIN_DONKEY_UNIQUE_TELLAFRIEND                                   : Recruiter's Donkey
@@ -11084,12 +11092,12 @@ UNIQUE_AVATARRING_ANNIVERSARY_2022                               : Fifth Anniver
 UNIQUE_AVATARRING_ANNIVERSARY_2023                               : Sixth Anniversary Ring
 UNIQUE_AVATARRING_ANNIVERSARY_2024                               : Seventh Anniversary Ring
 UNIQUE_AVATARRING_ANNIVERSARY_2025                               : Eighth Anniversary Ring
-UNIQUE_AVATARRING_ANNIVERSARY_2026                               
+UNIQUE_AVATARRING_ANNIVERSARY_2026                               : Ninth Anniversary Ring
 UNIQUE_AVATAR_ANNIVERSARY_2022                                   : Fifth Anniversary Avatar
 UNIQUE_AVATAR_ANNIVERSARY_2023                                   : Sixth Anniversary Avatar
 UNIQUE_AVATAR_ANNIVERSARY_2024                                   : Seventh Anniversary Avatar
 UNIQUE_AVATAR_ANNIVERSARY_2025                                   : Eighth Anniversary Avatar
-UNIQUE_AVATAR_ANNIVERSARY_2026                                   
+UNIQUE_AVATAR_ANNIVERSARY_2026                                   : Ninth Anniversary Avatar
 UNIQUE_ROTTEN_CAKE                                               : Spoiled Anniversary Cake
 UNIQUE_CONSUMABLE_EVENT_ANNIVERSARY_CAKE                         : Anniversary Cake
 UNIQUE_CONSUMABLE_EVENT_ANNIVERSARY_CAKE_2025                    
@@ -11102,8 +11110,8 @@ SKIN_HORSE_ANNIVERSARY_2024                                      : Seventh-Year 
 UNIQUE_UNLOCK_SKIN_HORSE_ANNIVERSARY_2024                        : Riding Horse Skin: Seventh-Year Stallion
 SKIN_HORSE_ANNIVERSARY_2025                                      : Eighth-Year Stallion
 UNIQUE_UNLOCK_SKIN_HORSE_ANNIVERSARY_2025                        : Riding Horse Skin: Eighth-Year Stallion
-SKIN_HORSE_ANNIVERSARY_2026                                      
-UNIQUE_UNLOCK_SKIN_HORSE_ANNIVERSARY_2026                        
+SKIN_HORSE_ANNIVERSARY_2026                                      : Ninth-Year Stallion
+UNIQUE_UNLOCK_SKIN_HORSE_ANNIVERSARY_2026                        : Riding Horse Skin: Ninth-Year Stallion
 UNIQUE_FURNITUREITEM_CARPET_ANNIVERSARY_2022                     : Fifth Anniversary Carpet
 UNIQUE_ROTTEN_CANDY                                              : Rotten Allhallows Treat
 UNIQUE_CONSUMABLE_EVENT_HALLOWEEN_CANDY                          : Allhallows Treat
@@ -11283,11 +11291,11 @@ UNIQUE_ARMOR_VANITY_MARAUDER                                     : Reaver's Armo
 UNIQUE_SHOES_VANITY_MARAUDER                                     : Reaver's Boots
 UNIQUE_CAPE_VANITY_MARAUDER                                      : Reaver's Cape
 SKIN_ARMORED_HORSE_MARAUDER                                      : Reaver's Armored Horse
-UNIQUE_HEAD_VANITY_MARAUDER_ANNIVERSARY                          
-UNIQUE_ARMOR_VANITY_MARAUDER_ANNIVERSARY                         
-UNIQUE_SHOES_VANITY_MARAUDER_ANNIVERSARY                         
-UNIQUE_CAPE_VANITY_MARAUDER_ANNIVERSARY                          
-SKIN_ARMORED_HORSE_MARAUDER_ANNIVERSARY                          
+UNIQUE_HEAD_VANITY_MARAUDER_ANNIVERSARY                          : Anniversary Reaver's Helmet
+UNIQUE_ARMOR_VANITY_MARAUDER_ANNIVERSARY                         : Anniversary Reaver's Armor
+UNIQUE_SHOES_VANITY_MARAUDER_ANNIVERSARY                         : Anniversary Reaver's Boots
+UNIQUE_CAPE_VANITY_MARAUDER_ANNIVERSARY                          : Anniversary Reaver's Cape
+SKIN_ARMORED_HORSE_MARAUDER_ANNIVERSARY                          : Anniversary Reaver's Armored Horse
 UNIQUE_HEAD_VANITY_FIREMAGE                                      : Pyromancer's Aspect
 UNIQUE_ARMOR_VANITY_FIREMAGE                                     : Pyromancer's Robe
 UNIQUE_SHOES_VANITY_FIREMAGE                                     : Pyromancer's Boots
@@ -11340,11 +11348,11 @@ UNIQUE_ARMOR_VANITY_ALCHEMIST                                    : Alchemist's A
 UNIQUE_SHOES_VANITY_ALCHEMIST                                    : Alchemist's Boots
 UNIQUE_CAPE_VANITY_ALCHEMIST                                     : Alchemist's Backpack
 SKIN_DIREBOAR_ALCHEMIST                                          : Alchemist's Packboar
-UNIQUE_HEAD_VANITY_ALCHEMIST_ANNIVERSARY                         
-UNIQUE_ARMOR_VANITY_ALCHEMIST_ANNIVERSARY                        
-UNIQUE_SHOES_VANITY_ALCHEMIST_ANNIVERSARY                        
-UNIQUE_CAPE_VANITY_ALCHEMIST_ANNIVERSARY                         
-SKIN_DIREBOAR_ALCHEMIST_ANNIVERSARY                              
+UNIQUE_HEAD_VANITY_ALCHEMIST_ANNIVERSARY                         : Anniversary Alchemist's Glasses
+UNIQUE_ARMOR_VANITY_ALCHEMIST_ANNIVERSARY                        : Anniversary Alchemist's Armor
+UNIQUE_SHOES_VANITY_ALCHEMIST_ANNIVERSARY                        : Anniversary Alchemist's Boots
+UNIQUE_CAPE_VANITY_ALCHEMIST_ANNIVERSARY                         : Anniversary Alchemist's Backpack
+SKIN_DIREBOAR_ALCHEMIST_ANNIVERSARY                              : Anniversary Alchemist's Packboar
 UNIQUE_HEAD_VANITY_FROSTKNIGHT                                   : Frost Knight's Helmet
 UNIQUE_ARMOR_VANITY_FROSTKNIGHT                                  : Frost Knight's Armor
 UNIQUE_SHOES_VANITY_FROSTKNIGHT                                  : Frost Knight's Boots
@@ -11360,11 +11368,11 @@ UNIQUE_ARMOR_VANITY_CORRUPTED_PREACHER                           : Corrupted Pre
 UNIQUE_SHOES_VANITY_CORRUPTED_PREACHER                           : Corrupted Preacher's Boots
 UNIQUE_CAPE_VANITY_CORRUPTED_PREACHER                            : Corrupted Preacher's Cape
 SKIN_OX_CORRUPTED_PREACHER                                       : Corrupted Preacher's Ox
-UNIQUE_HEAD_VANITY_CORRUPTED_PREACHER_ANNIVERSARY                
-UNIQUE_ARMOR_VANITY_CORRUPTED_PREACHER_ANNIVERSARY               
-UNIQUE_SHOES_VANITY_CORRUPTED_PREACHER_ANNIVERSARY               
-UNIQUE_CAPE_VANITY_CORRUPTED_PREACHER_ANNIVERSARY                
-SKIN_OX_CORRUPTED_PREACHER_ANNIVERSARY                           
+UNIQUE_HEAD_VANITY_CORRUPTED_PREACHER_ANNIVERSARY                : Anniversary Corrupted Preacher's Hat
+UNIQUE_ARMOR_VANITY_CORRUPTED_PREACHER_ANNIVERSARY               : Anniversary Corrupted Preacher's Coat
+UNIQUE_SHOES_VANITY_CORRUPTED_PREACHER_ANNIVERSARY               : Anniversary Corrupted Preacher's Boots
+UNIQUE_CAPE_VANITY_CORRUPTED_PREACHER_ANNIVERSARY                : Anniversary Corrupted Preacher's Cape
+SKIN_OX_CORRUPTED_PREACHER_ANNIVERSARY                           : Anniversary Corrupted Preacher's Ox
 UNIQUE_HEAD_VANITY_BARBARIAN_ANNIVERSARY                         : Anniversary Barbarian's Helmet
 UNIQUE_ARMOR_VANITY_BARBARIAN_ANNIVERSARY                        : Anniversary Barbarian's Harness
 UNIQUE_SHOES_VANITY_BARBARIAN_ANNIVERSARY                        : Anniversary Barbarian's Boots
@@ -11459,11 +11467,11 @@ UNIQUE_UNLOCK_AVATAR_BEAR_01
 UNIQUE_UNLOCK_AVATAR_WOLF_01                                     
 UNIQUE_UNLOCK_AVATAR_HARVESTER_01                                
 UNIQUE_UNLOCK_AVATAR_MORGANA_01                                  
-UNIQUE_HEAD_VANITY_VALKYRIE                                      
-UNIQUE_ARMOR_VANITY_VALKYRIE                                     
-UNIQUE_SHOES_VANITY_VALKYRIE                                     
-UNIQUE_CAPE_VANITY_VALKYRIE                                      
-SKIN_DIREBEAR_VALKYRIE                                           
+UNIQUE_HEAD_VANITY_VALKYRIE                                      : Valkyrie's Helmet
+UNIQUE_ARMOR_VANITY_VALKYRIE                                     : Valkyrie's Armor
+UNIQUE_SHOES_VANITY_VALKYRIE                                     : Valkyrie's Boots
+UNIQUE_CAPE_VANITY_VALKYRIE                                      : Valkyrie's Cape
+SKIN_DIREBEAR_VALKYRIE                                           : Valkyrie's Direbear
 UNIQUE_TEST_DUNGEONMAP_PROTOTYPE                                 
 T4_TOKEN_CRYSTALLEAGUE_CITY_LVL_01_TEMPLATE                      
 T4_TOKEN_CRYSTALLEAGUE_CITY_LVL_02_TEMPLATE                      
@@ -11641,10 +11649,11 @@ T1_KILL_EMOTE_HAMMER_CHARGES_TRADABLE
 T1_KILL_EMOTE_FLAG_MOBILE_CHARGES_TRADABLE                       
 T1_KILL_EMOTE_FLAG_DESKTOP_CHARGES_TRADABLE                      
 T1_KILL_EMOTE_FLAG_CONTROLLER_CHARGES_TRADABLE                   
-UNIQUE_UNLOCK_ARMOR_VANITY_DRAGONKEEPER_AJ                       
-UNIQUE_ARMOR_VANITY_DRAGONKEEPER_AJ                              
-UNIQUE_UNLOCK_HEAD_VANITY_DRAGONKEEPER_AJ                        
-UNIQUE_HEAD_VANITY_DRAGONKEEPER_AJ                               
+UNIQUE_AVATARRING_DRAGONKEEPER_AJ                                : Ashborn Avatar Ring
+UNIQUE_UNLOCK_ARMOR_VANITY_DRAGONKEEPER_AJ                       : Ashborn Armor
+UNIQUE_ARMOR_VANITY_DRAGONKEEPER_AJ                              : Ashborn Armor
+UNIQUE_UNLOCK_HEAD_VANITY_DRAGONKEEPER_AJ                        : Ashborn Helmet
+UNIQUE_HEAD_VANITY_DRAGONKEEPER_AJ                               : Ashborn Helmet
 UNIQUE_UNLOCK_VANITY_HEAD_TUTORIAL_COMPLETED_AJ                  : Wardrobe Skin: Academic Biretta
 UNIQUE_VANITY_HEAD_TUTORIAL_COMPLETED_AJ                         : Academic Biretta
 UNIQUE_AVATARRING_AJ_PVE_01                                      : PvE Avatar Ring
@@ -11719,14 +11728,14 @@ UNIQUE_UNLOCK_SKIN_GIANTSTAG_SPIRITBEAST_AJ                      : Stag/Moose Sk
 SKIN_GIANTSTAG_SPIRITBEAST_AJ                                    : Astral Stag
 UNIQUE_UNLOCK_HEAD_VANITY_DESTINY_STONES_ADVANCED_AJ             : Wardrobe Skin: Fullfilled Destiny's Circlet
 UNIQUE_HEAD_VANITY_DESTINY_STONES_ADVANCED_AJ                    : Fullfilled Destiny's Circlet
-UNIQUE_UNLOCK_LORE_KEEPER_01                                     
-UNIQUE_UNLOCK_LORE_KEEPER_02                                     
-UNIQUE_UNLOCK_LORE_KEEPER_03                                     
-UNIQUE_UNLOCK_LORE_KEEPER_04                                     
-UNIQUE_UNLOCK_LORE_KEEPER_05                                     
-UNIQUE_UNLOCK_LORE_KEEPER_06                                     
-UNIQUE_UNLOCK_LORE_KEEPER_07                                     
-UNIQUE_UNLOCK_LORE_KEEPER_13                                     
+UNIQUE_UNLOCK_LORE_KEEPER_01                                     : Keeper Memory - Of Stars and Moon
+UNIQUE_UNLOCK_LORE_KEEPER_02                                     : Keeper Memory - Shameless or Daring
+UNIQUE_UNLOCK_LORE_KEEPER_03                                     : Keeper Memory - Rules are Rules
+UNIQUE_UNLOCK_LORE_KEEPER_04                                     : Keeper Memory - Visions of an Oracle
+UNIQUE_UNLOCK_LORE_KEEPER_05                                     : Keeper Memory - The Ash of Yore
+UNIQUE_UNLOCK_LORE_KEEPER_06                                     : Keeper Memory - Conviction of an Ashborn
+UNIQUE_UNLOCK_LORE_KEEPER_07                                     : Keeper Memory - Convictions of the Unfettered Oracle
+UNIQUE_UNLOCK_LORE_KEEPER_13                                     : Keeper Memory - The Feast of Bur
 T4_DEBUG_HEAD_HIDDEN                                             
 T4_DEBUG_ARMOR_HIDDEN                                            
 T4_DEBUG_CAPE_HIDDEN                                             
