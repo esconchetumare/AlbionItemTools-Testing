@@ -672,5 +672,26 @@
         try { const r = await fetch('spells.xml'); if (r.ok) processSpells(await r.text()); } catch (e) {}
     });
 </script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        // 1. Check the URL for the '?id=...' parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetId = urlParams.get('id');
+        
+        if (targetId) {
+            // 2. Find your search input (Update this selector if your search bar has a specific ID like '#searchInput')
+            const searchBox = document.querySelector('input[type="text"]');
+            
+            if (searchBox) {
+                // 3. Inject the ID from the URL into the search box
+                searchBox.value = targetId;
+                
+                // 4. Force the browser to trigger your existing search/filter logic
+                searchBox.dispatchEvent(new Event('input', { bubbles: true }));
+                searchBox.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+    });
+</script>
 </body>
 </html>
